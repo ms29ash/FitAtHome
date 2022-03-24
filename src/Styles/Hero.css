@@ -21,15 +21,18 @@
   animation-play-state: paused;
 }
 .image-one {
-  background-image: url("../images/image 2.jpg");
+  background: hsla(0, 0%, 0%, 0.719) url("../images/image 2.jpg");
+  background-blend-mode: overlay;
 }
 
 .image-two {
-  background-image: url("../images/image3.jpg");
+  background: hsla(0, 0%, 0%, 0.719) url("../images/image3.jpg");
+  background-blend-mode: overlay;
 }
 
 .image-three {
-  background-image: url("../images/image.jpg");
+  background: hsla(0, 0%, 0%, 0.719) url("../images/image.jpg");
+  background-blend-mode: overlay;
 }
 
 @keyframes sliding {
@@ -52,6 +55,10 @@
     transform: translateX(0);
   }
 }
+
+.bg-hero {
+}
+
 @media screen and (max-width: 767px) {
   .carousel-container {
     width: 100vw;
