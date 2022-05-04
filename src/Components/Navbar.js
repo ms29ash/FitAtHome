@@ -1,47 +1,61 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import Hamburger from 'hamburger-react'
+import Hamburger from "hamburger-react";
+import tw from "tailwind-styled-components";
 
-import logo from '../images/logo.png'
-import '../Styles/nav.css'
+import logo from "../images/logo.png";
+// import "../Styles/nav.css";
 
 function Navbar() {
-    const [isOpen, setOpen] = useState(false)
-    const navlink = useRef(null);
-    return (
-        <>
-            <nav className="navbar flex flex-row w-screen bg-black h-[10vh] md:bg-black/80 backdrop-blur-sm text-black z-50 absolute md:fixed top-0  ">
-                <div className="header">
-                    <Link to="/">
-                        <img src={logo} alt="" />
-                    </Link>
-                </div>
-                <div className=" text-white top-3 md:hidden right-3 absolute">
+  const [isOpen, setOpen] = useState(false);
+  const navlink = useRef(null);
+  return (
+    <>
+      <Nav className="navbar  ">
+        <LogoWrapper className="header">
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
+        </LogoWrapper>
 
-                    <Hamburger toggled={isOpen} toggle={setOpen} rounded color="#fff" onToggle={toggled => {
-                        if (toggled) {
-                            navlink.current.classList.toggle('show');
-                        } else {
-                            navlink.current.classList.toggle('show')
-                        }
-                    }} />
-                </div>
+        <HamburgerIcon>
+          <Hamburger
+            toggled={isOpen}
+            toggle={setOpen}
+            rounded
+            // color="#fff"
+            onToggle={(toggled) => {
+              navlink.current.classList.toggle("hidden");
+            }}
+          />
+        </HamburgerIcon>
 
-                <div className="navlinks" ref={navlink}>
-                    <ul>
-                        {/* <li>
-                            <a className="text-white hover:text-orangefood" href="/">Home</a>
-                            </li> */}
-                        <li><Link className="text-white hover:text-orangefood hover:underline" to="/food">Food</Link></li>
-                        <li><Link className="text-white hover:text-orangefood hover:underline" to="/trial">Free Trial</Link></li>
-                        <li> <Link className="text-white hover:text-orangefood hover:underline" to="/subscribe">Subscribe</Link></li>
-                        <li><Link className="text-white hover:bg-orangefood bg-redfood px-3 py-2 rounded-2xl hover:underline" to="/signin">Sign In</Link>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </>
-    )
+        <NavLinks ref={navlink}>
+          <NavLink to="/food">Food</NavLink>
+
+          <NavLink to="/trial">Free Trial</NavLink>
+
+          <NavLink to="/subscribe">Subscribe</NavLink>
+
+          <LoginLink to="/signin">Sign In</LoginLink>
+        </NavLinks>
+      </Nav>
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;
+
+const Nav = tw.nav`
+flex flex-row w-screen min-h-[100px] h-[10vh] bg-white/80 backdrop-blur-sm text-redfood z-50 absolute md:fixed top-0 items-center px-5
+`;
+const LogoWrapper = tw.div`inline-block`;
+const HamburgerIcon = tw.div`text-redfood top-[25px] md:hidden right-3 absolute`;
+const NavLinks = tw.div`
+flex-1 md:!flex hidden justify-end items-center`;
+const NavLink = tw(
+  Link
+)`mx-4 text-xl text-redfood hover:text-orangefood  font-semibold`;
+const LoginLink = tw(Link)`
+mx-4 text-xl text-white  font-semibold bg-redfood px-3 py-2 rounded-2xl
+`;
