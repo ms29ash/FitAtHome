@@ -19,11 +19,11 @@ function Home(props) {
         <>
             <Hero />
             <Meals />
-            <Food setProgress={props.setProgress} />
+            <Food />
 
             <Trial />
             <Subscribe />
-            <Testimonials />
+            {/* <Testimonials /> */}
             <Footer />
 
         </>
