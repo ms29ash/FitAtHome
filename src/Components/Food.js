@@ -1,15 +1,12 @@
 import React, { useRef, useContext, useEffect } from 'react'
 import FoodCard from './FoodCard';
-import FoodContext from '../Context/Food/foodContext';
 
 
 function Food() {
     const scrollRef = useRef(null);
-    const context = useContext(FoodContext);
-    const { food, fetchFood } = context;
 
     useEffect(() => {
-        fetchFood();
+
     })
 
 
@@ -33,11 +30,11 @@ function Food() {
 
                     {
 
-                        food.map((foodItem) => {
-                            return <FoodCard foodItem={foodItem} key={foodItem._id} />;
+                        // food.map((foodItem) => {
+                        //     return <FoodCard foodItem={foodItem} key={foodItem._id} />;
 
 
-                        })
+                        // })
 
 
 

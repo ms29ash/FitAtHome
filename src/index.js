@@ -2,21 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './Styles/style.css';
-import FoodState from './Context/Food/FoodState';
-import ProgressState from './Context/Progress/ProgressState';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <FoodState>
-      <ProgressState>
 
 
-        <App />
-      </ProgressState>
-    </FoodState>
+
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

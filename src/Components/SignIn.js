@@ -2,17 +2,15 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import '../Styles/SignIn.css'
-import ProgressContext from '../Context/Progress/ProgressContext'
 
 
 
 function SignIn(props) {
-    const context = useContext(ProgressContext);
-    const { setLoadBar } = context;
+
     const [user, setUser] = useState({ email: "", password: "" })
     const { register, formState: { errors }, handleSubmit } = useForm({ criteriaMode: "all" });
     useEffect(() => {
-        setLoadBar(100);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

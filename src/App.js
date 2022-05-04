@@ -14,12 +14,11 @@ import FreeTrial from './Components/FreeTrial';
 import SubscribePage from './Components/SubscribePage';
 import SignIn from './Components/SignIn';
 import SignUp from './Components/SignUp';
-import ProgressContext from './Context/Progress/ProgressContext';
 
 function App() {
 
-  const context = useContext(ProgressContext);
-  const { setLoadBar, loadBarProgress } = context;
+
+
 
 
 
@@ -34,8 +33,8 @@ function App() {
 
 
         <Navbar />
-        <LoadingBar color='#bf0404' progress={loadBarProgress}
-          onLoaderFinished={() => setLoadBar(0)} />
+        {/* <LoadingBar color='#bf0404' progress={loadBarProgress}
+          onLoaderFinished={() => setLoadBar(0)} /> */}
         <Routes>
           <Route path="/" element={<Home />} ></Route>
           <Route path="/food" element={<FoodPage />} ></Route>
