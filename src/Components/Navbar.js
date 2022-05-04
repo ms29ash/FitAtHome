@@ -1,18 +1,13 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from "react-router-dom";
+import Hamburger from 'hamburger-react'
 
 import logo from '../images/logo.png'
 import '../Styles/nav.css'
-import '../Styles/Hamburger.css'
 
 function Navbar() {
+    const [isOpen, setOpen] = useState(false)
     const navlink = useRef(null);
-    const menu = useRef(null);
-
-    const toggleClass = () => {
-        navlink.current.classList.toggle('show')
-        menu.current.classList.toggle('is-active')
-    }
     return (
         <>
             <nav className="navbar flex flex-row w-screen bg-black h-[10vh] md:bg-black/80 backdrop-blur-sm text-black z-50 absolute md:fixed top-0  ">
@@ -21,11 +16,17 @@ function Navbar() {
                         <img src={logo} alt="" />
                     </Link>
                 </div>
-                <div id="hamburger" className="hamburger" ref={menu} onClick={toggleClass}>
-                    <span className="line"></span>
-                    <span className="line"></span>
-                    <span className="line"></span>
+                <div className=" text-white top-3 md:hidden right-3 absolute">
+
+                    <Hamburger toggled={isOpen} toggle={setOpen} rounded color="#fff" onToggle={toggled => {
+                        if (toggled) {
+                            navlink.current.classList.toggle('show');
+                        } else {
+                            navlink.current.classList.toggle('show')
+                        }
+                    }} />
                 </div>
+
                 <div className="navlinks" ref={navlink}>
                     <ul>
                         {/* <li>

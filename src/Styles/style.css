@@ -455,6 +455,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 1.25rem;
   margin-right: 1.25rem;
 }
+.mx-\[10vw\] {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -835,6 +839,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-redfood {
   --tw-text-opacity: 1;
   color: rgb(191 4 4 / var(--tw-text-opacity));
+}
+.text-black\/80 {
+  color: rgb(0 0 0 / 0.8);
 }
 .text-black {
   --tw-text-opacity: 1;
