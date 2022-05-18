@@ -1,45 +1,56 @@
 import React, { useEffect, useState } from 'react'
 
-function FoodCard(props) {
-    let { image, type, name, description, price } = props.foodItem;
-    let [color, setColor] = useState()
-    let [side, setSide] = useState()
-    let [text, setText] = useState()
+import tw from "tailwind-styled-components";
+import { Link } from 'react-router-dom'
 
-    useEffect(() => {
-        setColor(type === 'Vegan' ? 'green-600' : type === 'Veg' ? 'green-900' : 'red-900')
-        setText(type === 'Vegan' ? "v" : '')
-        setSide(type === 'Vegan' ? 'text-' : 'bg-')
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+function FoodCard(props) {
+
+    let { foodItem } = props;
+
+
+
 
 
 
 
     return (
         <>
-            <div className="scroll-end scroll-mx-6 shrink-0" >
-                <div className="bg-white card-container my-5 shadow-xl rounded-md w-[250px] h-[18rem]">
-                    <a href="/">
-                        <img src={image} alt="" className="rounded-t-md object-cover w-[250px] h-[187px]" />
-                        <div className={`absolute top-6 ml-2 bg-white border-2 border-solid border-${color}`}>
-                            <div className={`font-bold text-3xl flex justify-center items-center text-center m-1 rounded-full w-5 h-5 ${side}-${color} `}>
-                                {text}
-                            </div>
-                        </div>
-                        <div className="text p-[8px]">
+            <Container >
+                <Wrapper>
+                    <Link to="/">
+                        {
+                            foodItem?.image ? <FoodImg src={foodItem?.image} alt='' /> :
+                                <LoadFoodImg />
 
-                            <h1 className="text-2xl font-bold hover:text-orangefood">{name}</h1>
+                        }
+
+                        {/* <FoodTypeIcon > */}
+
+
+                        <FoodTypeIcon src={foodItem?.type === 'Veg' ? "/images/veg_icon.png" : foodItem?.type === 'Non-Veg' ? 'images/nonveg_icon.png' : foodItem?.type === "Vegan" ? "images/vegan_icon.png" : ""} alt="" />
+
+                        {/* </FoodTypeIcon> */}
+                        <Text >
+
+                            <TextHead className="">{foodItem?.name}</TextHead>
                             {/* <p className="mb-3">{description}</p> */}
                             {/* <p className=" mb-3 absolute bottom-12 text-redfood text-2xl font-bold hover:text-orangefood">{price}</p> */}
 
 
-                        </div>
-                    </a>
-                </div>
-            </div>
+                        </Text>
+                    </Link>
+                </Wrapper>
+            </Container>
         </>
     )
 }
 
 export default FoodCard
+
+const Container = tw.div`scroll-end scroll-mx-6 shrink-0`;
+const Wrapper = tw.div`bg-white card-container my-5 shadow-xl rounded-md w-[250px] h-[18rem]`
+const FoodImg = tw.img`rounded-t-md object-cover w-[250px] h-[187px] bg-white `
+const LoadFoodImg = tw.img`rounded-t-md object-cover w-[250px] h-[187px] bg-gray-400 `
+const FoodTypeIcon = tw.img`absolute top-6 ml-2 w-[30px] h-[30px]`
+const Text = tw.div`p-[8px]`
+const TextHead = tw.h1`text-2xl font-bold hover:text-orangefood`
