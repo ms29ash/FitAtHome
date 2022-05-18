@@ -57,5 +57,5 @@ const NavLink = tw(
   Link
 )`mx-4 text-xl text-redfood hover:text-orangefood  font-semibold`;
 const LoginLink = tw(Link)`
-mx-4 text-xl text-white  font-semibold bg-redfood px-3 py-2 rounded-2xl
+mx-4 text-xl text-white  font-semibold bg-redfood hover:bg-orangefood px-3 py-2 rounded-2xl
 `;
