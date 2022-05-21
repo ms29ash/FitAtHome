@@ -32,7 +32,7 @@ function MealCard(props) {
 
 export default MealCard;
 
-const Wrapper = tw.div`card-container   mt-4 lg:mt-10 xl:mt-12   bg-white border-black-100 shadow-lg border-[1px] hover:shadow-2xl rounded-md w-[90%]`;
+const Wrapper = tw.div`card-container   mt-4 lg:mt-10 xl:mt-12   bg-white border-black-100 shadow-lg border-[1px] hover:shadow-2xl rounded-md w-[100%]`;
 
 const Img = tw.img`object-cover rounded-t-md w-full h-[10rem]`;
 const LoadImg = tw.div`object-cover rounded-t-md w-full h-[10rem] bg-gray-400`;

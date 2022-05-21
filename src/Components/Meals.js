@@ -38,5 +38,5 @@ function TypeMeals() {
 
 export default TypeMeals
 
-const Meals = tw.section`bg-white grid grid-cols-1 w-screen md:grid-cols-3 gap-x-10 justify-items-center sm:px-12 px-8 lg:px-20 pt-2 xl:pt-5 pb-16`
+const Meals = tw.section`bg-white grid grid-cols-1 w-screen md:grid-cols-3 gap-x-2 md:gap-x-6 justify-items-center sm:px-12 px-8 lg:px-20 pt-2 xl:pt-5 pb-16`
 const MealHeading = tw.h1`text-orangefood headings md:col-span-3`
