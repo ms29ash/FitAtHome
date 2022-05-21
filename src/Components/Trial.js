@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import '../Styles/Trial.css'
 import tw from "tailwind-styled-components";
 
 
