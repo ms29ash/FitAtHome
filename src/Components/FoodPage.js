@@ -1,26 +1,24 @@
 import React, { useEffect, useContext } from 'react'
 import FoodPgCard from './FoodPgCard';
+import tw from "tailwind-styled-components";
+import FoodPageSideBar from './FoodPageSideBar';
+import FoodPageMain from './FoodPageMain';
 
 function FoodPage(props) {
 
-    useEffect(() => {
 
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
     return (
-        <div className="mt-[10vh] mx-5">
-            <h1 className="text-center">Food</h1>
+        <Page>
+            <Container>
 
-            <div className=" grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-12 mx-[10vw]  justify-center items-center auto-rows-max" >
-                {/* {food.map((foodItem) => {
-                    return <FoodPgCard foodItem={foodItem} key={foodItem._id} />
-                })} */}
-            </div>
-
-
-        </div>
+                <FoodPageSideBar />
+                <FoodPageMain />
+            </Container>
+        </Page>
     )
 }
 
 export default FoodPage
+
+const Container = tw.div` flex w-[90vw]  mx-auto  `
+const Page = tw.div` mt-[12vh] py-200`
