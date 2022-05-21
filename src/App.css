@@ -2,3 +2,47 @@
   margin: 0;
   padding: 0;
 }
+
+html {
+  /* max-width: 2000px; */
+  margin: 0 auto;
+}
+
+/* ::-webkit-scrollbar { */
+/* width: 0; Remove scrollbar space */
+/* height: 15px; */
+/* border-radius: 30px; */
+/* background: transparent; Optional: just make scrollbar invisible */
+/* } */
+
+/* Optional: show position indicator in red */
+/* ::-webkit-scrollbar-thumb { */
+/* background: black; */
+/* opacity: 0.5; */
+/* } */
+
+#food-section::-webkit-scrollbar {
+  width: 0;
+  height: 10px;
+  color: antiquewhite;
+}
+#food-section::-webkit-scrollbar-thumb {
+  visibility: hidden;
+  border-radius: 30px;
+  background: gray;
+}
+#food:hover > #food-section::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+.btn-arrow {
+  visibility: hidden;
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .btn-arrow {
+    display: block;
+  }
+}
+#food:hover .btn-arrow {
+  visibility: visible;
+}
