@@ -11,18 +11,6 @@ h6 {
   font-weight: bold;
 }
 
-::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
-  height: 15px;
-  border-radius: 30px;
-  background: transparent; /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-  background: black;
-  opacity: 0.5;
-}
-
 @layer utilities {
   .headings {
     @apply font-bold text-4xl text-center  my-5;

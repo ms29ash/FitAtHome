@@ -6,6 +6,8 @@ import Trial from './Trial'
 import Subscribe from './Subscribe'
 import Testimonials from './Testimonials'
 import Footer from './Footer'
+import { ReactQueryDevtools } from 'react-query/devtools'
+
 
 function Home(props) {
 
@@ -25,6 +27,8 @@ function Home(props) {
             <Subscribe />
             {/* <Testimonials /> */}
             <Footer />
+            <ReactQueryDevtools initialIsOpen={false} />
+
 
         </>
     )
