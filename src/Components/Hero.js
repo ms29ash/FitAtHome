@@ -8,39 +8,27 @@ import tw from "tailwind-styled-components";
 
 
 function Hero() {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        autoplay: true,
-    }
+
     return (
         <>
-            <Carousel>
-                <Slides {...settings}>
-                    <div>
-                        <img src="/images/image.jpg" alt="" />
 
-                    </div>
-                    <div>
-                        <img src="/images/image1.jpg" alt="" />
-                    </div>
-                    <div>
-                        <img src="/images/image3.jpg" alt="" />
-                    </div>
+            <Wrapper>
+                <Container>
+                    <Img src="/images/hero.jpg" alt="" />
 
-                </Slides>
+                </Container>
 
 
-            </Carousel>
+            </Wrapper>
+
+
+            {/* </Carousel> */}
         </>
     )
 }
 
 export default Hero
-const Slides = tw(Slider)`
-w-screen h-[50vh] overflow-hidden`
-const Carousel = tw.div``
+const Wrapper = tw.div`
+w-screen  overflow-hidden mt-[10vh]`
+const Container = tw.div` `
+const Img = tw.img`relative  w-screen max-h-[70vh] object-cover`
