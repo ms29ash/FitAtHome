@@ -500,11 +500,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ml-1 {
   margin-left: 0.25rem;
 }
-.mt-4 {
-  margin-top: 1rem;
-}
 .mt-\[10vh\] {
   margin-top: 10vh;
+}
+.mt-4 {
+  margin-top: 1rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -560,9 +560,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-28 {
   height: 7rem;
 }
-.h-\[70vh\] {
-  height: 70vh;
-}
 .h-\[10rem\] {
   height: 10rem;
 }
@@ -574,6 +571,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .h-\[60vh\] {
   height: 60vh;
+}
+.max-h-\[70vh\] {
+  max-height: 70vh;
 }
 .min-h-\[100px\] {
   min-height: 100px;

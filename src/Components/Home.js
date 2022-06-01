@@ -25,7 +25,7 @@ function Home(props) {
 
             <Trial />
             <Subscribe />
-            {/* <Testimonials /> */}
+            <Testimonials />
             <Footer />
             <ReactQueryDevtools initialIsOpen={false} />
 
