@@ -411,6 +411,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.invisible {
+  visibility: hidden;
+}
 .fixed {
   position: fixed;
 }
@@ -450,9 +453,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .-m-5 {
   margin: -1.25rem;
 }
-.m-auto {
-  margin: auto;
-}
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -468,6 +468,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 .my-2 {
   margin-top: 0.5rem;
@@ -511,6 +515,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mt-5 {
   margin-top: 1.25rem;
+}
+.ml-5 {
+  margin-left: 1.25rem;
 }
 .mt-6 {
   margin-top: 1.5rem;
@@ -565,6 +572,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .h-\[10vh\] {
   height: 10vh;
+}
+.h-0 {
+  height: 0px;
 }
 .h-\[50vh\] {
   height: 50vh;
@@ -705,6 +715,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-2xl {
   border-radius: 1rem;
 }
+.rounded-xl {
+  border-radius: 0.75rem;
+}
 .rounded-3xl {
   border-radius: 1.5rem;
 }
@@ -752,15 +765,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-transparent {
   background-color: transparent;
 }
-.\!bg-orangefood\/5 {
-  background-color: rgb(242 48 5 / 0.05) !important;
-}
-.bg-orangefood\/80 {
-  background-color: rgb(242 48 5 / 0.8);
-}
 .bg-orangefood {
   --tw-bg-opacity: 1;
   background-color: rgb(242 48 5 / var(--tw-bg-opacity));
+}
+.bg-cover {
+  background-size: cover;
+}
+.bg-center {
+  background-position: center;
 }
 .stroke-1 {
   stroke-width: 1;
@@ -776,9 +789,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-10 {
   padding: 2.5rem;
-}
-.p-0 {
-  padding: 0px;
 }
 .p-20 {
   padding: 5rem;
@@ -888,10 +898,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 .text-4xl {
   font-size: 2.25rem;
@@ -1067,16 +1073,6 @@ h6 {
     padding-right: 4rem;
   }
 
-  .md\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .md\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -1088,6 +1084,10 @@ h6 {
   }
 }
 @media (min-width: 1024px) {
+
+  .lg\:visible {
+    visibility: visible;
+  }
 
   .lg\:mx-auto {
     margin-left: auto;
@@ -1101,6 +1101,10 @@ h6 {
 
   .lg\:mt-10 {
     margin-top: 2.5rem;
+  }
+
+  .lg\:h-\[70vh\] {
+    height: 70vh;
   }
 
   .lg\:w-3\/5 {

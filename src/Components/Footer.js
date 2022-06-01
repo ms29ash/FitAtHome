@@ -1,55 +1,64 @@
 import React from 'react'
 import footLgo from "../images/logoFoooter.png"
 import { Link } from "react-router-dom"
+import tw from "tailwind-styled-components";
+
 
 function Footer() {
     return (
-        <footer className="py-16 bg-greenfood grid md:grid-cols-4 grid-cols-1  justify-items-center items-center  text-white text-center">
+        <Container >
             <div>
-                <Link to="/">
+                <Links to="/">
                     <img src={footLgo} alt="" />
-                </Link>
+                </Links>
             </div>
             <div>
                 <ul>
-                    <li className="py-3">
-                        <Link to="/" className=" my-3 hover:text-orangefood hover:underline">Veg</Link>
-                    </li>
-                    <li className="py-3">
-                        <Link to="/" className=" my-3 hover:text-orangefood hover:underline">NonVeg</Link></li>
-                    <li className="py-3">
-                        <Link to="/" className=" my-3 hover:text-orangefood hover:underline">Vegan</Link></li>
+                    <Li >
+                        <Links to="/" >Veg</Links>
+                    </Li>
+                    <Li >
+                        <Links to="/" >NonVeg</Links></Li>
+                    <Li >
+                        <Links to="/" >Vegan</Links></Li>
                 </ul>
             </div >
             <div>
                 <ul>
-                    <li className="py-3">
-                        <Link to="/subscribe" className=" my-3 hover:text-orangefood hover:underline">Subscribe</Link>
-                    </li>
-                    <li className="py-3">
-                        <Link to="/food" className=" my-3 hover:text-orangefood hover:underline">Buy Now</Link>
-                    </li>
-                    <li className="py-3">
-                        <Link to="/trial" className=" my-3 hover:text-orangefood hover:underline">Free Trial</Link>
-                    </li>
+                    <Li >
+                        <Links to="/subscribe" >Subscribe</Links>
+                    </Li>
+                    <Li >
+                        <Links to="/food" >Buy Now</Links>
+                    </Li>
+                    <Li >
+                        <Links to="/trial" >Free Trial</Links>
+                    </Li>
                 </ul>
             </div>
             <div>
                 <ul>
-                    <li className="py-3">
-                        <Link to="/" className=" my-3 hover:text-orangefood hover:underline">Facebook</Link>
-                    </li>
-                    <li className="py-3">
-                        <Link to="/" className=" my-3 hover:text-orangefood hover:underline">Twitter</Link>
-                    </li>
-                    <li className="py-3">
-                        <Link to="/" className=" my-3 hover:text-orangefood hover:underline">Instagram</Link>
-                    </li>
+                    <Li >
+                        <Links to="/" >Facebook</Links>
+                    </Li>
+                    <Li >
+                        <Links to="/" >Twitter</Links>
+                    </Li>
+                    <Li >
+                        <Links to="/" >Instagram</Links>
+                    </Li>
                 </ul>
             </div>
 
-        </footer >
+        </Container >
     )
 }
 
 export default Footer
+
+const Container = tw.footer`py-16 bg-greenfood grid md:grid-cols-4 grid-cols-1  justify-items-center items-center  text-white text-center`
+
+
+const Li = tw.li`py-3`
+
+const Links = tw(Link)` my-3  hover:underline`
