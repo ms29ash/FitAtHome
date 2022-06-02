@@ -47,15 +47,15 @@ function Navbar() {
 export default Navbar;
 
 const Nav = tw.nav`
-flex flex-row w-screen min-h-[100px] h-[10vh] bg-white/80 backdrop-blur-sm text-redfood z-50 absolute md:fixed top-0 items-center px-5
+flex flex-row w-screen min-h-[80px] h-[5vh] bg-white/80 backdrop-blur-sm text-redfood z-50 absolute md:fixed top-0 items-center px-5
 `;
 const LogoWrapper = tw.div`inline-block`;
 const HamburgerIcon = tw.div`text-redfood top-[25px] md:hidden right-3 absolute`;
 const NavLinks = tw.div`
-flex-1 md:!flex hidden justify-end items-center`;
+flex-1 md:!flex hidden justify-end items-center `;
 const NavLink = tw(
   Link
-)`mx-4 text-xl text-redfood hover:text-orangefood  font-semibold`;
+)`mx-4 text-xl text-redfood hover:text-orangefood  font-semibold hover:underline`;
 const LoginLink = tw(Link)`
-mx-4 text-xl text-white  font-semibold bg-redfood hover:bg-orangefood px-3 py-2 rounded-2xl
+mx-4 text-xl text-white  font-semibold bg-redfood hover:bg-orangefood px-4 py-1 rounded-2xl
 `;
