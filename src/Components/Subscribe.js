@@ -39,13 +39,13 @@ const Container = tw.div`   bg-white justify-center shadow-xl px-12 md:px-16 fle
 const Head = tw.h1`text-black headings text-center `
 const Wrapper = tw.div`flex  items-center flex-col lg:flex-row xl:pb-8`
 
-const Img = tw.img`w-[40%] `
-const Details = tw.div`text flex flex-col bg-white p-4 justify-center`
+const Img = tw.img`w-[40%] h-[80%] object-cover`
+const Details = tw.div`text flex flex-col bg-white p-4 justify-center items-center lg:items-start`
 
-const Heading = tw.h1`text-2xl text-center xl:text-left font-bold`
+const Heading = tw.h1`text-2xl text-center xl:text-left font-bold my-3`
 
 const Text = tw.p`mb-3 text-center xl:text-left`
-const Button = tw(Link)`lg:w-3/5 w-full text-center hover:bg-orangefood bg-redfood text-white font-medium	 xl:mx-0  lg:mx-auto px-2 py-2 rounded-md`
+const Button = tw(Link)`lg:w-full w-2/5 text-center hover:bg-orangefood bg-redfood text-white font-bold xl:mx-0 text-sm  px-2 py-3 rounded-full mt-3 mb-3`
 
 
 

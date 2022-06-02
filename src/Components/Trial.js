@@ -21,7 +21,7 @@ const Container = tw.div`grid place-items-center  md:h-[80vh] h-[50vh] bg-blend-
 
 const Wrapper = tw.div`flex flex-col`
 
-const Button = tw(Link)` text-center md:text-2xl  hover:bg-orangefood bg-redfood rounded-3xl px-24 lg:py-3 py-2  text-white text-xl lg:text-2xl mt-5 mx-auto`
+const Button = tw(Link)` text-center text-md font-bold hover:bg-orangefood bg-redfood rounded-full px-24 py-3   text-white  lg:text-2xl mt-5 mx-auto`
 
 const Text = tw.p`lg:text-5xl text-3xl text-center my-2 lg:my-5 font-bold `
 

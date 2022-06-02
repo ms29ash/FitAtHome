@@ -37,7 +37,7 @@ function Navbar() {
 
           <NavLink to="/subscribe">Subscribe</NavLink>
 
-          <LoginLink to="/signin">Sign In</LoginLink>
+          <LoginLink to="/signin">Login</LoginLink>
         </NavLinks>
       </Nav>
     </>
@@ -55,7 +55,7 @@ const NavLinks = tw.div`
 flex-1 md:!flex hidden justify-end items-center `;
 const NavLink = tw(
   Link
-)`mx-4 text-xl text-redfood hover:text-orangefood  font-semibold hover:underline`;
+)`mx-4 text-lg text-redfood hover:text-orangefood  font-semibold hover:underline`;
 const LoginLink = tw(Link)`
-mx-4 text-xl text-white  font-semibold bg-redfood hover:bg-orangefood px-4 py-1 rounded-2xl
+mx-4 text-sm text-white  font-bold bg-redfood hover:bg-orangefood px-8  py-3  rounded-full
 `;
