@@ -21,6 +21,7 @@ html {
 /* opacity: 0.5; */
 /* } */
 
+/* Food Section */
 #food-section::-webkit-scrollbar {
   width: 0;
   height: 10px;
@@ -43,10 +44,12 @@ html {
     display: block;
   }
 }
+
 #food:hover .btn-arrow {
   visibility: visible;
 }
 
+/* Trial Section */
 #trial {
   z-index: -2;
   background: rgb(0, 0, 0, 0.8) url(./images/deliveryfas.jpg);
@@ -56,4 +59,14 @@ html {
   background-attachment: fixed;
   background-blend-mode: darken;
   width: 100vw;
+}
+
+/* SignIn Page */
+.signin-page {
+  background-image: url("./images/signinback1.jpg");
+}
+
+/* SignUp Page */
+.signup-page {
+  background-image: url("./images/signinback2.jpg");
 }
