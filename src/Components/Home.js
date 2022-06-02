@@ -27,7 +27,7 @@ function Home(props) {
             <Subscribe />
             <Testimonials />
             <Footer />
-            <ReactQueryDevtools initialIsOpen={false} />
+            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
 
 
         </>
