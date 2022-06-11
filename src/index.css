@@ -11,6 +11,7 @@ body {
   width: 100%;
   position: relative;
   overflow-x: hidden;
+  height: max-content;
   background-color: #f2f2f2;
 }
 

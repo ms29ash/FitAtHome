@@ -70,3 +70,8 @@ html {
 .signup-page {
   background-image: url("./images/signinback2.jpg");
 }
+
+.toggle {
+  max-height: 100vh;
+  overflow: hidden;
+}

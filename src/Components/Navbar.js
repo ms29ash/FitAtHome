@@ -4,10 +4,12 @@ import Hamburger from "hamburger-react";
 import tw from "tailwind-styled-components";
 
 import logo from "../images/logo.png";
+import HamburgerMenu from "./HamburgerMenu";
 // import "../Styles/nav.css";
 
 function Navbar() {
   const [isOpen, setOpen] = useState(false);
+  const ref = useRef()
   const navlink = useRef(null);
   return (
     <>
@@ -25,7 +27,8 @@ function Navbar() {
             rounded
             // color="#fff"
             onToggle={(toggled) => {
-              navlink.current.classList.toggle("hidden");
+              document.getElementById('body').classList.toggle('toggle')
+
             }}
           />
         </HamburgerIcon>
@@ -39,6 +42,9 @@ function Navbar() {
 
           <LoginLink to="/signin">Login</LoginLink>
         </NavLinks>
+        {
+          isOpen &&
+          <HamburgerMenu isOpen={isOpen} setOpen={setOpen} />}
       </Nav>
     </>
   );
@@ -51,11 +57,11 @@ flex flex-row w-screen min-h-[80px] h-[5vh] bg-white/80 backdrop-blur-sm text-re
 `;
 const LogoWrapper = tw.div`inline-block`;
 const HamburgerIcon = tw.div`text-redfood top-[25px] md:hidden right-3 absolute`;
-const NavLinks = tw.div`
-flex-1 md:!flex hidden justify-end items-center `;
+const NavLinks = tw.div` 
+flex-1 md:!flex hidden  justify-end items-center`;
 const NavLink = tw(
   Link
-)`mx-4 text-lg text-redfood hover:text-orangefood  font-semibold hover:underline`;
+)`mx-4 text-lg text-redfood hover:text-orangefood  font-semibold hover:underline `;
 const LoginLink = tw(Link)`
 mx-4 text-sm text-white  font-bold bg-redfood hover:bg-orangefood px-8  py-3  rounded-full
 `;
