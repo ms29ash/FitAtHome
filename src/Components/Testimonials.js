@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import tw from "tailwind-styled-components";
 import '../Styles/Testimonials.css'
 import "slick-carousel/slick/slick.css";
@@ -72,6 +71,6 @@ function Testimonials() {
 
 export default Testimonials
 
-const Container = tw.div`w-screen bg-cover bg-center lg:h-[70vh]  place-items-center invisible h-0 lg:visible grid `
+const Container = tw.div`w-screen bg-cover bg-center lg:h-[70vh]  place-items-center hidden  h-0  md!:grid `
 const Wrapper = tw.div`w-screen h-[50vh]`
-const Head = tw.h1`text-4xl text-center text-white my-5`
+const Head = tw.h1`text-4xl text-center text-white my-5 hidden `
