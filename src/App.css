@@ -21,6 +21,11 @@ html {
 /* opacity: 0.5; */
 /* } */
 
+/* Intro Section */
+.intro {
+  background: url("../public/images/intro.jpg") no-repeat center center/cover;
+}
+
 /* Food Section */
 #food-section::-webkit-scrollbar {
   width: 0;

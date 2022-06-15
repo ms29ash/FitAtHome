@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
+! tailwindcss v3.1.2 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -161,6 +161,7 @@ select,
 textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
   line-height: inherit; /* 1 */
   color: inherit; /* 1 */
   margin: 0; /* 2 */
@@ -359,15 +360,9 @@ video {
   height: auto;
 }
 
-/*
-Ensure the default browser behavior of the `hidden` attribute.
-*/
-
-[hidden] {
-  display: none;
-}
-
 *, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
   --tw-translate-y: 0;
   --tw-rotate: 0;
@@ -411,8 +406,52 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
-.invisible {
-  visibility: hidden;
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
 }
 .fixed {
   position: fixed;
@@ -440,6 +479,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .right-1 {
   right: 0.25rem;
+}
+.top-\[80px\] {
+  top: 80px;
 }
 .top-0 {
   top: 0px;
@@ -519,6 +561,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .-ml-12 {
   margin-left: -3rem;
+}
+.-mt-44 {
+  margin-top: -11rem;
 }
 .mt-\[10vh\] {
   margin-top: 10vh;
@@ -817,12 +862,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(70 115 2 / var(--tw-bg-opacity));
 }
-.bg-white\/80 {
-  background-color: rgb(255 255 255 / 0.8);
-}
 .bg-redfood {
   --tw-bg-opacity: 1;
   background-color: rgb(191 4 4 / var(--tw-bg-opacity));
+}
+.bg-white\/80 {
+  background-color: rgb(255 255 255 / 0.8);
 }
 .\!bg-redfood {
   --tw-bg-opacity: 1 !important;
@@ -924,20 +969,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pb-10 {
   padding-bottom: 2.5rem;
 }
-.pl-0 {
-  padding-left: 0px;
-}
-.pr-12 {
-  padding-right: 3rem;
-}
 .pb-16 {
   padding-bottom: 4rem;
 }
 .pt-12 {
   padding-top: 3rem;
-}
-.text-left {
-  text-align: left;
 }
 .text-center {
   text-align: center;
@@ -965,9 +1001,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .\!text-xl {
   font-size: 1.25rem !important;
   line-height: 1.75rem !important;
-}
-.text-\[0px\] {
-  font-size: 0px;
 }
 .text-xs {
   font-size: 0.75rem;
@@ -1085,6 +1118,10 @@ h6 {
   font-size: 1.5rem;
   font-weight: bold;
 }
+.hover\:bg-redfood:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 4 4 / var(--tw-bg-opacity));
+}
 .hover\:bg-orangefood:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(242 48 5 / var(--tw-bg-opacity));
@@ -1173,10 +1210,6 @@ h6 {
   }
 }
 @media (min-width: 1024px) {
-
-  .lg\:visible {
-    visibility: visible;
-  }
 
   .lg\:col-span-3 {
     grid-column: span 3 / span 3;
