@@ -8,6 +8,8 @@ import {
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
+import { store } from './app/store'
+import { Provider } from 'react-redux'
 const queryClient = new QueryClient()
 
 ReactDOM.render(
@@ -15,8 +17,11 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
 
       <BrowserRouter>
+        <Provider store={store} >
 
-        <App />
+
+          <App />
+        </Provider>
       </BrowserRouter>
 
     </QueryClientProvider>

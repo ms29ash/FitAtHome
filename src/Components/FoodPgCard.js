@@ -4,16 +4,19 @@ import tw from 'tailwind-styled-components'
 import { Link } from 'react-router-dom'
 import { BsFillCartPlusFill } from "react-icons/bs";
 
+import { useDispatch } from 'react-redux'
+import { addCart } from '../features/basket/basketSlice'
 
 
 
 function FoodPgCard(props) {
     const { foodItem } = props
+    const dispatch = useDispatch()
     return (
         <Container>
             <Link to="/food">
                 <Img src={foodItem.image} alt="" />
-                <Button> <P className="add_to">Add to Cart</P><Icon className="Cart" /></Button>
+                <Button onClick={() => dispatch(addCart({quantity:1,item:foodItem}))} > <Icon /></Button>
                 <Wrapper >
 
                     <Head >{foodItem.name}</Head>
@@ -45,5 +48,4 @@ const Review = tw.div`rounded-sm bg-grayfood text-white ml-1`
 const Button = tw.button`  font-bold  rounded-full absolute top-1 right-1 flex items-center  
 
 `
-const Icon = tw(BsFillCartPlusFill)`bg-orangefood rounded-full -ml-12 py-1 px-3 text-white !text-xl h-12 w-12`
-const P = tw.p`text-[0px]   bg-orangefood py-3 pl-0  pr-12 text-left text-white rounded-full`
+const Icon = tw(BsFillCartPlusFill)`bg-orangefood rounded-full -ml-12 py-1 px-3 text-white !text-xl h-12 w-12 hover:bg-redfood`
