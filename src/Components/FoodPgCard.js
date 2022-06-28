@@ -16,7 +16,7 @@ function FoodPgCard(props) {
         <Container>
             <Link to="/food">
                 <Img src={foodItem.image} alt="" />
-                <Button onClick={() => dispatch(addCart({quantity:1,item:foodItem}))} > <Icon /></Button>
+                <Button onClick={() => dispatch(addCart({ quantity: 1, item: foodItem }))} > <Icon /></Button>
                 <Wrapper >
 
                     <Head >{foodItem.name}</Head>
@@ -37,12 +37,12 @@ function FoodPgCard(props) {
 }
 
 export default FoodPgCard
-const Container = tw.div` relative shadow-sm rounded-lg bg-white  hover:shadow-lg h-full transition-all duration-100 ease-linear `
+const Container = tw.div` relative shadow-sm rounded-lg bg-white  hover:shadow-lg h-full  transition-all duration-100 ease-linear `
 const Img = tw.img`rounded-t-lg object-cover h-48 w-full transition-all duration-100 ease-linear`
-const Wrapper = tw.div`p-4 h-28 overflow-y-hidden `
+const Wrapper = tw.div`p-4 md:h-28 h-32 flex flex-col justify-between overflow-y-hidden   `
 const Head = tw.h5`!text-base`
-const Card = tw.div`flex justify-between items-center`
-const Text = tw.p`text-black/80`
+const Card = tw.div`flex justify-between items-center `
+const Text = tw.p`text-black/80 `
 const ReviewBox = tw.div`flex justify-end items-center rounded-md bg-grayfood px-2 py-1`
 const Review = tw.div`rounded-sm bg-grayfood text-white ml-1`
 const Button = tw.button`  font-bold  rounded-full absolute top-1 right-1 flex items-center  

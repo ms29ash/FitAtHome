@@ -39,4 +39,4 @@ function FoodPageMain() {
 
 export default FoodPageMain
 
-const Container = tw.div` p-4  w-[100%] xl:w-[80%] grid grid-cols-3 gap-x-5 gap-y-5`
+const Container = tw.div` p-4  w-[100%] xl:w-[80%] grid md:grid-cols-3 grid-cols-2 gap-x-5 gap-y-5`
