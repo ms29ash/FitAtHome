@@ -57,7 +57,7 @@ function SignIn(props) {
 export default SignIn
 
 const Container = tw.div`py-24 w-screen h-screen mt-[10vh]`
-const Wrapper = tw.div`bg-white w-[95vh] max-w-[600px] shadow-xl rounded-lg  mx-auto px-8 py-12 `
+const Wrapper = tw.div`bg-white w-[95vw] max-w-[600px] shadow-xl rounded-lg  mx-auto px-8 py-12 `
 const Head = tw.h1`text-center text-orangefood`
 const Form = tw.form`bg-white`
 const Label = tw.label`ml-3 text-greenfood`
