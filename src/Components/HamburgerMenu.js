@@ -33,7 +33,7 @@ const NavLinks = tw.div` h-full -mt-44
 flex-1 flex flex-col justify-center items-center`;
 const NavLink = tw(
     Link
-)`mx-4 text-lg text-redfood hover:text-orangefood  font-semibold hover:underline py-3  `;
+)`mx-4 text-2xl text-redfood hover:text-orangefood  font-semibold hover:underline py-5  `;
 const LoginLink = tw(Link)`
-mx-4 text-sm text-white  font-bold bg-redfood hover:bg-orangefood px-8  py-3  rounded-full
+mx-4 text-lg text-white  font-bold bg-redfood hover:bg-orangefood px-14  py-5  rounded-full
 `;
