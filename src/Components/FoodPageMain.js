@@ -6,8 +6,7 @@ import axios from "../axios";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useSelector } from 'react-redux'
 
-function FoodPageMain(props) {
-  const { lowerPrice, upperPrice } = props || {};
+function FoodPageMain() {
   const queryClient = useQueryClient();
   const type = useSelector((state) => state.food.type)
   const fetchFood = async () => {
@@ -26,7 +25,7 @@ function FoodPageMain(props) {
     fetchFood,
     {
       initialData: () => {
-        // Use a todo from the 'todos' query as the initial data for this todo query
+
         return queryClient.getQueryData("food");
       },
     }
@@ -35,16 +34,16 @@ function FoodPageMain(props) {
   return (
     <Container>
       {
-        food &&
-        (type === null
-          ? food?.data?.food.map((item, index) => {
-            return <FoodPgCard foodItem={item} key={item._id} />;
-          })
-          : type !== null
-            ? filter(filtered, type).map((item, index) => {
+        food ?
+          (type === null
+            ? food?.data?.food.map((item, index) => {
               return <FoodPgCard foodItem={item} key={item._id} />;
             })
-            : "")}
+            : type !== null
+              ? filter(filtered, type).map((item, index) => {
+                return <FoodPgCard foodItem={item} key={item._id} />;
+              })
+              : "") : Array(10).fill().map((item, index) => { return <FoodPgCard key={index} /> })}
       <ReactQueryDevtools initialIsOpen={false} />
     </Container>
   );

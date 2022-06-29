@@ -14,7 +14,7 @@ function FoodCard(props) {
           <Link to="/">
             {
               <FoodImg
-                // effect="blur"
+
                 src={foodItem?.image}
                 alt=""
                 placeholder={<LoadFoodImg />}
@@ -22,22 +22,22 @@ function FoodCard(props) {
               />
             }
 
-            {/* <FoodTypeIcon > */}
+
 
             <FoodTypeIcon
               src={
                 foodItem?.type === "Veg"
                   ? "/images/veg_icon.png"
                   : foodItem?.type === "Non-Veg"
-                  ? "images/nonveg_icon.png"
-                  : foodItem?.type === "Vegan"
-                  ? "images/vegan_icon.png"
-                  : ""
+                    ? "images/nonveg_icon.png"
+                    : foodItem?.type === "Vegan"
+                      ? "images/vegan_icon.png"
+                      : ""
               }
               alt=""
             />
 
-            {/* </FoodTypeIcon> */}
+
             <Text>
               <TextHead className="">{foodItem?.name}</TextHead>
               {/* <p className="mb-3">{description}</p> */}

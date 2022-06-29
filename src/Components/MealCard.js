@@ -30,27 +30,6 @@ function MealCard(props) {
             </Text>
           </Link>
         }
-        {/* {image ? (
-          <Link to="/food" onClick={() => {
-            dispatch(setType(title))
-          }} >
-            <Img  placeholder={<LoadImg />}
-                threshold={100} src={`images/${image}`} alt="" />
-            <Text>
-              <Head className="">{title}</Head>
-              <Desc>{description}</Desc>
-            </Text>
-          </Link>
-        )
-         : (
-          <>
-            <LoadImg></LoadImg>
-            <Text>
-              <Head className="">{title}</Head>
-              <Desc>{description}</Desc>
-            </Text>
-          </>
-        )} */}
       </Wrapper>
     </>
   );
