@@ -1,15 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import { useDispatch, useSelector } from 'react-redux'
+import { setType } from '../features/filter/foodFilterSlice'
+
+
+
 
 function MealCard(props) {
+  const dispatch = useDispatch()
   const { title, description, image } = props;
 
   return (
     <>
       <Wrapper>
         {image ? (
-          <Link to="/food">
+          <Link to="/food" onClick={() => {
+            dispatch(setType(title))
+          }} >
             <Img src={`images/${image}`} alt="" />
             <Text>
               <Head className="">{title}</Head>
