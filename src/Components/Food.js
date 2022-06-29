@@ -45,7 +45,7 @@ function Food() {
                 </div>
                 <div className="relative w-full flex gap-6 snap-x snap-mandatory overflow-x-auto pb-4 " id="food-section" ref={scrollRef}>
 
-                    {isError || isLoading ? Array(10).fill().map(item => { return <FoodCard key={item} image /> }) :
+                    {isError || isLoading ? Array(10).fill().map((item, index) => { return <FoodCard key={index} /> }) :
 
                         food?.data?.food.map((foodItem) => {
                             return <FoodCard foodItem={foodItem} key={foodItem._id} />;

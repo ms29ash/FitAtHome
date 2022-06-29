@@ -844,6 +844,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-center {
   background-position: center;
 }
+.\!fill-redfood {
+  fill: #bf0404 !important;
+}
 .stroke-1 {
   stroke-width: 1;
 }
@@ -1089,6 +1092,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.duration-200 {
+  transition-duration: 200ms;
 }
 .duration-100 {
   transition-duration: 100ms;
