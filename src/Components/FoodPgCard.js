@@ -39,7 +39,7 @@ function FoodPgCard(props) {
 export default FoodPgCard
 const Container = tw.div` relative shadow-sm rounded-lg bg-white  hover:shadow-lg h-full  transition-all duration-100 ease-linear `
 const Img = tw.img`rounded-t-lg object-cover h-48 w-full transition-all duration-100 ease-linear`
-const Wrapper = tw.div`p-4 md:h-28 h-32 flex flex-col justify-between overflow-y-hidden   `
+const Wrapper = tw.div`xl:px-4 xl:py-4 px-1 py-2 h-28  flex flex-col justify-between overflow-y-hidden   `
 const Head = tw.h5`!text-base`
 const Card = tw.div`flex justify-between items-center `
 const Text = tw.p`text-black/80 `
