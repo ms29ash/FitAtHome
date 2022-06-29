@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setType } from '../features/filter/foodFilterSlice'
 
 
