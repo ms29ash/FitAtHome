@@ -80,3 +80,15 @@ html {
   max-height: 100vh;
   overflow: hidden;
 }
+
+/* Food Page */
+
+.filter__height {
+  height: 40vh;
+}
+.filter__option {
+  display: block;
+}
+.filter__arrow {
+  transform: rotate(180deg);
+}
