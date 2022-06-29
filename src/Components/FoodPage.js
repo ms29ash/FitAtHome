@@ -28,5 +28,5 @@ function FoodPage(props) {
 
 export default FoodPage;
 
-const Container = tw.div` flex w-[90vw]  mx-auto  `;
+const Container = tw.div` flex w-[90vw] flex-col  mx-auto  `;
 const Page = tw.div` mt-[12vh] py-200`;

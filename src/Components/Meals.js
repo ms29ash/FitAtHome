@@ -24,8 +24,7 @@ function TypeMeals() {
         <MealHeading>Meals</MealHeading>
         {
 
-          isError || isLoading ? Array(3).fill().map(item => { return <MealCard key={item} /> }) :
-
+          isError || isLoading ? Array(3).fill().map((item, index) => { return <MealCard key={item} id={index} /> }) :
             meals?.data?.meals.map((meal) => {
               return <MealCard title={meal.title} description={meal.description} image={meal.image} key={meal._id} />
             })
