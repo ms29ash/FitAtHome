@@ -18,7 +18,7 @@ function TestimonialCard(props) {
 
 export default TestimonialCard
 
-const Card = tw.div`bg-white h-full mx-8 px-4 py-16 text-center rounded-xl`
+const Card = tw.div`bg-white min-w-[250px] h-full mx-8 px-4 py-16 text-center rounded-xl`
 const Head = tw.h1`my-3`
 
 const Date = tw.p`mt-5`

@@ -623,9 +623,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-\[88vh\] {
   height: 88vh;
 }
-.h-0 {
-  height: 0px;
-}
 .h-\[50vh\] {
   height: 50vh;
 }
@@ -676,6 +673,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-\[30\%\] {
   width: 30%;
+}
+.min-w-\[250px\] {
+  min-width: 250px;
 }
 .min-w-\[100px\] {
   min-width: 100px;
@@ -1076,10 +1076,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   outline: 2px solid transparent !important;
   outline-offset: 2px !important;
 }
-.blur {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -1186,6 +1182,10 @@ h6 {
     display: none;
   }
 
+  .md\:h-\[70vh\] {
+    height: 70vh;
+  }
+
   .md\:h-\[80vh\] {
     height: 80vh;
   }
@@ -1228,10 +1228,6 @@ h6 {
 
   .lg\:mt-10 {
     margin-top: 2.5rem;
-  }
-
-  .lg\:h-\[70vh\] {
-    height: 70vh;
   }
 
   .lg\:w-full {
