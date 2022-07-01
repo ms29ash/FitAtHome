@@ -12,11 +12,6 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 function Home(props) {
 
 
-
-    useEffect(() => {
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
     return (
         <>
             <Hero />

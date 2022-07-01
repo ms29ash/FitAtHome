@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
 import tw from "tailwind-styled-components";
 import { Link } from "react-router-dom";
 
@@ -11,7 +10,7 @@ function FoodCard(props) {
     <>
       <Container>
         <Wrapper>
-          <Link to="/">
+          <Link to={`food/foodDetail/${foodItem?._id}`} >
             {
               <FoodImg
 

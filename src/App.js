@@ -14,6 +14,7 @@ import SubscribePage from './Components/SubscribePage';
 import SignIn from './Components/SignIn';
 import SignUp from './Components/SignUp';
 import ScrollToTop from './Components/ScrollToTop';
+import FoodDetails from './Components/FoodDetails';
 
 function App() {
   return (
@@ -26,11 +27,17 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} ></Route>
-        <Route path="/food" element={<FoodPage />} ></Route>
+        <Route path="/food"  >
+          <Route index element={<FoodPage />} />
+          <Route path="foodDetail"  >
+            <Route path=":id" element={<FoodDetails />} ></Route>
+          </Route>
+        </Route>
         <Route path="/trial" element={<TrialPage />} ></Route>
         <Route path="/subscribe" element={<SubscribePage />} ></Route>
         <Route path="/signin" element={<SignIn />} ></Route>
-        <Route path="/signup" element={<SignUp setProgress />} ></Route>
+        <Route path="/signup" element={<SignUp />} ></Route>
+        <Route path="/forgetPass" element={<SignUp />} ></Route>
       </Routes>
 
 

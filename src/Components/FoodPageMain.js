@@ -3,7 +3,6 @@ import tw from "tailwind-styled-components";
 import FoodPgCard from "./FoodPgCard";
 import { useQuery, useQueryClient } from "react-query";
 import axios from "../axios";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { useSelector } from 'react-redux'
 
 function FoodPageMain() {
@@ -21,7 +20,7 @@ function FoodPageMain() {
   };
 
   const { data: food, isLoading, isError, error } = useQuery(
-    "food-page",
+    "food",
     fetchFood,
     {
       initialData: () => {
@@ -44,7 +43,7 @@ function FoodPageMain() {
                 return <FoodPgCard foodItem={item} key={item._id} />;
               })
               : "") : Array(10).fill().map((item, index) => { return <FoodPgCard key={index} /> })}
-      <ReactQueryDevtools initialIsOpen={false} />
+
     </Container>
   );
 }

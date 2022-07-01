@@ -14,7 +14,7 @@ function FoodPgCard(props) {
     const dispatch = useDispatch()
     return (
         <Container>
-            <Link to="/food">
+            <Link to={`/food/foodDetail/${foodItem?._id}`}>
                 <Img src={foodItem?.image} alt="" placeholder={<LoadFoodImg />}
                     threshold={100} />
                 <Button onClick={() => dispatch(addCart({ quantity: 1, item: foodItem }))} > <Icon /></Button>
@@ -47,5 +47,5 @@ const Text = tw.p`text-black/80 `
 const ReviewBox = tw.div`flex justify-end items-center rounded-md bg-grayfood px-2 py-1`
 const Review = tw.div`rounded-sm bg-grayfood text-white ml-1`
 const Button = tw.button`  font-bold  rounded-full absolute top-1 right-1 flex items-center  `
-const LoadFoodImg = tw.img`rounded-t-md object-cover w-[250px] h-[187px] bg-gray-400 `;
+const LoadFoodImg = tw.img`rounded-t-md object-cover w-full h-[187px] bg-gray-400 `;
 const Icon = tw(BsFillCartPlusFill)`bg-orangefood rounded-full -ml-12 py-1 px-3 text-white !text-xl h-12 w-12 hover:bg-redfood`
