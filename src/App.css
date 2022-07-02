@@ -92,3 +92,19 @@ html {
 .filter__arrow {
   transform: rotate(180deg);
 }
+
+/* Forget Pass */
+#otp::-webkit-outer-spin-button,
+#otp::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.otp__input {
+  width: 30px;
+  height: 30px;
+  padding: 5px 10px;
+  border: 2px solid red;
+  color: black;
+  margin: 0 10px;
+}

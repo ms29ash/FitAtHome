@@ -15,6 +15,7 @@ import SignIn from './Components/SignIn';
 import SignUp from './Components/SignUp';
 import ScrollToTop from './Components/ScrollToTop';
 import FoodDetails from './Components/FoodDetails';
+import ForgetPass from './Components/ForgetPass';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
 
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} ></Route>
+        {/* <Route path="/" element={<Home />} ></Route>
         <Route path="/food"  >
           <Route index element={<FoodPage />} />
           <Route path="foodDetail"  >
@@ -34,10 +35,10 @@ function App() {
           </Route>
         </Route>
         <Route path="/trial" element={<TrialPage />} ></Route>
-        <Route path="/subscribe" element={<SubscribePage />} ></Route>
+        <Route path="/subscribe" element={<SubscribePage />} ></Route> */}
         <Route path="/signin" element={<SignIn />} ></Route>
         <Route path="/signup" element={<SignUp />} ></Route>
-        <Route path="/forgetPass" element={<SignUp />} ></Route>
+        <Route path="/forgetpass" element={<ForgetPass />} ></Route>
       </Routes>
 
 

@@ -5,14 +5,10 @@ import tw from 'tailwind-styled-components'
 
 
 
-function SignIn(props) {
+function SignIn() {
 
     const [user, setUser] = useState({ email: "", password: "" })
     const { register, formState: { errors }, handleSubmit } = useForm({ criteriaMode: "all" });
-    useEffect(() => {
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
 
     const onSubmit = (e) => {
