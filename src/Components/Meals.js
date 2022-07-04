@@ -12,7 +12,7 @@ function TypeMeals() {
 
 
   const fetchMeals = async () => {
-    return axios.get('/food/meals')
+    return axios.get('/meals')
   }
   const { isLoading, data: meals, isError } = useQuery('meals', fetchMeals)
 

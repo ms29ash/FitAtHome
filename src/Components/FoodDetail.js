@@ -12,7 +12,7 @@ function FoodDetail() {
     let { id } = useParams();
 
     const fetchFood = async (id) => {
-        return axios.get(`/food/food/${id}`);
+        return axios.get(`/food/${id}`);
     };
 
     const { data: food, isLoading, isError, error } = useQuery(

@@ -9,7 +9,7 @@ function FoodPageMain() {
   const queryClient = useQueryClient();
   const type = useSelector((state) => state.food.type)
   const fetchFood = async () => {
-    return axios.get("/food/food");
+    return axios.get("/food");
   };
 
   useEffect(() => {

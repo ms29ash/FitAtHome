@@ -13,7 +13,7 @@ function Food() {
     const scrollRef = useRef(null);
 
     const fetchFood = async () => {
-        return axios.get('/food/food')
+        return axios.get('/food')
     }
 
     const { data: food, isLoading, isError, error } = useQuery('food', fetchFood)
