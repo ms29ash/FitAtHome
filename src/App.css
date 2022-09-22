@@ -4,22 +4,21 @@
 }
 
 html {
-  /* max-width: 2000px; */
   margin: 0 auto;
 }
 
-/* ::-webkit-scrollbar { */
-/* width: 0; Remove scrollbar space */
-/* height: 15px; */
-/* border-radius: 30px; */
-/* background: transparent; Optional: just make scrollbar invisible */
-/* } */
+::-webkit-scrollbar {
+  width: 0.75rem;
+  height: 15px;
+  border-radius: 30px;
+  background: #b4b4b4;
+}
 
-/* Optional: show position indicator in red */
-/* ::-webkit-scrollbar-thumb { */
-/* background: black; */
-/* opacity: 0.5; */
-/* } */
+
+::-webkit-scrollbar-thumb {
+  background: #bf0404;
+  opacity: 0.5;
+}
 
 /* Intro Section */
 .intro {
@@ -32,18 +31,22 @@ html {
   height: 10px;
   color: antiquewhite;
 }
+
 #food-section::-webkit-scrollbar-thumb {
   visibility: hidden;
   border-radius: 30px;
   background: gray;
 }
-#food:hover > #food-section::-webkit-scrollbar-thumb {
+
+#food:hover>#food-section::-webkit-scrollbar-thumb {
   visibility: visible;
 }
+
 .btn-arrow {
   visibility: hidden;
   display: none;
 }
+
 @media screen and (min-width: 1024px) {
   .btn-arrow {
     display: block;
@@ -86,9 +89,11 @@ html {
 .filter__height {
   height: 40vh;
 }
+
 .filter__option {
   display: block;
 }
+
 .filter__arrow {
   transform: rotate(180deg);
 }
