@@ -87,8 +87,8 @@ function FoodPageSideBar() {
 
 export default FoodPageSideBar;
 
-const Container = tw.div` h-[10vh]  xl:h-screen  xl:w-[20%] transition-all duration-200		 `;
-const Wrapper = tw.div`xl:fixed static bg-white shadow-xl rounded-xl  xl:w-[15%] w-[90vw] xl:p-10 p-4  items  `;
+const Container = tw.div` h-[10vh]  xl:h-screen  xl:w-[18%] transition-all duration-200		 `;
+const Wrapper = tw.div`xl:fixed static bg-white shadow-xl rounded-xl  xl:w-[15%] w-[95vw] xl:py-10 xl:px-6 p-4 my-4  items  `;
 const Heading = tw.div`flex w-full items-center justify-between xl:hidden cursor-pointer `
 const TopHead = tw.h3`text-3xl xl:mb-2 xl:block hidden`;
 const TopHeadSmall = tw.h3`text-redfood xl:mb-2 text-xl  xl:hidden`;
