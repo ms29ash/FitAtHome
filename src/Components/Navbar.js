@@ -16,7 +16,7 @@ function Navbar() {
       <Nav className="navbar  ">
         <LogoWrapper className="header">
           <Link to="/">
-            <img src={logo} alt="" />
+            <Img src={logo} alt="" />
           </Link>
         </LogoWrapper>
 
@@ -55,7 +55,8 @@ export default Navbar;
 const Nav = tw.nav`
 flex flex-row w-screen min-h-[80px] h-[5vh] bg-white/80 backdrop-blur-sm text-redfood z-50 absolute md:fixed top-0 items-center px-5
 `;
-const LogoWrapper = tw.div`inline-block`;
+const LogoWrapper = tw.div`inline-block w-16`;
+const Img = tw.img`w-full`
 const HamburgerIcon = tw.div`text-redfood top-[25px] md:hidden right-3 absolute`;
 const NavLinks = tw.div` 
 flex-1 md:!flex hidden  justify-end items-center`;

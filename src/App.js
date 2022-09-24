@@ -3,7 +3,8 @@ import React from 'react'
 import './Styles/style.css';
 import {
   Routes,
-  Route
+  Route,
+  Outlet
 } from "react-router-dom";
 import './App.css';
 import Home from './Components/Home';
@@ -20,6 +21,7 @@ import ForgetPassOtp from './Components/ForgetPassOtp';
 import Verify from './Components/Verify';
 import ForgetPassNewPass from './Components/ForgetPassNewPass';
 import NewPass from './Components/NewPass';
+import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -29,17 +31,22 @@ function App() {
 
 
 
-      <Navbar />
+
       <Routes>
-        <Route path="/" element={<Home />} ></Route>
-        <Route path="/food"  >
-          <Route index element={<FoodPage />} />
-          <Route path="foodDetail"  >
-            <Route path=":id" element={<FoodDetails />} ></Route>
+        <Route path="/" element={<><Navbar /><Outlet /><Footer /></>} >
+          <Route index element={<Home />} />
+          <Route path="/food"  >
+            <Route index element={<FoodPage />} />
+            <Route path="foodDetail"  >
+              <Route path=":id" element={<FoodDetails />} ></Route>
+            </Route>
           </Route>
+          <Route path="/trial" element={<TrialPage />} ></Route>
+          <Route path="/subscribe" element={<SubscribePage />} ></Route>
         </Route>
-        <Route path="/trial" element={<TrialPage />} ></Route>
-        <Route path="/subscribe" element={<SubscribePage />} ></Route>
+
+
+
         <Route path="/signin" element={<SignIn />} ></Route>
         <Route path="/signup"  >
           <Route index element={<SignUp />} />

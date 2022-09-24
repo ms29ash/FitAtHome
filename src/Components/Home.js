@@ -18,13 +18,9 @@ function Home(props) {
             <Meals />
             <Service />
             <Food />
-
             <Trial />
             <Subscribe />
             <Testimonials />
-            <Footer />
-
-
         </>
     )
 }
