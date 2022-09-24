@@ -11,13 +11,15 @@ html {
   width: 0.75rem;
   height: 15px;
   border-radius: 30px;
-  background: #b4b4b4;
 }
 
 
 ::-webkit-scrollbar-thumb {
-  background: #bf0404;
-  opacity: 0.5;
+  background: #908f8f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555454;
 }
 
 /* Intro Section */
@@ -87,7 +89,7 @@ html {
 /* Food Page */
 
 .filter__height {
-  height: 40vh;
+  height: max-content;
 }
 
 .filter__option {

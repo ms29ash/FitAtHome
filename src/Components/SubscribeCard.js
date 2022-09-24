@@ -26,8 +26,8 @@ function SubscribeCard(props) {
 
 export default SubscribeCard;
 
-const Container = tw.div`bg-white mx-5 flex flex-col rounded-xl overflow-hidden shadow-xl mb-5 h-[95%]`;
-const Img = tw.img`object-cover w-full h-[40vh]`;
+const Container = tw.div`bg-white mx-4 flex flex-col rounded-xl overflow-hidden shadow-xl mb-5 h-[95%] w-full max-w-[400px] `;
+const Img = tw.img`object-cover w-full aspect-[5/4]`;
 
 const Details = tw.div`p-5 bg-white rounded-xl -mt-20 `;
 const Main = tw.div`flex items-center justify-between mb-5 px-2`;

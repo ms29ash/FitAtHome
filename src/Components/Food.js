@@ -65,7 +65,7 @@ function Food() {
 
 export default Food
 
-const FoodSection = tw.section`px-3 bg-white xl:px-20 pt-2 xl:pt-5 pb-2`
+const FoodSection = tw.section`px-3 bg-white my-6 xl:px-20 pt-2 xl:pt-5 pb-2`
 const Button = tw.button`hidden mt-20 md:block w-16  h-20 absolute  z-20  text-black  px-4 py-3 text-5xl bg-white rounded stroke-1  cursor-pointer`
 
 const LeftBtn = tw(Button)`

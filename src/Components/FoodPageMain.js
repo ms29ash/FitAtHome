@@ -50,4 +50,4 @@ function FoodPageMain() {
 
 export default FoodPageMain;
 
-const Container = tw.div` xl:p-4 p-1  w-[100%]  flex flex-wrap xl:mt-1 mt-8 `;
+const Container = tw.div` xl:p-4 p-1  w-[100%]  flex flex-wrap xl:mt-1 mt-6 `;

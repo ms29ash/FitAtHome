@@ -51,7 +51,7 @@ function FoodPgCard(props) {
 }
 
 export default FoodPgCard
-const Container = tw.div` relative shadow-sm rounded-lg bg-white  hover:bg-redfood/20 lg:w-[19%] md:w-[24%] sm:w-[32%] w-[49%] mx-[0.5%] mb-6 aspect-[3/4] transition-all duration-100 ease-linear py-2 h-max  `
+const Container = tw.div` relative shadow-sm rounded-lg bg-white  hover:bg-redfood/20 lg:w-[19%] md:w-[24%] sm:w-[32%] w-[49%] mx-[0.5%] xl:mb-6 mb-3 aspect-[3/4] transition-all duration-100 ease-linear py-2 h-max  `
 const Img = tw(LazyLoadImage)`rounded-t-lg object-cover aspect-[1/1] w-[95%] mx-auto transition-all duration-100 ease-linear`
 const Wrapper = tw.div`xl:px-4 xl:py-4 px-1 py-2  flex flex-col  justify-between relative pointer-events-none hover:pointer-events-auto `
 const Head = tw.h5`!text-base  text-redfood h-14`

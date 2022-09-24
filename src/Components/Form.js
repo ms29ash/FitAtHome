@@ -1,7 +1,7 @@
 import tw from 'tailwind-styled-components';
 
 
-const Container = tw.div`py-24 w-screen h-screen xl:mt-[10vh] md:mt-[5vh] grid place-items-center`;
+const Container = tw.div`py-24 w-screen h-screen  grid place-items-center`;
 const Wrapper = tw.div`bg-white w-[95vw]  max-w-[500px] shadow-xl rounded-lg  mx-auto px-8 py-12 `;
 const Head = tw.h1`text-center text-redfood`;
 const Form = tw.form`bg-white`;

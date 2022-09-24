@@ -26,7 +26,6 @@ function FoodPageSideBar() {
           </TopHeadSmall>
           <Arrow id="arrow__filter" />
         </Heading>
-        {/* <hr /> */}
 
         <Group ref={refGroup}>
           <Head>Type</Head>
@@ -88,13 +87,13 @@ function FoodPageSideBar() {
 export default FoodPageSideBar;
 
 const Container = tw.div` h-[10vh]  xl:h-screen  xl:w-[18%] transition-all duration-200		 `;
-const Wrapper = tw.div`xl:fixed static bg-white shadow-xl rounded-xl  xl:w-[15%] w-[95vw] xl:py-10 xl:px-6 p-4 my-4  items  `;
+const Wrapper = tw.div`xl:fixed static bg-white shadow-xl rounded-xl  xl:w-[15%] w-[95vw] xl:py-8 xl:px-6 p-4 my-0 xl:mt-0  mt-4 `;
 const Heading = tw.div`flex w-full items-center justify-between xl:hidden cursor-pointer `
-const TopHead = tw.h3`text-3xl xl:mb-2 xl:block hidden`;
+const TopHead = tw.h3`text-2xl xl:mb-1 xl:block hidden`;
 const TopHeadSmall = tw.h3`text-redfood xl:mb-2 text-xl  xl:hidden`;
 const Arrow = tw(AiOutlineCaretDown)`!fill-redfood  xl:hidden transition-transform`;
-const Head = tw.p`text-xl m-3 `;
-const Group = tw.div`mt-8  w-full   hidden xl:block`;
+const Head = tw.p`text-xl mx-3 my-1`;
+const Group = tw.div`mt-4  w-full   hidden xl:block`;
 const Option = tw.div`flex items-center mt-2 mx-3`;
 const Checkbox = tw.input`w-5 h-5 mr-3 `;
 const OptionText = tw.label` text-lg text-black/80`;
