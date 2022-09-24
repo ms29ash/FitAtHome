@@ -16,6 +16,10 @@ import SignUp from './Components/SignUp';
 import ScrollToTop from './Components/ScrollToTop';
 import FoodDetails from './Components/FoodDetails';
 import ForgetPass from './Components/ForgetPass';
+import ForgetPassOtp from './Components/ForgetPassOtp';
+import Verify from './Components/Verify';
+import ForgetPassNewPass from './Components/ForgetPassNewPass';
+import NewPass from './Components/NewPass';
 
 function App() {
   return (
@@ -27,7 +31,7 @@ function App() {
 
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<Home />} ></Route>
+        <Route path="/" element={<Home />} ></Route>
         <Route path="/food"  >
           <Route index element={<FoodPage />} />
           <Route path="foodDetail"  >
@@ -35,10 +39,18 @@ function App() {
           </Route>
         </Route>
         <Route path="/trial" element={<TrialPage />} ></Route>
-        <Route path="/subscribe" element={<SubscribePage />} ></Route> */}
+        <Route path="/subscribe" element={<SubscribePage />} ></Route>
         <Route path="/signin" element={<SignIn />} ></Route>
-        <Route path="/signup" element={<SignUp />} ></Route>
-        <Route path="/forgetpass" element={<ForgetPass />} ></Route>
+        <Route path="/signup"  >
+          <Route index element={<SignUp />} />
+          <Route path="verify" element={<Verify />} />
+        </Route>
+        <Route path="/forgetpass"  >
+          <Route index element={<ForgetPass />} />
+          <Route path="otp" element={<ForgetPassOtp />} />
+          <Route path="newpass" element={<ForgetPassNewPass />} />
+          <Route path="updatedpass" element={<NewPass />} />
+        </Route>
       </Routes>
 
 

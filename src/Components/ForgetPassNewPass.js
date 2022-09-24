@@ -1,28 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import tw from "tailwind-styled-components";
+import React from "react";
+import { useForm, useWatch } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { Container, Button, Wrapper, Head, Form, Label, Input, Error } from './Form'
 
 
 function ForgetPassNewPass(props) {
     const {
         register,
+        control,
         formState: { errors },
         handleSubmit,
     } = useForm({ criteriaMode: "all" });
 
     const navigate = useNavigate();
     const onSubmit = (data, e) => {
-        navigate('updatedpass')
+        navigate('/forgetpass/updatedpass')
     }
-    const onError = (errors, e) => console.log(errors, e);
+
+    const password = useWatch({ control, name: "password" })
+    const isPasswordEqual = (cpassword) => cpassword === password;
 
     return (
         <Container className="signup-page ">
             <Wrapper>
                 <Head className="text-center text-orangefood">Welcome</Head>
 
-                <Form className="bg-white " onSubmit={(onSubmit)}>
+                <Form className="bg-white " onSubmit={handleSubmit(onSubmit)}>
 
 
                     <Label htmlFor="password">Password</Label>
@@ -31,6 +34,7 @@ function ForgetPassNewPass(props) {
                         placeholder="Password"
                         id="password"
                         {...register("password", { required: true, minLength: 5 })}
+                        control={control}
                     />
                     <Error>
                         {errors.password?.type === "required"
@@ -41,17 +45,17 @@ function ForgetPassNewPass(props) {
                     </Error>
                     <Label htmlFor="cpassword">Confirm Password</Label>
                     <Input
-                        type="password"
-                        placeholder="Password"
+                        type="cpassword"
+                        placeholder="Confirm Password"
                         id="cpassword"
-                        {...register("password", { required: true, minLength: 5 })}
+                        {...register("cpassword", { required: true, minLength: 5, validate: isPasswordEqual })}
                     />
                     <Error>
-                        {errors.password?.type === "required"
+                        {errors.cpassword?.type === "required"
                             ? "Password is required"
-                            : errors.password?.type === "minLength"
+                            : errors.cpassword?.type === "minLength"
                                 ? "Too Short"
-                                : ""}
+                                : errors.cpassword?.type === 'validate' ? "Not equal to password" : ""}
                     </Error>
 
                     <Button type="submit">Next</Button>
@@ -64,12 +68,3 @@ function ForgetPassNewPass(props) {
 
 export default ForgetPassNewPass;
 
-const Container = tw.div`py-24 w-screen h-screen mt-[10vh]`;
-const Wrapper = tw.div`bg-white w-[95vw]  max-w-[600px] shadow-xl rounded-lg  mx-auto px-8 py-12 `;
-const Head = tw.h1`text-center text-orangefood`;
-const Form = tw.form`bg-white`;
-const Label = tw.label`ml-3 text-greenfood`;
-const Input = tw.input`w-full py-2 px-3  border-b-2 !outline-none border-greenfood`;
-const Error = tw.div`h-5 text-redfood text-xs ml-2`;
-const Text = tw.p`mt-5 text-sm text-center`;
-const Button = tw.button`!bg-redfood text-center w-full px-5 py-2 text-white rounded-full hover:!bg-orangefood cursor-pointer`;

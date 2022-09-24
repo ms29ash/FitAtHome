@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useIdleTimer, workerTimers } from 'react-idle-timer'
 import tw from 'tailwind-styled-components'
 
-export default function App() {
+export default function App({ time }) {
     const timeout = 1000 * 1;
-    const promptTimeout = 1000 * 60;
+    const promptTimeout = 1000 * time;
 
     const [open, setOpen] = useState(false)
     const [remaining, setRemaining] = useState(0)
@@ -63,4 +63,4 @@ export default function App() {
 
 const Container = tw.div`flex items-center justify-center w-full my-4`
 const Text = tw.p` text-sm text-center`
-const Button = tw.button``
+const Button = tw.button`hover:bg-black`
