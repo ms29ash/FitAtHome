@@ -17,7 +17,7 @@ function Trial() {
 
 export default Trial
 
-const Container = tw.div`grid place-items-center  md:h-[80vh] h-[50vh] bg-blend-overlay`
+const Container = tw.div`grid place-items-center h-[500px] bg-blend-overlay`
 
 const Wrapper = tw.div`flex flex-col`
 

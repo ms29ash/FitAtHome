@@ -15,7 +15,7 @@ function Hero() {
 
             <Wrapper>
                 <Container>
-                    <Head>Eat less from box <br /> & more from the Earth</Head>
+                    <Head>Eat less from box & more from the Earth</Head>
                     <Buttons>
 
                         <Button to="/food" >Order Now</Button>
@@ -37,7 +37,7 @@ function Hero() {
 export default Hero
 const Wrapper = tw.div`
 w-screen  overflow-hidden mt-[10vh]`
-const Container = tw.div` w-screen h-screen intro flex flex-col justify-center items-start px-[10vw]`
+const Container = tw.div` w-screen h-screen max-h-[600px] intro flex flex-col justify-center items-start px-[10vw]`
 const Buttons = tw.div` flex items-center my-5`
-const Button = tw(Link)` bg-redfood hover:bg-orangefood cursor-pointer text-white mr-4 px-5 py-4 rounded-full`
-const Head = tw.h1`text-6xl leading-[4rem] capitalize`
+const Button = tw(Link)` bg-redfood hover:bg-orangefood cursor-pointer text-white mr-4 px-5 py-3 rounded-full`
+const Head = tw.h1`md:text-6xl text-[2.65rem] leading-[3.75rem] capitalize w-full md:w-[80%] lg:w-[60%] lg:leading-[4.25rem]`
