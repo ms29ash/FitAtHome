@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import tw from "tailwind-styled-components";
-import { useQuery, useQueryClient } from "react-query";
-
-import { Link } from 'react-router-dom'
+import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -80,8 +78,8 @@ function FoodDetail() {
 
 export default FoodDetail;
 
-const Wrapper = tw.div`flex flex-col xl:flex-row  items-center w-full mb-[10vh] bg-white py-6 px-5 rounded-lg shadow-lg`;
-const Img = tw(LazyLoadImage)`w-full  xl:w-[45%] aspect-[12/9] object-cover rounded-md`;
+const Wrapper = tw.div`flex flex-col md:flex-row  items-center w-full mb-[3vh] bg-white py-6 px-5 rounded-lg shadow-lg`;
+const Img = tw(LazyLoadImage)`w-full  md:w-[45%] aspect-[12/9] object-cover `;
 const LoadFoodImg = tw.img`rounded-md w-[50%] h-full bg-gray-400 `;
 const Details = tw.div`text-lg mx-auto px-4`;
 const Head = tw.h1`text-2xl mt-5 mb-2 xl:my-2`;
