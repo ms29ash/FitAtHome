@@ -86,7 +86,7 @@ function TrialPage() {
 }
 
 export default TrialPage
-const Container = tw.div` mt-[15vh] 	`
+const Container = tw.div`	`
 const Wrapper = tw.div` flex items-center mx-auto w-[90vw]  shadow-xl overflow-hidden flex-col`
 const Img = tw.img` w-full max-h-[50vh]  object-cover`
 const Card = tw.div`-mt-[5vh] w-full rounded-xl bg-white `

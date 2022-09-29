@@ -36,7 +36,7 @@ function Hero() {
 
 export default Hero
 const Wrapper = tw.div`
-w-screen  overflow-hidden mt-[10vh]`
+w-screen  overflow-hidden `
 const Container = tw.div` w-screen h-screen max-h-[600px] intro flex flex-col justify-center items-start px-[10vw]`
 const Buttons = tw.div` flex items-center my-5`
 const Button = tw(Link)` bg-redfood hover:bg-orangefood cursor-pointer text-white mr-4 px-5 py-3 rounded-full`
