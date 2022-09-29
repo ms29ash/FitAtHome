@@ -37,8 +37,16 @@ function Navbar() {
 
           <NavLink to="/subscribe">Subscribe</NavLink>
 
-          <LoginLink to="/cart" className="text-2xl px-3 py-3" ><IoMdBasket /></LoginLink>
-          <LoginLink to="/signin" className="text-2xl px-3 py-3" ><BsFillPersonFill /></LoginLink>
+          <LoginLink to="/cart" ><IoMdBasket /></LoginLink>
+          <LoginLink $as="div" className="hover:first:block" ><BsFillPersonFill />
+            <Menu>
+              <Opt to="/">Profile</Opt>
+              <Opt to="/">Subscriptions</Opt>
+              <Opt to="/">Help</Opt>
+              <hr />
+              <Opt to="/signin">Login</Opt>
+            </Menu>
+          </LoginLink>
         </NavLinks>
         {
           isOpen &&
@@ -60,9 +68,13 @@ const Img = tw.img`w-full`
 const HamburgerIcon = tw.div`text-redfood top-[25px] md:hidden right-3 absolute`;
 const NavLinks = tw.div` 
  flex-1 md:!flex hidden  justify-end items-center`;
-const NavLink = tw(
-  Link
-)`mx-4 text-lg text-redfood hover:text-orangefood  font-bold hover:underline `;
-const LoginLink = tw(Link)`
-mx-4 text-sm text-white  font-bold bg-redfood hover:bg-orangefood px-8 py-3  rounded-full
+
+
+
+const NavLink = tw(Link)`mx-4 text-lg text-redfood hover:text-orangefood  font-bold hover:underline `;
+const LoginLink = tw(Link)`mx-4 text-xl text-white  font-bold bg-redfood hover:bg-orangefood px-3 py-3  rounded-full relative group
 `;
+
+const Menu = tw.div`absolute shadow-xl bg-white right-0 text-black top-[100%] text-base font-normal rounded-md hidden  group-hover:flex flex-col  `
+
+const Opt = tw(Link)`hover:bg-redfood hover:text-white py-3  pl-2 pr-12`
