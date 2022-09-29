@@ -22,6 +22,7 @@ import Verify from './Components/Verify';
 import ForgetPassNewPass from './Components/ForgetPassNewPass';
 import NewPass from './Components/NewPass';
 import Footer from './Components/Footer';
+import Cart from './Components/Cart';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/trial" element={<TrialPage />} ></Route>
           <Route path="/subscribe" element={<SubscribePage />} ></Route>
         </Route>
+        <Route path="/cart" element={<><Navbar /><Cart /></>} ></Route>
 
 
 
