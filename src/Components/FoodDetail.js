@@ -80,14 +80,14 @@ function FoodDetail() {
 
 export default FoodDetail;
 
-const Wrapper = tw.div`flex flex-col xl:flex-row  items-center w-full mb-[10vh]`;
-const Img = tw(LazyLoadImage)`min-w-full  mx-5 xl:min-w-[50%] h-[40vh] sm:h-[60vh] object-cover rounded-md`;
-const LoadFoodImg = tw.img`rounded-md  mx-5 w-[50%] h-full bg-gray-400 `;
-const Details = tw.div`text-lg`;
-const Head = tw.h1`text-3xl mt-5 mb-2 xl:my-2`;
-const Text = tw.p``;
+const Wrapper = tw.div`flex flex-col xl:flex-row  items-center w-full mb-[10vh] bg-white py-6 px-5 rounded-lg shadow-lg`;
+const Img = tw(LazyLoadImage)`w-full  xl:w-[45%] aspect-[12/9] object-cover rounded-md`;
+const LoadFoodImg = tw.img`rounded-md w-[50%] h-full bg-gray-400 `;
+const Details = tw.div`text-lg mx-auto px-4`;
+const Head = tw.h1`text-2xl mt-5 mb-2 xl:my-2`;
+const Text = tw.p`text-sm`;
 const SmallDesc = tw.div`flex items-center justify-start`
-const Price = tw.p`text-2xl my-3 `;
+const Price = tw.p`text-2xl my-2 `;
 const FoodType = tw.div`flex items-center my-2 mx-5`
 const Type = tw.p``;
 const FoodTypeIcon = tw.img` mr-2 w-[30px] h-[30px]`;

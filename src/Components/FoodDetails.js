@@ -22,7 +22,7 @@ function FoodDetails() {
 
 export default FoodDetails;
 
-const Container = tw.div`mt-[12vh] mx-auto w-[80vw]`;
+const Container = tw.div`mt-4 mx-auto md:w-[80vw] w-[98vw]`;
 const Wrapper = tw.div``;
 const Head = tw.h1``
 const Hr = tw.hr` bg-redfood my-5 h-[0.15rem]`
