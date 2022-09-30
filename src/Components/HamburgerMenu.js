@@ -28,7 +28,7 @@ function HamburgerMenu(props) {
 
 export default HamburgerMenu
 
-const Container = tw.div`absolute grid place-items-center w-screen  bg-white top-[80px] right-0 z-20  h-screen`
+const Container = tw.div`absolute grid place-items-center w-screen  bg-white top-[70px] -right-[2.5vw] z-20  h-screen`
 const NavLinks = tw.div` h-full -mt-44
 flex-1 flex flex-col justify-center items-center`;
 const NavLink = tw(

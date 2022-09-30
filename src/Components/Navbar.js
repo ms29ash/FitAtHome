@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import tw from "tailwind-styled-components";
-import logo from "../images/logo.png";
 import HamburgerMenu from "./HamburgerMenu";
 import { IoMdBasket } from 'react-icons/io'
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -15,7 +14,7 @@ function Navbar() {
       <Nav className="navbar  ">
         <LogoWrapper className="header">
           <Link to="/">
-            <Img src={logo} alt="" />
+            <Img src='/images/LogoInv.png' alt="" />
           </Link>
         </LogoWrapper>
 
@@ -58,12 +57,12 @@ function Navbar() {
 
 export default Navbar;
 
-const Container = tw.header`w-screen min-h-[80px] h-[5vh] py-5`
+const Container = tw.header`w-screen min-h-[80px] h-[5vh] mb-4 `
 
 const Nav = tw.nav`
-flex flex-row w-screen min-h-[80px] h-[5vh] bg-white/80 backdrop-blur-sm text-redfood z-50 absolute md:fixed top-0 items-center px-5
+flex py-2 rounded-xl shadow-xl bg-white backdrop-blur-sm text-redfood  absolute md:fixed top-4 w-[95vw] md:w-[90vw] mx-[2.5vw] md:!mx-[5vw] items-center px-5 z-[100]
 `;
-const LogoWrapper = tw.div`inline-block w-16`;
+const LogoWrapper = tw.div`inline-block w-[100px]`;
 const Img = tw.img`w-full`
 const HamburgerIcon = tw.div`text-redfood top-[25px] md:hidden right-3 absolute`;
 const NavLinks = tw.div` 
