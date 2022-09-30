@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { Container, Button, Wrapper, Head, Form, Label, Input, Error, Text } from './Form'
+import BrandLogo, { Container, Button, Wrapper, Form, Label, Input, Error, Text } from './Form'
 
 function SignUp(props) {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function SignUp(props) {
   return (
     <Container className="signup-page ">
       <Wrapper>
-        <Head >Welcome</Head>
+        <BrandLogo />
 
         <Form className="bg-white " onSubmit={handleSubmit(onSubmit)}>
           <Label htmlFor="name">Name</Label>

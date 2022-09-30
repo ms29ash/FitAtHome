@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Container, Button, Wrapper, Head, Form, Label, Input, Error, Text } from './Form'
+import BrandLogo, { Container, Button, Wrapper, Form, Label, Input, Error, Text } from './Form'
 
 
 
@@ -20,7 +20,7 @@ function SignIn() {
     return (
         <Container className="signin-page ">
             <Wrapper >
-                <Head>Welcome</Head>
+                <BrandLogo />
 
                 <Form onSubmit={handleSubmit(onSubmit)} >
                     <Label htmlFor="email" >Email</Label>

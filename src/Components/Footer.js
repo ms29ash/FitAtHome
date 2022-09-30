@@ -1,5 +1,4 @@
 import React from "react";
-import footLgo from "../images/logoFoooter.png";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useDispatch } from "react-redux";
@@ -13,7 +12,7 @@ function Footer() {
       <Container>
         <Wrapper className="col-span-2	md:col-span-1 ml-0" >
           <LinkTo to="/">
-            <Img src={footLgo} alt="" />
+            <Img src='/images/Logo.png' alt="" />
           </LinkTo>
         </Wrapper>
         <Wrapper>
