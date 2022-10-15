@@ -4,18 +4,22 @@ import { useSelector } from 'react-redux'
 import { RiCheckLine } from 'react-icons/ri'
 import CartCard from './CartCard'
 import { AiOutlineArrowRight } from 'react-icons/ai'
+import loadPayment from './Payment'
 
 function Cart() {
     const data = useSelector(state => state.basket.basket)
     const [total, setTotal] = useState();
+    const [subTotal, setSubTotal] = useState();
     const address = "Mussoorie, Diversion Road, Makka Wala, Uttarakhand 248009"
 
     useEffect(() => {
-        const subTotal =
+        const total =
             data.reduce((total, item) =>
                 total + (item.item.price * item.quantity)
                 , 0)
-        setTotal(subTotal)
+        setTotal(total)
+        const subTotal = total + ((total * 20) / 100) + (total > 500 ? 50 : total === 0 ? 0 : 100);
+        setSubTotal(subTotal);
     }, [data])
 
 
@@ -63,12 +67,12 @@ function Cart() {
 
                         <tr>
                             <Th>SubTotal</Th>
-                            <Th>  &#8377;{total + ((total * 20) / 100) + (total > 500 ? 50 : total === 0 ? 0 : 100)}</Th>
+                            <Th>  &#8377;{subTotal}</Th>
                         </tr>
                     </tfoot>
                 </table>
 
-                <Btn ><p>Pay Now</p> <AiOutlineArrowRight /></Btn>
+                <Btn onClick={() => loadPayment(subTotal, address)} disabled={subTotal === 0} ><p>Pay Now</p> <AiOutlineArrowRight /></Btn>
             </Total>
         </Container>
     )
@@ -86,4 +90,4 @@ const ChangeBtn = tw.button` text-redfood mx-3 hover:text-orangefood`
 const CheckIcon = tw(RiCheckLine)`bg-redfood text-white rounded-full  mr-2 text-lg`
 const Total = tw.div`flex  w-full   flex-col items-center mb-6 h-fit bg-white py-3 lg:!w-[23%] mx-auto `
 const Th = tw.th`text-left`
-const Btn = tw.button` bg-redfood hover:bg-orangefood text-white  px-8 py-4 text-xl font-bold rounded-lg fixed bottom-6 right-5  flex items-center space-x-4 lg:static lg:!rounded-full  lg:py-2  lg:mt-4 lg:w-[90%] justify-center`
+const Btn = tw.button` bg-redfood hover:bg-orangefood text-white  px-8 py-4 text-xl font-bold rounded-lg fixed bottom-6 right-5  flex items-center space-x-4 lg:static lg:!rounded-full  lg:py-2  lg:mt-4 lg:w-[90%] justify-center disabled:opacity-50 disabled:hover:bg-redfood`
