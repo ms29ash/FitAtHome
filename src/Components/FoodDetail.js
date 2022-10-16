@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "tailwind-styled-components";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "../axios";
+import { useDispatch } from 'react-redux'
+import { addCart } from '../features/basket/basketSlice'
+import AddToCartAlert from "./AddToCartAlert";
 
 function FoodDetail() {
+    const [alert, setAlert] = useState(null)
     let { id } = useParams();
+    const dispatch = useDispatch()
 
     const fetchFood = async (id) => {
         return axios.get(`/food/${id}`);
@@ -27,9 +32,18 @@ function FoodDetail() {
     } else {
         host = `https://${window.location.host}`;
     }
+
+    const addToCart = () => {
+        setAlert('Added to Cart')
+        dispatch(addCart({ quantity: 1, item: food?.data.food[0] }))
+        setTimeout(() => {
+            setAlert(null)
+        }, 2000);
+    }
     return (
 
         <Wrapper>
+            <AddToCartAlert alert={alert} />
             {<>
 
                 <Img
@@ -70,7 +84,7 @@ function FoodDetail() {
                     <Price>&#8377; {price} Only</Price>
                     <Text>{description}</Text>
                     <Buttons>
-                        <AddButton >Add to Cart</AddButton>
+                        <AddButton onClick={addToCart} >Add to Cart</AddButton>
                         <BuyButton >Buy Now</BuyButton>
                     </Buttons>
                 </Details>
@@ -85,7 +99,7 @@ function FoodDetail() {
 
 export default FoodDetail;
 
-const Wrapper = tw.div`flex flex-col md:flex-row  items-center w-full mb-[3vh] bg-white py-6 px-5 rounded-lg shadow-lg`;
+const Wrapper = tw.div`flex flex-col md:flex-row  items-center w-full mb-[3vh] bg-white py-6 px-5 rounded-lg shadow-lg relative`;
 const Img = tw(LazyLoadImage)`w-full  md:w-[45%] aspect-[12/9] object-cover `;
 const LoadFoodImg = tw.img`rounded-md w-[50%] h-full bg-gray-400 `;
 const Details = tw.div`text-lg mx-auto px-4`;

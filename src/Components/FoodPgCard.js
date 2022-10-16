@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import tw from 'tailwind-styled-components'
 import { Link } from 'react-router-dom'
@@ -10,6 +10,7 @@ import { addCart } from '../features/basket/basketSlice'
 
 
 function FoodPgCard(props) {
+    const [alert, setAlert] = useState(null)
     const { foodItem } = props || {};
     const dispatch = useDispatch()
     let host;
@@ -18,9 +19,17 @@ function FoodPgCard(props) {
     } else {
         host = `https://${window.location.host}`;
     }
+
+    const addToCart = () => {
+        setAlert('Added to Cart')
+        dispatch(addCart({ quantity: 1, item: foodItem }));
+        setTimeout(() => {
+            setAlert(null);
+        }, 2000);
+    }
     return (
         <Container>
-            <Button onClick={() => dispatch(addCart({ quantity: 1, item: foodItem }))} > <BsFillCartPlusFill /></Button>
+            <Button onClick={addToCart} > <BsFillCartPlusFill /></Button>
             <Link to={`/food/foodDetail/${foodItem?._id}`}>
                 <Img src={foodItem?.image} alt="" placeholder={<LoadFoodImg />}
                     threshold={100} />
@@ -36,6 +45,7 @@ function FoodPgCard(props) {
                     }
                     alt=""
                 />
+                <Alert alert={alert} >{alert}</Alert>
                 <Wrapper >
 
                     <Head >{foodItem?.name}</Head>
@@ -57,7 +67,7 @@ function FoodPgCard(props) {
 }
 
 export default FoodPgCard
-const Container = tw.div` relative shadow-sm rounded-lg bg-white  hover:bg-redfood/20 lg:w-[19%] md:w-[24%] sm:w-[32%] w-[49%] mx-[0.5%] xl:mb-6 mb-3 aspect-[3/4] transition-all duration-100 ease-linear py-2 h-max  `
+const Container = tw.div` relative shadow-sm rounded-lg bg-white  hover:bg-redfood/20 lg:w-[19%] md:w-[24%] sm:w-[32%] w-[49%] mx-[0.5%] xl:mb-6 mb-3 h-min transition-all duration-100 ease-linear py-2  overflow-y-hidden  `
 const Img = tw(LazyLoadImage)`rounded-t-lg object-cover aspect-[1/1] w-[95%] mx-auto transition-all duration-100 ease-linear select-none	`
 const Wrapper = tw.div`xl:px-4 xl:py-4 px-1 py-2  flex flex-col  justify-between relative pointer-events-none hover:pointer-events-auto `
 const Head = tw.h5`!text-base  text-redfood h-14`
@@ -68,3 +78,7 @@ const Review = tw.div`rounded-sm bg-grayfood text-white ml-1`
 const Button = tw.div` transition-colors hover:bg-orangefood  font-bold   rounded-full absolute top-[50%] right-3 flex items-center bg-redfood p-3 shadow-xl text-white !text-lg  `
 const LoadFoodImg = tw.img`rounded-t-md object-cover w-full h-[187px] bg-gray-400 `;
 const FoodTypeIcon = tw.img`absolute top-4 ml-3 w-[30px] h-[30px] select-none`;
+
+//Alert
+const Alert = tw.div`absolute right-0 left-0 -top-12  grid place-items-center   text-white bg-redfood  transition-all
+${p => p.alert && 'h-[15%]  top-1'}`
