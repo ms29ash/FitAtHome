@@ -9,7 +9,7 @@ import loadPayment from './Payment'
 function Cart() {
     const data = useSelector(state => state.basket.basket)
     const [total, setTotal] = useState();
-    const [subTotal, setSubTotal] = useState();
+    const [subTotal, setSubTotal] = useState(0);
     const address = "Mussoorie, Diversion Road, Makka Wala, Uttarakhand 248009"
 
     useEffect(() => {

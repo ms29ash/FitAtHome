@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import tw from "tailwind-styled-components";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
@@ -17,9 +17,16 @@ function FoodDetail() {
         ["food-page", id],
         () => fetchFood(id)
     );
+    console.log(food)
 
     const { image, name, description, type, price, ratings } =
         food?.data?.food[0] || {};
+    let host;
+    if (window.location.hostname === 'localhost') {
+        host = `http://${window.location.host}`;
+    } else {
+        host = `https://${window.location.host}`;
+    }
     return (
 
         <Wrapper>
@@ -46,11 +53,11 @@ function FoodDetail() {
                             {<FoodTypeIcon
                                 src={
                                     type === "Veg"
-                                        ? "/images/veg_icon.png"
+                                        ? `${host}/images/veg_icon.png`
                                         : type === "Non-Veg"
-                                            ? "/images/nonveg_icon.png"
+                                            ? `${host}/images/nonveg_icon.png`
                                             : type === "Vegan"
-                                                ? "/images/vegan_icon.png"
+                                                ? `${host}/images/vegan_icon.png`
                                                 : ""
                                 }
                                 alt=""
