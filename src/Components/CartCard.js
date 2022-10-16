@@ -42,7 +42,7 @@ const Container = tw.div`
 w-full h-26 my-5 flex 
 `
 const Img = tw.img`
-w-[30%] object-cover
+w-[30%] object-cover aspect-square md:aspect-[4/3]
 `
 const Wrapper = tw.div` ml-4`
 
