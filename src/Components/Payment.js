@@ -45,7 +45,7 @@ const loadPayment = async (orderAmount, address) => {
                     razorpayOrderId: res.razorpay_order_id,
                     razorpaySignature: res.razorpay_signature,
                 })
-                alert(result.data)
+                alert(result?.data.msg)
             },
             image: 'https://fitathome-4a700.web.app/images/LogoInv.png',
             prefill: {

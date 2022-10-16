@@ -8,6 +8,7 @@ import axios from "../axios";
 import { useDispatch } from 'react-redux'
 import { addCart } from '../features/basket/basketSlice'
 import AddToCartAlert from "./AddToCartAlert";
+import laodPayment from './Payment'
 
 function FoodDetail() {
     const [alert, setAlert] = useState(null)
@@ -22,7 +23,6 @@ function FoodDetail() {
         ["food-page", id],
         () => fetchFood(id)
     );
-    console.log(food)
 
     const { image, name, description, type, price, ratings } =
         food?.data?.food[0] || {};
@@ -84,8 +84,8 @@ function FoodDetail() {
                     <Price>&#8377; {price} Only</Price>
                     <Text>{description}</Text>
                     <Buttons>
-                        <AddButton onClick={addToCart} >Add to Cart</AddButton>
-                        <BuyButton >Buy Now</BuyButton>
+                        <AddButton onClick={addToCart} disabled={!name} >Add to Cart</AddButton>
+                        <BuyButton onClick={() => { laodPayment(price, 'Dehradun') }} disabled={!price} >Buy Now</BuyButton>
                     </Buttons>
                 </Details>
 
@@ -114,5 +114,5 @@ const ReviewBox = tw.div`flex w-16 justify-end items-center rounded-md bg-redfoo
 const Review = tw.div`rounded-sm bg-inherit text-white ml-1`
 
 const Buttons = tw.div``
-const BuyButton = tw.button`mr-2 mt-5 bg-redfood text-white py-3 px-5 rounded-full text-sm hover:bg-orangefood`
+const BuyButton = tw.button`mr-2 mt-5 bg-redfood text-white py-3 px-5 rounded-full text-sm hover:bg-orangefood disabled:opacity-50`
 const AddButton = tw(BuyButton)`bg-greenfood hover:bg-grayfood`
