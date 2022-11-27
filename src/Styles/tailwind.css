@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 h1,
 h2,
 h3,
@@ -13,6 +14,10 @@ h6 {
 
 @layer utilities {
   .headings {
-    @apply font-bold text-4xl text-center  my-5;
+    @apply font-bold text-4xl text-center my-5;
+  }
+
+  .btn {
+    @apply bg-redfood hover:bg-orangefood rounded-full cursor-pointer text-white;
   }
 }

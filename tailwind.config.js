@@ -1,6 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}",
-    "./src/Components/**/*.js"],
+  content: ["./src/**/*.{js,ts,jsx,tsx,html}", "./public/index.html"],
   theme: {
     screens: {
       'sm': '640px',
@@ -35,7 +35,8 @@ module.exports = {
         'lorangefood': '#f94d27',
 
       }
-    },
+    }
   },
   plugins: [],
 }
+
