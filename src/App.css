@@ -7,6 +7,31 @@ html {
   margin: 0 auto;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Set html css */
+html,
+body {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  height: max-content;
+  background-color: #f2f2f2;
+}
+
+a {
+  cursor: pointer;
+}
+
+.head {
+  font-family: 'Roboto', sans-serif;
+}
+
 ::-webkit-scrollbar {
   width: 0.75rem;
   height: 15px;
@@ -30,7 +55,7 @@ html {
 /* Food Section */
 #food-section::-webkit-scrollbar {
   width: 0;
-  height: 10px;
+  height: 0px;
   color: antiquewhite;
 }
 
@@ -41,7 +66,7 @@ html {
 }
 
 #food:hover>#food-section::-webkit-scrollbar-thumb {
-  visibility: visible;
+  visibility: none;
 }
 
 .btn-arrow {

@@ -41,6 +41,7 @@ function Navbar() {
             <Menu>
               <Opt to="/">Profile</Opt>
               <Opt to="/">Subscriptions</Opt>
+              <Opt to="/">Your Orders</Opt>
               <Opt to="/">Help</Opt>
               <hr />
               <Opt to="/signin">Login</Opt>
@@ -60,7 +61,7 @@ export default Navbar;
 const Container = tw.header`w-screen min-h-[80px] h-[5vh] mb-4 `
 
 const Nav = tw.nav`
-flex py-2 rounded-xl shadow-xl bg-white backdrop-blur-sm text-redfood  absolute md:fixed top-4 w-[95vw] md:w-[90vw] mx-[2.5vw] md:!mx-[5vw] items-center px-5 z-[100]
+flex py-2  shadow-xl bg-white backdrop-blur-sm text-redfood  absolute md:fixed top-0 right-0 left-0 max-w-screen px-[5%] md:py-4  items-center z-[100]
 `;
 const LogoWrapper = tw.div`inline-block w-[100px]`;
 const Img = tw.img`w-full`
@@ -74,6 +75,6 @@ const NavLink = tw(Link)`mx-4 text-lg text-redfood hover:text-orangefood  font-b
 const LoginLink = tw(Link)`mx-4 text-xl text-white  font-bold bg-redfood hover:bg-orangefood px-3 py-3  rounded-full relative group
 `;
 
-const Menu = tw.div`absolute shadow-xl bg-white right-0 text-black top-[100%] text-base font-normal rounded-md hidden  group-hover:flex flex-col  `
+const Menu = tw.div`absolute shadow-xl border-gray border-2 bg-white right-0 text-black top-[100%] text-base font-normal rounded-md hidden top-10  group-hover:flex flex-col  `
 
 const Opt = tw(Link)`hover:bg-redfood hover:text-white py-3  pl-2 pr-12`

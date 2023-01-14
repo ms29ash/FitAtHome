@@ -15,8 +15,8 @@ function Home(props) {
         <>
             <Hero />
             <Category />
-            <Service />
             <Food />
+            <Service />
             <Trial />
             <Subscribe />
             <Testimonials />

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,html}", "./public/index.html"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}",],
   theme: {
     screens: {
       'sm': '640px',
@@ -34,9 +34,14 @@ module.exports = {
         'grayfood': '#263224',
         'lorangefood': '#f94d27',
 
+      },
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       }
     }
   },
   plugins: [],
 }
+
+
 
