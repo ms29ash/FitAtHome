@@ -37,7 +37,7 @@ function MealCard(props) {
 
 export default MealCard;
 
-const Wrapper = tw.div`card-container transition-all   mt-4 lg:mt-10 xl:mt-12  bg-white duration-300 shadow-lg border-[1px] hover:shadow-2xl rounded- sm:w-[23%] max-w-[250px] hover:transform:scale(1.05) w-[48%] `;
+const Wrapper = tw.div`card-container transition-all   mt-4 lg:mt-10 xl:mt-12  bg-white duration-300 shadow-lg border-[1px] hover:shadow-2xl rounded- sm:w-[23%] max-w-[250px] hover:transform:scale(1.05) w-[48%] mx-[1%]`;
 
 const Img = tw(LazyLoadImage)`object-contain rounded-t-md w-full aspect-[5/2.75]`;
 const LoadImg = tw.div`object-cover rounded-t-md w-full h-[10rem] bg-gray-400`;
