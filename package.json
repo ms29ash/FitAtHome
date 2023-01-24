@@ -16,6 +16,7 @@
     "hamburger-react": "^2.5.0",
     "otp-input-react": "^0.3.0",
     "react": "^17.0.2",
+    "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.28.1",
     "react-icons": "^4.4.0",
@@ -31,6 +32,7 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
     "tailwind-styled-components": "^2.1.7",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

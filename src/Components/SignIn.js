@@ -1,19 +1,22 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from '../features/auth/authSlice';
 import BrandLogo, { Container, Button, Wrapper, Form, Label, Input, Error, Text } from './Form'
 
 
-
 function SignIn() {
-
-    const [user, setUser] = useState({ email: "", password: "" })
     const { register, formState: { errors }, handleSubmit } = useForm({ criteriaMode: "all" });
+    const dispatch = useDispatch()
+    const { isLoggedIn, loading } = useSelector(state => state.auth)
+    const navigate = useNavigate()
+    const onSubmit = (data) => {
+        dispatch(loginUser(data))
+        if (isLoggedIn === true) {
+            navigate('/')
+        }
 
-
-    const onSubmit = (e) => {
-
-        console.log('submit')
     }
 
 
@@ -41,7 +44,7 @@ function SignIn() {
                     <Text> <Link className="hover:text-orangefood text-grayfood" to='/forgetpass'>Forget Password</Link>  </Text>
                     <br />
 
-                    <Button type="submit" >Sign In</Button>
+                    <Button disabled={loading} type="submit" >Sign In</Button>
                 </Form>
                 <Text>Create an account <Link className="hover:text-orangefood underline" to='/signup'>SignUp</Link>  </Text>
 
