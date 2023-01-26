@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit'
-import axios from 'axios'
+import axios from '../../axios'
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -17,7 +17,7 @@ const initialState = {
 
 export const loginUser = createAsyncThunk('auth/login', async (user, { rejectWithValue }) => {
     try {
-        const response = await axios.post('http://localhost:4000/auth/login', {
+        const response = await axios.post('auth/login', {
             email: user.email,
             password: user.password
         })

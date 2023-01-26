@@ -5,10 +5,20 @@ import tw from "tailwind-styled-components";
 import HamburgerMenu from "./HamburgerMenu";
 import { IoMdBasket } from 'react-icons/io'
 import { BsFillPersonFill } from 'react-icons/bs'
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../features/auth/authSlice";
+
 
 function Navbar() {
+
   const [isOpen, setOpen] = useState(false);
   const navlink = useRef(null);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+  const dispatch = useDispatch()
+
+  const logout = () => {
+    dispatch(logoutUser())
+  }
   return (
     <Container>
       <Nav className="navbar  ">
@@ -36,17 +46,27 @@ function Navbar() {
 
           <NavLink to="/subscribe">Subscribe</NavLink>
 
-          <LoginLink to="/cart" ><IoMdBasket /></LoginLink>
-          <LoginLink $as="div" className="hover:first:block" ><BsFillPersonFill />
-            <Menu>
-              <Opt to="/">Profile</Opt>
-              <Opt to="/">Subscriptions</Opt>
-              <Opt to="/">Your Orders</Opt>
-              <Opt to="/">Help</Opt>
-              <hr />
-              <Opt to="/signin">Login</Opt>
-            </Menu>
-          </LoginLink>
+          {
+            isLoggedIn === false || isLoggedIn === null ?
+              <LoginLink to="/signin" >Login</LoginLink>
+              : (
+                <>
+                  <LoginLink to="/cart" ><IoMdBasket /></LoginLink>
+                  <LoginLink $as="div" className="hover:first:block" ><BsFillPersonFill />
+                    <Menu>
+                      <Opt to="/">Profile</Opt>
+                      <Opt to="/">Subscriptions</Opt>
+                      <Opt to="/">Your Orders</Opt>
+                      <Opt to="/">Help</Opt>
+                      <hr />
+                      <Opt onClick={logout} $as="button" className="text-left" >Logout</Opt>
+                    </Menu>
+                  </LoginLink>
+                </>
+              )
+
+          }
+
         </NavLinks>
         {
           isOpen &&
