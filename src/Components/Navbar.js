@@ -7,6 +7,11 @@ import { IoMdBasket } from 'react-icons/io'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../features/auth/authSlice";
+import Cookies from 'universal-cookie'
+import { useEffect } from "react";
+import { fetchUserData } from "../features/auth/userDataSlice";
+
+const cookies = new Cookies()
 
 
 function Navbar() {
@@ -15,10 +20,17 @@ function Navbar() {
   const navlink = useRef(null);
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
   const dispatch = useDispatch()
+  const authToken = cookies.get('authToken')
 
   const logout = () => {
     dispatch(logoutUser())
   }
+
+  useEffect(() => {
+    if (authToken) {
+      dispatch(fetchUserData(authToken))
+    }
+  })
   return (
     <Container>
       <Nav className="navbar  ">

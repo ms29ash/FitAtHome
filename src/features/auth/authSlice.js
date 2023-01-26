@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit'
 import axios from '../../axios'
 import Cookies from 'universal-cookie';
+import { fetchUserData } from './userDataSlice';
 
 const cookies = new Cookies();
 
@@ -72,6 +73,7 @@ export const verifyUser = createAsyncThunk('auth/verify', async (otp, { rejectWi
 
 
 
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -114,6 +116,10 @@ export const authSlice = createSlice({
         }).addCase(verifyUser.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload
+        }).addCase(fetchUserData.fulfilled, (state, action) => {
+            state.loading = false;
+            state.isLoggedIn = true;
+            state.error = null
         })
     }
 })
