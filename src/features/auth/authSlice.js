@@ -10,7 +10,7 @@ const cookies = new Cookies();
 const initialState = {
     user: null,
     loading: false,
-    isLoggedIn: false,
+    isLoggedIn: null,
     error: null
 
 }
@@ -22,28 +22,37 @@ export const loginUser = createAsyncThunk('auth/login', async (user, { rejectWit
             password: user.password
         })
         cookies.set('authToken', response?.data?.authtoken, { path: '/', maxAge: 1296000 });
-        return response.data?.email
+        return response.data
 
     } catch (error) {
-        return rejectWithValue(error?.response?.data.errors)
+        console.log(error)
+        if (error?.response.data) {
+
+            return rejectWithValue(error?.response?.data.errors)
+        } else {
+            return rejectWithValue(error?.message)
+
+        }
     }
-
-
-
 })
 
 
-export const userSlice = createSlice({
+export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-
+        logoutUser: (state) => {
+            cookies.remove('authToken');
+            state.isLoggedIn = false;
+            state.user = null
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(loginUser.pending, (state) => {
             state.loading = true;
+            state.error = false;
         }).addCase(loginUser.fulfilled, (state, action) => {
-            state.user = action.payload
+            state.user = action.payload.email
             state.loading = false;
             state.isLoggedIn = true;
             state.error = null
@@ -55,5 +64,7 @@ export const userSlice = createSlice({
     }
 })
 
+export const { logoutUser } = authSlice.actions
 
-export default userSlice.reducer
+
+export default authSlice.reducer

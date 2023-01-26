@@ -3,20 +3,20 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from '../features/auth/authSlice';
-import BrandLogo, { Container, Button, Wrapper, Form, Label, Input, Error, Text } from './Form'
+import BrandLogo, { Container, Button, Wrapper, Form, Label, Input, Error, Text, Errors } from './Form'
 
 
 function SignIn() {
     const { register, formState: { errors }, handleSubmit } = useForm({ criteriaMode: "all" });
     const dispatch = useDispatch()
-    const { isLoggedIn, loading } = useSelector(state => state.auth)
+    const { loading, error } = useSelector(state => state.auth)
     const navigate = useNavigate()
     const onSubmit = (data) => {
-        dispatch(loginUser(data))
-        if (isLoggedIn === true) {
-            navigate('/')
-        }
-
+        dispatch(loginUser(data)).unwrap().then((auth) => {
+            if (auth.success === true) {
+                navigate('/')
+            }
+        })
     }
 
 
@@ -24,6 +24,7 @@ function SignIn() {
         <Container className="signin-page ">
             <Wrapper >
                 <BrandLogo />
+                <Errors>{error}</Errors>
 
                 <Form onSubmit={handleSubmit(onSubmit)} >
                     <Label htmlFor="email" >Email</Label>
