@@ -8,11 +8,9 @@ const cookies = new Cookies();
 
 
 const initialState = {
-    user: null,
     loading: false,
     isLoggedIn: null,
     error: null
-
 }
 
 export const loginUser = createAsyncThunk('auth/login', async (user, { rejectWithValue }) => {
@@ -28,7 +26,7 @@ export const loginUser = createAsyncThunk('auth/login', async (user, { rejectWit
 
         if (error?.response.data) {
 
-            return rejectWithValue(error?.response?.data.errors)
+            return rejectWithValue(error?.response?.data.errorMessage)
         } else {
             return rejectWithValue(error?.message)
 
@@ -47,12 +45,28 @@ export const signupUser = createAsyncThunk('auth/signup', async (user, { rejectW
         return res.data;
     } catch (error) {
         if (error?.response?.data) {
-            return rejectWithValue(error?.response?.data.errors)
+            return rejectWithValue(error?.response?.data.errorMessage)
         } else {
             return rejectWithValue(error?.message)
         }
+    }
+})
 
-
+export const verifyUser = createAsyncThunk('auth/verify', async (otp, { rejectWithValue }) => {
+    try {
+        const res = await axios.post('auth/verify', {
+            email: cookies.get('verifyId'),
+            otp: otp
+        })
+        cookies.set('authToken', res?.data?.authtoken, { path: '/', maxAge: 1296000 });
+        console.log(res)
+        return res.data
+    } catch (error) {
+        if (error?.response?.data) {
+            return rejectWithValue(error?.response?.data.errorMessage)
+        } else {
+            return rejectWithValue(error?.message)
+        }
     }
 })
 
@@ -65,7 +79,6 @@ export const authSlice = createSlice({
         logoutUser: (state) => {
             cookies.remove('authToken');
             state.isLoggedIn = false;
-            state.user = null
         }
     },
     extraReducers: (builder) => {
@@ -73,7 +86,6 @@ export const authSlice = createSlice({
             state.loading = true;
             state.error = null;
         }).addCase(loginUser.fulfilled, (state, action) => {
-            state.user = action.payload.email
             state.loading = false;
             state.isLoggedIn = true;
             state.error = null
@@ -85,11 +97,21 @@ export const authSlice = createSlice({
         builder.addCase(signupUser.pending, (state) => {
             state.loading = true;
             state.error = null;
-        }).addCase(signupUser.fulfilled, (state, action) => {
+        }).addCase(signupUser.fulfilled, (state) => {
             state.loading = false;
             state.error = null;
 
         }).addCase(signupUser.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload
+        })
+        builder.addCase(verifyUser.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        }).addCase(verifyUser.fulfilled, (state) => {
+            state.loading = false;
+            state.error = null;
+        }).addCase(verifyUser.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload
         })

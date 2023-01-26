@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import tw from 'tailwind-styled-components'
-import { Container, Button, Wrapper, Head, Form } from './Form'
+import { Container, Button, Wrapper, Head, Form, Errors } from './Form'
 
 import Timer from './Timer'
 function Otp({ onSubmit }) {
+    const { loading, error } = useSelector(state => state.auth)
 
     const btnRef = useRef(null);
     const [otp, setOtp] = useState(new Array(4).fill(""));
@@ -23,6 +25,7 @@ function Otp({ onSubmit }) {
             <Wrapper >
                 <Form onSubmit={(e) => onSubmit(e, otp)} >
                     <Head >OTP</Head>
+                    <Errors>{error}</Errors>
 
                     <Inputs>
 
@@ -43,7 +46,7 @@ function Otp({ onSubmit }) {
                         })}
                     </Inputs>
                     <Timer time={30} />
-                    <Button ref={btnRef} type="submit" >Next</Button>
+                    <Button disabled={loading} ref={btnRef} type="submit" >Next</Button>
                 </Form>
             </ Wrapper>
         </Container>
