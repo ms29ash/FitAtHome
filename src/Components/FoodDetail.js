@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import tw from "tailwind-styled-components";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "../axios";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addCart } from '../features/basket/basketSlice'
 import AddToCartAlert from "./AddToCartAlert";
 import laodPayment from './Payment'
@@ -14,6 +14,8 @@ function FoodDetail() {
     const [alert, setAlert] = useState(null)
     let { id } = useParams();
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
 
     const fetchFood = async (id) => {
         return axios.get(`/food/${id}`);
@@ -34,11 +36,16 @@ function FoodDetail() {
     }
 
     const addToCart = () => {
-        setAlert('Added to Cart')
-        dispatch(addCart({ quantity: 1, item: food?.data.food[0] }))
-        setTimeout(() => {
-            setAlert(null)
-        }, 2000);
+        if (isLoggedIn === true) {
+
+            setAlert('Added to Cart')
+            dispatch(addCart({ quantity: 1, item: food?.data.food[0] }))
+            setTimeout(() => {
+                setAlert(null)
+            }, 2000);
+        } else {
+            navigate('/signin')
+        }
     }
     return (
 

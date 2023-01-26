@@ -15,7 +15,7 @@ function Food() {
         return axios.get('/food')
     }
 
-    const { data: food, isLoading, isError, error } = useQuery('food', fetchFood)
+    const { data: food, isLoading, isError } = useQuery('food', fetchFood)
 
 
 

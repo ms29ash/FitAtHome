@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import tw from 'tailwind-styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDispatch } from 'react-redux'
 import { addCart } from '../features/basket/basketSlice'
+import { useSelector } from "react-redux";
 
 
 
@@ -13,6 +14,8 @@ function FoodPgCard(props) {
     const [alert, setAlert] = useState(null)
     const { foodItem } = props || {};
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
     let host;
     if (window.location.hostname === 'localhost') {
         host = `http://${window.location.host}`;
@@ -21,11 +24,16 @@ function FoodPgCard(props) {
     }
 
     const addToCart = () => {
-        setAlert('Added to Cart')
-        dispatch(addCart({ quantity: 1, item: foodItem }));
-        setTimeout(() => {
-            setAlert(null);
-        }, 2000);
+        if (isLoggedIn === true) {
+
+            setAlert('Added to Cart')
+            dispatch(addCart({ quantity: 1, item: foodItem }));
+            setTimeout(() => {
+                setAlert(null);
+            }, 2000);
+        } else {
+            navigate('/signin')
+        }
     }
     return (
         <Container>
