@@ -27,8 +27,10 @@ function Navbar() {
   }
 
   useEffect(() => {
-    if (authToken) {
-      dispatch(fetchUserData(authToken))
+    if (isLoggedIn === false || isLoggedIn === null) {
+      if (authToken) {
+        dispatch(fetchUserData(authToken))
+      }
     }
   })
   return (

@@ -8,9 +8,9 @@ import loadPayment from './Payment'
 
 function Cart() {
     const data = useSelector(state => state.basket.basket)
+    const address = useSelector(state => state?.userData?.userData?.address || null)
     const [total, setTotal] = useState();
     const [subTotal, setSubTotal] = useState(0);
-    const address = "Mussoorie, Diversion Road, Makka Wala, Uttarakhand 248009"
 
     useEffect(() => {
         const total =
@@ -31,9 +31,10 @@ function Cart() {
                     <Address>
 
                         <h3 className="flex items-center"> <CheckIcon /> Delivering to</h3>
-                        <p className="ml-8">{address}</p>
+                        {address !== null ? <p className="ml-8">{address}</p> : <p className="ml-8">address</p>}
                     </Address>
-                    <ChangeBtn>Change</ChangeBtn>
+                    {address === null ? <ChangeBtn>Set Address</ChangeBtn> : <ChangeBtn>Change</ChangeBtn>}
+
                 </AddContainer>
                 <hr className=" my-3 w-[98%] bg-redfood h-[1px] border-0 " />
                 <Head>Your Cart</Head>
