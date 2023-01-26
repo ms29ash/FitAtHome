@@ -25,7 +25,7 @@ export const loginUser = createAsyncThunk('auth/login', async (user, { rejectWit
         return response.data
 
     } catch (error) {
-        console.log(error)
+
         if (error?.response.data) {
 
             return rejectWithValue(error?.response?.data.errors)
@@ -35,6 +35,27 @@ export const loginUser = createAsyncThunk('auth/login', async (user, { rejectWit
         }
     }
 })
+
+export const signupUser = createAsyncThunk('auth/signup', async (user, { rejectWithValue }) => {
+    try {
+        const res = await axios.post('auth/signup', {
+            email: user.email,
+            password: user.password,
+            name: user.name
+        })
+        cookies.set('verifyId', res?.data?.userId, { path: '/', maxAge: 300 });
+        return res.data;
+    } catch (error) {
+        if (error?.response?.data) {
+            return rejectWithValue(error?.response?.data.errors)
+        } else {
+            return rejectWithValue(error?.message)
+        }
+
+
+    }
+})
+
 
 
 export const authSlice = createSlice({
@@ -50,7 +71,7 @@ export const authSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(loginUser.pending, (state) => {
             state.loading = true;
-            state.error = false;
+            state.error = null;
         }).addCase(loginUser.fulfilled, (state, action) => {
             state.user = action.payload.email
             state.loading = false;
@@ -60,6 +81,17 @@ export const authSlice = createSlice({
             state.loading = false;
             state.error = action.payload
 
+        })
+        builder.addCase(signupUser.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        }).addCase(signupUser.fulfilled, (state, action) => {
+            state.loading = false;
+            state.error = null;
+
+        }).addCase(signupUser.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload
         })
     }
 })

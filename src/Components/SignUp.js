@@ -1,10 +1,14 @@
 import React from "react";
 import { useForm, useWatch } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import BrandLogo, { Container, Button, Wrapper, Form, Label, Input, Error, Text } from './Form'
+import { signupUser } from "../features/auth/authSlice";
+import BrandLogo, { Container, Button, Wrapper, Form, Label, Input, Error, Text, Errors } from './Form'
 
 function SignUp(props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector(state => state.auth)
   const {
     register,
     control,
@@ -13,19 +17,24 @@ function SignUp(props) {
   } = useForm({ criteriaMode: "all" });
 
   const onSubmit = (data, e) => {
-    console.log(data)
-    navigate('verify')
+    dispatch(signupUser(data)).unwrap().then((auth) => {
+      if (auth.success === true) {
+        navigate('verify')
+      }
+
+    })
   };
 
 
   const password = useWatch({ control, name: 'password' })
   const isPasswordEqual = (cpassword) => cpassword === password;
 
+
   return (
     <Container className="signup-page ">
       <Wrapper>
         <BrandLogo />
-
+        <Errors>{error}</Errors>
         <Form className="bg-white " onSubmit={handleSubmit(onSubmit)}>
           <Label htmlFor="name">Name</Label>
           <Input
@@ -89,7 +98,7 @@ function SignUp(props) {
                 : errors.cpassword?.type === 'validate' ? "Not equal to password" : ""}
           </Error>
 
-          <Button type="submit">Next</Button>
+          <Button disabled={loading} type="submit">Next</Button>
         </Form>
         <Text>
           Already have an account{" "}
