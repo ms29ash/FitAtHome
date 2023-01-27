@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import tw from "tailwind-styled-components";
 import HamburgerMenu from "./HamburgerMenu";
-import { IoMdBasket } from 'react-icons/io'
-import { BsFillPersonFill } from 'react-icons/bs'
+import { BsPerson } from 'react-icons/bs'
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../features/auth/authSlice";
 import Cookies from 'universal-cookie'
 import { useEffect } from "react";
 import { fetchUserData } from "../features/auth/userDataSlice";
+import { BiSearch } from 'react-icons/bi'
+import { TbBasket } from 'react-icons/tb'
+import { AiOutlineFire } from 'react-icons/ai'
+import { FiHelpCircle } from 'react-icons/fi'
+
 
 const cookies = new Cookies()
 
@@ -19,12 +22,11 @@ function Navbar() {
   const [isOpen, setOpen] = useState(false);
   const navlink = useRef(null);
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+  const name = useSelector(state => state.userData.name)
   const dispatch = useDispatch()
   const authToken = cookies.get('authToken')
 
-  const logout = () => {
-    dispatch(logoutUser())
-  }
+
 
   useEffect(() => {
     if (isLoggedIn === false || isLoggedIn === null) {
@@ -54,33 +56,16 @@ function Navbar() {
         </HamburgerIcon>
 
         <NavLinks ref={navlink} >
-          <NavLink to="/food">Food</NavLink>
-
-          <NavLink to="/trial">Free Trial</NavLink>
-
-          <NavLink to="/subscribe">Subscribe</NavLink>
-
+          <NavLink to="/food"><BiSearch className="mr-1" />Search</NavLink>
+          <NavLink to="/subscribe"><AiOutlineFire className="mr-1" />Fire</NavLink>
+          <NavLink to="/cart"><TbBasket className="mr-1" />Cart</NavLink>
           {
-            isLoggedIn === false || isLoggedIn === null ?
-              <LoginLink to="/signin" >Login</LoginLink>
-              : (
-                <>
-                  <LoginLink to="/cart" ><IoMdBasket /></LoginLink>
-                  <LoginLink $as="div" className="hover:first:block" ><BsFillPersonFill />
-                    <Menu>
-                      <Opt to="/">Profile</Opt>
-                      <Opt to="/">Subscriptions</Opt>
-                      <Opt to="/">Your Orders</Opt>
-                      <Opt to="/">Help</Opt>
-                      <hr />
-                      <Opt onClick={logout} $as="button" className="text-left" >Logout</Opt>
-                    </Menu>
-                  </LoginLink>
-                </>
-              )
-
+            isLoggedIn === true ?
+              <NavLink to="/profile"><BsPerson className="mr-1" />{name ? name.substr(0, 5) : 'Person'}</NavLink>
+              :
+              <NavLink to="/signin"><BsPerson className="mr-1" />Sign in</NavLink>
           }
-
+          <NavLink to="/"><FiHelpCircle className="mr-1" />Help</NavLink>
         </NavLinks>
         {
           isOpen &&
@@ -92,10 +77,10 @@ function Navbar() {
 
 export default Navbar;
 
-const Container = tw.header`w-screen min-h-[80px] h-[5vh] mb-4 `
+const Container = tw.header`w-screen min-h-[80px] h-[5vh]  `
 
 const Nav = tw.nav`
-flex py-2  shadow-xl bg-white backdrop-blur-sm text-redfood  absolute md:fixed top-0 right-0 left-0 max-w-screen px-[5%] md:py-4  items-center z-[100]
+flex py-2  shadow-xl bg-white backdrop-blur-sm text-redfood  absolute md:fixed top-0 right-0 left-0 max-w-screen px-[5%] md:py-3  items-center z-[100]
 `;
 const LogoWrapper = tw.div`inline-block w-[100px]`;
 const Img = tw.img`w-full`
@@ -105,10 +90,5 @@ const NavLinks = tw.div`
 
 
 
-const NavLink = tw(Link)`mx-4 text-lg text-redfood hover:text-orangefood  font-bold hover:underline `;
-const LoginLink = tw(Link)`mx-4 text-xl text-white  font-bold bg-redfood hover:bg-orangefood px-3 py-3  rounded-full relative group
-`;
+const NavLink = tw(Link)`ml-10 text-md items-center flex text-redfood hover:text-orangefood  font-bold hover:underline `;
 
-const Menu = tw.div`absolute shadow-xl border-gray border-2 bg-white right-0 text-black top-[100%] text-base font-normal rounded-md hidden top-10  group-hover:flex flex-col  `
-
-const Opt = tw(Link)`hover:bg-redfood hover:text-white py-3  pl-2 pr-12`

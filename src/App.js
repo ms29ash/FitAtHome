@@ -24,6 +24,8 @@ import NewPass from './Components/NewPass';
 import Footer from './Components/Footer';
 import Cart from './Components/Cart';
 import AuthRoute from './Components/Routes/AuthRoute';
+import Profile from './Pages/Profile';
+
 
 
 function App() {
@@ -61,6 +63,10 @@ function App() {
           <Route path="otp" element={<ForgetPassOtp />} />
           <Route path="newpass" element={<ForgetPassNewPass />} />
           <Route path="updatedpass" element={<NewPass />} />
+        </Route>
+        <Route path="profile" >
+          <Route index element={<><Navbar /><Profile /><Footer /></>} />
+
         </Route>
       </Routes>
 
