@@ -32,4 +32,4 @@ h-[100%] bg-slate-100 flex flex-col justify-between
 `
 
 const Wrapper = tw.div`pt-6 pl-4 `
-const Opt = tw.div` font-semibold  text-black py-8 pl-4 pr-16 py-4 hover:bg-white  `
+const Opt = tw.div` font-semibold  text-black py-8 pl-4 pr-16 py-4 hover:bg-redfood hover:text-white  hover:cursor-pointer  `

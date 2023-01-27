@@ -21,8 +21,8 @@ function Profile() {
 
 export default Profile
 
-const Container = tw.div` max-w-screen max-h-screen h-screen px-[5%]  bg-white`
+const Container = tw.div` max-w-screen  min-h-[80vh] h-fit px-[5%]  bg-white mb-[5vh]`
 const ContainerIn = tw.div`w-full h-full flex flex-col justify-center items-center `
 const Wrapper = tw.div`
-flex  w-full h-[80%] bg-white
+flex  w-full  bg-white
 `
