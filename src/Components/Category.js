@@ -6,6 +6,7 @@ import {
   useQuery,
 } from 'react-query'
 import axios from '../axios'
+import CategoryLoading from './CategoryLoading';
 
 function TypeMeals() {
 
@@ -13,8 +14,7 @@ function TypeMeals() {
   const fetchMeals = async () => {
     return axios.get('/category')
   }
-  const { isLoading, data, isError } = useQuery('categories', fetchMeals)
-
+  const { isSuccess, error, data, isError } = useQuery('categories', fetchMeals)
 
   return (
     <>
@@ -24,11 +24,12 @@ function TypeMeals() {
 
           {
 
-            isError || isLoading ?
-              Array(4).fill().map((item, index) => { return <CategoryCard key={index} /> })
-              : data?.data.categories?.map((category) => {
+            isSuccess ?
+              data?.data.categories?.map((category) => {
                 return <CategoryCard title={category.title} description={category.description} image={category.image} key={category._id} />
               })
+              :
+              Array(4).fill().map((item, index) => { return <CategoryLoading key={index} /> })
           }
         </Wrapper>
       </Category>
