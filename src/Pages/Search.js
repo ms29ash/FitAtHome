@@ -1,22 +1,22 @@
 
 import React from "react";
 import tw from "tailwind-styled-components";
-import FoodPageSideBar from "./FoodPageSideBar";
-import FoodPageMain from "./FoodPageMain";
+import SearchPageSideBar from "../Components/SearchPage/SearchPageSideBar";
+import SearchPageMain from "../Components/SearchPage/SearchPageMain";
 
-function FoodPage() {
+function Search() {
 
   return (
     <Page>
       <Container>
-        <FoodPageSideBar />
-        <FoodPageMain />
+        <SearchPageSideBar />
+        <SearchPageMain />
       </Container>
     </Page>
   );
 }
 
-export default FoodPage;
+export default Search;
 
 const Page = tw.div`  py-200`;
 const Container = tw.div` flex w-[97vw] xl:flex-row flex-col  mx-auto xl:mb-[18vh] mb-[5vh]`;

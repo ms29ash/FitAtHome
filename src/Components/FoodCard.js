@@ -11,7 +11,7 @@ function FoodCard(props) {
     <>
       <Container>
         <Wrapper>
-          <Link to={`food/foodDetail/${foodItem?._id}`}>
+          <Link to={`search/foodDetail/${foodItem?._id}`}>
             {
               <FoodImg
                 src={foodItem?.image}

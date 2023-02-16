@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { setType } from "../features/filter/foodFilterSlice";
+import { setType } from "../../features/filter/foodFilterSlice";
 import { AiOutlineCaretDown } from "react-icons/ai";
 
-function FoodPageSideBar() {
+function SearchPageSideBar() {
   const refContainer = useRef();
   const refGroup = useRef();
   const refArrow = useRef();
@@ -84,9 +84,9 @@ function FoodPageSideBar() {
   );
 }
 
-export default FoodPageSideBar;
+export default SearchPageSideBar;
 
-const Container = tw.div` h-[10vh]  xl:h-screen  xl:w-[18%] transition-all duration-200		 `;
+const Container = tw.div` h-[10vh] mt-3  xl:h-screen  xl:w-[18%] transition-all duration-200		 `;
 const Wrapper = tw.div`xl:fixed static bg-white shadow-xl rounded-xl  xl:w-[15%] w-[95vw] xl:py-8 xl:px-6 p-4 my-0 xl:mt-0  mt-4 `;
 const Heading = tw.div`flex w-full items-center justify-between xl:hidden cursor-pointer `
 const TopHead = tw.h3`text-2xl xl:mb-1 xl:block hidden`;

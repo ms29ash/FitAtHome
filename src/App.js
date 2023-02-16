@@ -9,7 +9,7 @@ import {
 import './App.css';
 import Home from './Components/Home';
 import Navbar from './Components/Navbar';
-import FoodPage from './Components/FoodPage';
+import SearchPage from './Pages/Search';
 import TrialPage from './Components/TrialPage';
 import SubscribePage from './Components/SubscribePage';
 import SignIn from './Components/SignIn';
@@ -40,14 +40,15 @@ function App() {
       <Routes>
         <Route path="/" element={<><Navbar /><Outlet /><Footer /></>} >
           <Route index element={<Home />} />
-          <Route path="/food"  >
-            <Route index element={<FoodPage />} />
+          <Route path="/search"  >
+            <Route index element={<SearchPage />} />
             <Route path="foodDetail"  >
               <Route path=":id" element={<FoodDetails />} ></Route>
             </Route>
           </Route>
           <Route path="/trial" element={<TrialPage />} ></Route>
           <Route path="/subscribe" element={<SubscribePage />} ></Route>
+          <Route path="menu/:tab" element={<Menu />} />
         </Route>
         <Route path="/cart" element={<AuthRoute><Navbar /><Cart /></AuthRoute>} ></Route>
 
@@ -64,7 +65,6 @@ function App() {
           <Route path="newpass" element={<ForgetPassNewPass />} />
           <Route path="updatedpass" element={<NewPass />} />
         </Route>
-        <Route path="menu/:tab" element={<><Navbar /><Menu /><Footer /></>} />
       </Routes>
 
 

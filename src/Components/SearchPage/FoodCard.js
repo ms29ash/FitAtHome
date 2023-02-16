@@ -5,12 +5,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDispatch } from 'react-redux'
-import { addCart } from '../features/basket/basketSlice'
+import { addCart } from '../../features/basket/basketSlice'
 import { useSelector } from "react-redux";
 
 
 
-function FoodPgCard(props) {
+function FoodCard(props) {
     const [alert, setAlert] = useState(null)
     const { foodItem } = props || {};
     const dispatch = useDispatch()
@@ -38,7 +38,7 @@ function FoodPgCard(props) {
     return (
         <Container>
             <Button onClick={addToCart} > <BsFillCartPlusFill /></Button>
-            <Link to={`/food/foodDetail/${foodItem?._id}`}>
+            <Link to={`/search/foodDetail/${foodItem?._id}`}>
                 <Img src={foodItem?.image} alt="" placeholder={<LoadFoodImg />}
                     threshold={100} />
                 <FoodTypeIcon
@@ -74,7 +74,7 @@ function FoodPgCard(props) {
     )
 }
 
-export default FoodPgCard
+export default FoodCard
 const Container = tw.div` relative shadow-sm rounded-lg bg-white  hover:bg-redfood/20 lg:w-[19%] md:w-[24%] sm:w-[32%] w-[49%] mx-[0.5%] xl:mb-6 mb-3 h-min transition-all duration-100 ease-linear py-2  overflow-y-hidden  `
 const Img = tw(LazyLoadImage)`rounded-t-lg object-cover aspect-[1/1] w-[95%] mx-auto transition-all duration-100 ease-linear select-none	`
 const Wrapper = tw.div`xl:px-4 xl:py-4 px-1 py-2  flex flex-col  justify-between relative pointer-events-none hover:pointer-events-auto `

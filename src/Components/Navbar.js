@@ -61,7 +61,7 @@ function Navbar() {
         </HamburgerIcon>
 
         <NavLinks ref={navlink} >
-          <NavLink to="/food"><BiSearch className="mr-1" />Search</NavLink>
+          <NavLink to="/search"><BiSearch className="mr-1" />Search</NavLink>
           <NavLink to="/subscribe"><AiOutlineFire className="mr-1" />Fire</NavLink>
           <NavLink to="/cart"><TbBasket className="mr-1" />Cart</NavLink>
           {
