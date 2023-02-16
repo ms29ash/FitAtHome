@@ -31,7 +31,12 @@ function Navbar() {
   useEffect(() => {
     if (isLoggedIn === false || isLoggedIn === null) {
       if (authToken) {
-        dispatch(fetchUserData(authToken))
+        try {
+
+          dispatch(fetchUserData(authToken))
+        } catch (error) {
+          return
+        }
       }
     }
   })
@@ -61,7 +66,7 @@ function Navbar() {
           <NavLink to="/cart"><TbBasket className="mr-1" />Cart</NavLink>
           {
             isLoggedIn === true ?
-              <NavLink to="/profile"><BsPerson className="mr-1" />{name ? name.substr(0, 5) : 'Person'}</NavLink>
+              <NavLink to="/menu/order"><BsPerson className="mr-1" />{name ? name.substr(0, 5) : 'Person'}</NavLink>
               :
               <NavLink to="/signin"><BsPerson className="mr-1" />Sign in</NavLink>
           }
