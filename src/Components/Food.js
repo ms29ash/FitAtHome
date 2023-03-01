@@ -43,7 +43,7 @@ function Food() {
 
                     </RightBtn>
                 </div>
-                <div className="relative w-full flex items-stretch gap-6 snap-x snap-mandatory overflow-x-auto pb-16 " id="food-section" ref={scrollRef}>
+                <div className="relative w-full flex items-stretch gap-6 snap-x snap-mandatory overflow-x-auto pb-4 " id="food-section" ref={scrollRef}>
 
                     {isError || isLoading ? Array(10).fill().map((item, index) => { return <FoodCard key={index} /> }) :
 
@@ -65,7 +65,7 @@ function Food() {
 
 export default Food
 
-const FoodSection = tw.section`px-3 bg-white  xl:px-20  pt-16 xl:pt-6 pb-10 py-16`
+const FoodSection = tw.section`px-3 bg-white  xl:px-20  pt-16 xl:pt-6 pb-6 py-10`
 const Button = tw.button`hidden mt-20 md:block w-16  h-20 absolute  z-20  text-black  px-4 py-3 text-5xl bg-white rounded stroke-1  cursor-pointer`
 
 const LeftBtn = tw(Button)`
