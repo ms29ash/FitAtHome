@@ -21,7 +21,7 @@ body {
   position: relative;
   overflow-x: hidden;
   height: max-content;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
 }
 
 a {
@@ -87,12 +87,10 @@ a {
 /* Trial Section */
 #trial {
   z-index: -2;
-  background: rgb(0, 0, 0, 0.8) url(./images/deliveryfas.jpg);
+  background:  url(./images/deliveryfas.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
-  background-attachment: fixed;
-  background-blend-mode: darken;
   width: 100vw;
 }
 
