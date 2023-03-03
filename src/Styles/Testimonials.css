@@ -1,4 +1,23 @@
-.testimonials-section {
-  background: rgba(0, 0, 0, 0.463) url("../images/testiBack.jpg");
-  background-blend-mode: overlay;
+.testimonials-section{
+  position:relative;
 }
+
+
+.testimonials-section::before {
+  background-image: url("../images/testiBack.jpg");
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right: 0;
+}
+
+.slider::-webkit-scrollbar {
+  display:none;
+}
+
