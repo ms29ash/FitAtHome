@@ -2,22 +2,35 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 function SubscribeCard(props) {
-  const { img, title } = props;
+  const { img, title, price, months, popular } = props;
   return (
     <Container>
       <Img src={img} />
       <Details>
         <Main>
-          <Head>{title}</Head>
-          <Button>Subscribe</Button>
+          <Head>{title} {popular === true ? <Small  >Most Popular</Small> : ""} </Head>
+          {/* <Button>Subscribe</Button> */}
+          <SubHead>
+
+            <Price>&#8377;{price} <del className="text-xs font-normal" >&#8377;{price * 2 + 1}</del></Price>
+            <p className="text-xs " >For {months} months</p>
+          </SubHead>
         </Main>
         <Description>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis
-          labore maiores architecto repudiandae ea nesciunt sunt reiciendis sit
-          nihil quibusdam molestiae, repellendus eaque fugiat blanditiis.
-          Dolorem, vitae! Dolores consequatur, eos asperiores libero ab
-          consectetur inventore dolorem, assumenda iusto maiores cumque tempore
-          voluptatum pariatur rem.
+          <Li>
+            Lorem ipsum dolor, sit amet consectetur adipisicing eLit. Debitis
+          </Li>
+          <Li>
+            nihil quibusdam molestiae, repellendus eaque fugiat
+          </Li>
+          <Li>
+            labore maiores architecto repudiandae ea nesciunt sunt reiciendis sit
+          </Li>
+          <Li>
+            Dolorem, vitae! Dolores consequatur, eos asperiores Libero ab
+            consectetur inventore
+          </Li>
+          <Button>Subscribe</Button>
         </Description>
       </Details>
     </Container>
@@ -29,8 +42,12 @@ export default SubscribeCard;
 const Container = tw.div`bg-white mx-4 flex flex-col rounded-xl overflow-hidden shadow-xl mb-5 h-[95%] w-full max-w-[400px] `;
 const Img = tw.img`object-cover w-full aspect-[5/4]`;
 
-const Details = tw.div`p-5 bg-white rounded-xl -mt-20 `;
-const Main = tw.div`flex items-center justify-between mb-5 px-2`;
-const Button = tw.button` text-sm font-bold text-white bg-redfood px-3 py-2 rounded-full hover:bg-orangefood`;
-const Head = tw.h1``;
-const Description = tw.p``;
+const Details = tw.div`px-5 pt-5 bg-white rounded-xl -mt-20 `;
+const Main = tw.div`flex items-center justify-between  px-2`;
+const Price = tw.p`  font-bold text-black  rounded-full `;
+const Button = tw.button` text-sm font-bold w-full my-3 text-black shadow-lg bg-slate-100  px-3 py-3 rounded-full hover:shadow-xl`;
+const Head = tw.h1`flex items-center `;
+const Small = tw.small`text-xs font-normal text-redfood ml-2 border-[1px] py-[3px] px-1 border-redfood`
+const SubHead = tw.div`flex-col items-end flex`
+const Description = tw.ul`list-disc text-xs p-4`;
+const Li = tw.li`leading-6 text-slate-600 mt-1`
