@@ -8,6 +8,9 @@ function Addresses() {
         <Container>
             <Heading>Addresses</Heading>
             <Wrapper>
+                <Address isDefault={true} />
+                <Address />
+                <Address />
                 <Address />
                 <Address />
                 <Address />
@@ -23,6 +26,6 @@ export default Addresses
 
 
 const Container = tw.div``
-const Wrapper = tw.div`  `
+const Wrapper = tw.div`flex w-full flex-wrap  `
 const Heading = tw.h1`mb-6`
 const Btn = tw.button`text-redfood flex items-center font-bold hover:text-orangefood`

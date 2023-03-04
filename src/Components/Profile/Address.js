@@ -1,23 +1,24 @@
 import React from 'react'
 import tw from 'tailwind-styled-components'
+import { MdModeEditOutline } from 'react-icons/md'
 
 
-function Address() {
+function Address({ isDefault }) {
     return (
         <Container>
-            <div>
+            <div className='relative' >
                 <Head>Home</Head>
 
                 <Items>Nilmattha, Lucknow, Uttarpradesh </Items>
+                <EditBtn>Edit</EditBtn>
 
             </div>
             <hr className="my-3" />
             <Bottom>
+                {isDefault === true ? <Def  >Default</Def> : ''}
                 <Buttons>
-                    <EditBtn>EDIT</EditBtn>
-                    <DefaultBtn>SET DEFAULT</DefaultBtn>
+                    <DefaultBtn>SET AS DEFAULT</DefaultBtn>
                 </Buttons>
-                <p className="ml-10" >Default</p>
             </Bottom>
 
         </Container>
@@ -30,10 +31,11 @@ export default Address
 
 
 
-const Container = tw.div`border-[2px] border-slate-300 w-full p-4 mb-6`
+const Container = tw.div`rounded shrink-0 w-[31%] mr-[1%]  shadow-xl p-4 mb-6`
 const Head = tw.h1`text-lg`
-const Bottom = tw.div`flex justify-between`
+const Def = tw.p`top-1 right-1 text-xs absolute`
+const Bottom = tw.div`flex justify-between relative`
 const Items = tw.p`text-sm`
 const Buttons = tw.div`flex items-center`
-const EditBtn = tw.button`bg-redfood font-bold text-white text-sm py-2 px-8 rounded-lg mr-2 hover:bg-orangefood`
-const DefaultBtn = tw(EditBtn)`bg-white border-redfood hover:bg-white hover:text-orangefood hover:border-orangefood border-2 px-2 text-redfood `
+const EditBtn = tw.button`  text-redfood text-sm hover:text-orangefood absolute right-2 top-1`
+const DefaultBtn = tw.button` rounded-full bg-slate-100  hover:bg-slate-100 text-xs hover:border-orangefood hover:shadow-xl   shadow-lg px-4 text-black py-2 `
