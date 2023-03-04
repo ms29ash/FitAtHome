@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import subscribeImg from '../../images/subscribe.jpg'
 import tw from "tailwind-styled-components";
 
 function Subscribe() {
@@ -10,9 +9,8 @@ function Subscribe() {
             <Section id="subscribe">
 
                 <Container className="card-container ">
-                    {/* <Head >Subscribe to Get Best Food</Head> */}
                     <Wrapper >
-                        <Img src={subscribeImg} alt="....." />
+                        <Img src='/images/subscribe.jpg' alt="....." />
                         <Details  >
                             <Heading> Subscribe For Taste Healthy Difference</Heading>
                             <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis perferendis saepe laborum iste veniam facilis error vitae distinctio  <br />
