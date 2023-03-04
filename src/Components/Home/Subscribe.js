@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import subscribeImg from '../images/subscribe.jpg'
+import subscribeImg from '../../images/subscribe.jpg'
 import tw from "tailwind-styled-components";
 
 function Subscribe() {

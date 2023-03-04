@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useDispatch } from "react-redux";
-import { setType } from "../features/filter/foodFilterSlice";
+import { setType } from "../../features/filter/foodFilterSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function CategoryCard(props) {

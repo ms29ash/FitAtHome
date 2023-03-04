@@ -6,7 +6,7 @@ import { GiHotMeal, GiPayMoney } from 'react-icons/gi'
 function Service() {
     return (
         <Container>
-            <h1 className="w-full py-4 text-white text-center text-3xl" >Services</h1>
+            <h1 className="w-full py-4 text-redfood text-center text-3xl" >Services</h1>
 
             <Wrapper>
                 <IconContainer>
@@ -32,10 +32,10 @@ function Service() {
 
 export default Service
 
-const Container = tw.section` py-10  bg-gradient-to-b from-redfood via-redfood/90 to-redfood`
+const Container = tw.section` pb-10  `
 const Wrapper = tw.div`
 flex
-text-white
+text-redfood
 mx-auto
 lg:w-[60%]
 w-[95%]
@@ -59,5 +59,5 @@ w-[40%]
 aspect-[1/1]
 border-dotted
 rounded-full
-border-white
+border-redfood
 `

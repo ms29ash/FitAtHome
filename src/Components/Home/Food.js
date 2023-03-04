@@ -3,7 +3,7 @@ import FoodCard from './FoodCard';
 import {
     useQuery,
 } from 'react-query'
-import axios from '../axios'
+import axios from '../../axios'
 import tw from "tailwind-styled-components";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 

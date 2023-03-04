@@ -5,7 +5,7 @@ import tw from "tailwind-styled-components";
 import {
   useQuery,
 } from 'react-query'
-import axios from '../axios'
+import axios from '../../axios'
 import CategoryLoading from './CategoryLoading';
 
 function TypeMeals() {

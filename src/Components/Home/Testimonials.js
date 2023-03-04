@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import tw from "tailwind-styled-components";
-import "../Styles/Testimonials.css";
+import "../../Styles/Testimonials.css";
 import TestimonialCard from "./TestimonialCard";
 
 function Testimonials() {

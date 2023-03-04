@@ -7,7 +7,7 @@ import {
   Outlet
 } from "react-router-dom";
 import './App.css';
-import Home from './Components/Home';
+import Home from '../src/Pages/Home';
 import Navbar from './Components/Navbar';
 import SearchPage from './Pages/Search';
 import TrialPage from './Components/TrialPage';
