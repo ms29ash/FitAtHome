@@ -34,4 +34,4 @@ const Name = tw.h1``
 const Email = tw.p`flex items-center text-sm mr-2 `
 const Phone = tw.p`flex items-center text-sm`
 
-const Btn = tw.button`w-20 border-redfood border-[2px] bg-white text-redfood hover:text-orangefood hover:border-orangefood  text-center  px-5 py-2  rounded-full  cursor-pointer font-bold`
+const Btn = tw.button`w-20  bg-slate-100 text-black  hover:shadow-xl shadow-lg  text-center  px-5 py-2  rounded-full  cursor-pointer font-bold`
