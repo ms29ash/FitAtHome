@@ -5,7 +5,7 @@ function Order() {
     return (
         <Container>
             <Top>
-                <Img src="/profile.jpg" alt="" />
+                <Img src="https://images.unsplash.com/photo-1604908550665-327363165423?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" alt="" />
                 <Details>
                     <Head>The Red Box</Head>
                     <Address>JP Nagar ,UK</Address>
@@ -33,7 +33,7 @@ function Order() {
 
 export default Order
 
-const Container = tw.div`border-[2px] border-slate-300 w-full p-4 mb-6`
+const Container = tw.div`shadow-xl rounded bg-white w-full p-4 mb-6`
 const Top = tw.div`flex `
 const Img = tw.img`w-32 h-20`
 const Details = tw.div`ml-4`
@@ -46,5 +46,5 @@ const Bottom = tw.div`flex justify-between`
 const Wrapper = tw.div``
 const Items = tw.p`text-sm`
 const Buttons = tw.div`flex items-center mt-4`
-const TrackBtn = tw.button`bg-redfood font-bold text-white text-sm py-2 px-8 rounded-lg mr-2 hover:bg-orangefood`
-const HelpBtn = tw(TrackBtn)`bg-white border-redfood hover:bg-white hover:text-orangefood hover:border-orangefood border-2 text-redfood `
+const TrackBtn = tw.button`bg-redfood font-bold text-white text-sm py-2 px-8 rounded-full shadow-lg mr-2 hover:bg-orangefood`
+const HelpBtn = tw(TrackBtn)`text-black hover:bg-slate-100  bg-slate-100 hover:shadow-xl`
