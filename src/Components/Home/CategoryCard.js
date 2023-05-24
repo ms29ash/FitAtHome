@@ -14,7 +14,7 @@ function CategoryCard(props) {
       <Wrapper>
         {
           <Link
-            to="/food"
+            to="/findfood"
             onClick={() => {
               dispatch(setType(title));
             }}>
