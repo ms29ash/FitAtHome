@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import tw from "tailwind-styled-components";
 import FoodDetail from "./FoodDetail";
-import FoodPageMain from "./SearchPage/SearchPageMain";
+import FoodPageMain from "./FindFoodPage/FindFoodMain";
 
 
 function FoodDetails() {

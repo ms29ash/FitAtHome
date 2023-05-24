@@ -9,7 +9,7 @@ import {
 import './App.css';
 import Home from '../src/Pages/Home';
 import Navbar from './Components/Navbar';
-import SearchPage from './Pages/Search';
+import FindFood from './Pages/FindFood';
 import TrialPage from './Components/TrialPage';
 import SubscribePage from './Components/SubscribePage';
 import SignIn from './Components/SignIn';
@@ -40,18 +40,17 @@ function App() {
       <Routes>
         <Route path="/" element={<><Navbar /><Outlet /><Footer /></>} >
           <Route index element={<Home />} />
-          <Route path="/search"  >
-            <Route index element={<SearchPage />} />
-            <Route path="foodDetail"  >
-              <Route path=":id" element={<FoodDetails />} ></Route>
-            </Route>
-          </Route>
           <Route path="/trial" element={<TrialPage />} ></Route>
           <Route path="/subscribe" element={<SubscribePage />} ></Route>
           <Route path="menu/:tab" element={<Menu />} />
         </Route>
         <Route path="/cart" element={<AuthRoute><Navbar /><Cart /></AuthRoute>} ></Route>
-
+        <Route path="/findfood" element={<><Navbar /><Outlet /></>} >
+          <Route index element={<FindFood />} />
+          <Route path="foodDetail"  >
+            <Route path=":id" element={<FoodDetails />} ></Route>
+          </Route>
+        </Route>
 
 
         <Route path="/signin" element={<SignIn />} ></Route>

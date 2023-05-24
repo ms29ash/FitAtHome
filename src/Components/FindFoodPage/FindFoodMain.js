@@ -5,7 +5,7 @@ import { useQuery, useQueryClient } from "react-query";
 import axios from "../../axios";
 import { useSelector } from 'react-redux'
 
-function SearchPageMain() {
+function FindFoodMain() {
   const queryClient = useQueryClient();
   const type = useSelector((state) => state.food.type)
   const fetchFood = async () => {
@@ -48,6 +48,6 @@ function SearchPageMain() {
   );
 }
 
-export default SearchPageMain;
+export default FindFoodMain;
 
-const Container = tw.div` xl:p-4 p-1  w-[100%]  flex flex-wrap xl:mt-1 mt-6 `;
+const Container = tw.div` xl:p-4 p-1  w-[100%] h-max  items-stretch flex flex-wrap xl:mt-1 mt-6  `;

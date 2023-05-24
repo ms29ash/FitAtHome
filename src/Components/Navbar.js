@@ -8,10 +8,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Cookies from 'universal-cookie'
 import { useEffect } from "react";
 import { fetchUserData } from "../features/auth/userDataSlice";
-import { BiSearch } from 'react-icons/bi'
 import { TbBasket } from 'react-icons/tb'
 import { AiOutlineFire } from 'react-icons/ai'
 import { FiHelpCircle } from 'react-icons/fi'
+import { GiHotMeal } from 'react-icons/gi'
 
 
 const cookies = new Cookies()
@@ -61,7 +61,7 @@ function Navbar() {
         </HamburgerIcon>
 
         <NavLinks ref={navlink} >
-          <NavLink to="/search"><BiSearch className="mr-1" />Search</NavLink>
+          <NavLink to="/findfood"><GiHotMeal className="mr-1" />Find Food</NavLink>
           <NavLink to="/subscribe"><AiOutlineFire className="mr-1" />Fire</NavLink>
           <NavLink to="/cart"><TbBasket className="mr-1" />Cart</NavLink>
           {

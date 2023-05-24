@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setType } from "../../features/filter/foodFilterSlice";
 import { AiOutlineCaretDown } from "react-icons/ai";
 
-function SearchPageSideBar() {
+function FindFoodSideBar() {
   const refContainer = useRef();
   const refGroup = useRef();
   const refArrow = useRef();
@@ -28,7 +28,7 @@ function SearchPageSideBar() {
         </Heading>
 
         <Group ref={refGroup}>
-          <Head>Type</Head>
+          {/* <Head>Type</Head> */}
 
           <Option>
             <Checkbox
@@ -40,7 +40,7 @@ function SearchPageSideBar() {
                 dispatch(setType("Veg"));
               }}
             />
-            <OptionText htmlFor="veg">Veg</OptionText>
+            <OptionText $typeOf={type === "Veg"} htmlFor="veg">Veg</OptionText>
           </Option>
           <Option>
             <Checkbox
@@ -52,7 +52,7 @@ function SearchPageSideBar() {
                 dispatch(setType("Non-Veg"));
               }}
             />
-            <OptionText htmlFor="non-veg">Non-Veg</OptionText>
+            <OptionText $typeOf={type === "Non-Veg"} htmlFor="non-veg">Non-Veg</OptionText>
           </Option>
           <Option>
             <Checkbox
@@ -64,7 +64,7 @@ function SearchPageSideBar() {
                 dispatch(setType("Vegan"));
               }}
             />
-            <OptionText htmlFor="vegan">Vegan</OptionText>
+            <OptionText $typeOf={type === "Vegan"} htmlFor="vegan">Vegan</OptionText>
           </Option>
           <Option>
             <Checkbox
@@ -76,7 +76,7 @@ function SearchPageSideBar() {
                 dispatch(setType(null));
               }}
             />
-            <OptionText htmlFor="all">All</OptionText>
+            <OptionText $typeOf={type === null} htmlFor="all">All</OptionText>
           </Option>
         </Group>
       </Wrapper>
@@ -84,7 +84,7 @@ function SearchPageSideBar() {
   );
 }
 
-export default SearchPageSideBar;
+export default FindFoodSideBar;
 
 const Container = tw.div` h-[10vh] mt-3  xl:h-screen  xl:w-[18%] transition-all duration-200		 `;
 const Wrapper = tw.div`xl:fixed static bg-white shadow-xl rounded-xl  xl:w-[15%] w-[95vw] xl:py-8 xl:px-6 p-4 my-0 xl:mt-0  mt-4 `;
@@ -94,6 +94,7 @@ const TopHeadSmall = tw.h3`text-redfood xl:mb-2 text-xl  xl:hidden`;
 const Arrow = tw(AiOutlineCaretDown)`!fill-redfood  xl:hidden transition-transform`;
 const Head = tw.p`text-xl mx-3 my-1`;
 const Group = tw.div`mt-4  w-full   hidden xl:block`;
-const Option = tw.div`flex items-center mt-2 mx-3`;
-const Checkbox = tw.input`w-5 h-5 mr-3 `;
-const OptionText = tw.label` text-lg text-black/80`;
+const Option = tw.div`flex items-center mt-2 mx-3   rounded `;
+const Checkbox = tw.input` opacity-0 `;
+const OptionText = tw.label` text-sm  font-bold  -ml-2 w-full py-3 text-center cursor-pointer   bg-slate-100 rounded transition-all duration-200 ${(p) => (p.$typeOf ? "bg-redfood text-white" : "hover:bg-slate-200 text-black/80")}
+`;
