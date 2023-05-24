@@ -16,9 +16,10 @@ function CartCard({ item }) {
         }
     }
 
+    const removeHandler = () => { dispatch(removeCart({ name: name })) }
+
     return (
         <>
-            <hr />
             <Container>
                 <Img src={image} alt="" />
                 <Wrapper>
@@ -51,14 +52,15 @@ function CartCard({ item }) {
                     </Select>
                     <div className="flex mt-4 text-grayfood  mb-4" >
 
-                        <Btn>Remove</Btn>
+                        <Btn onClick={removeHandler} >Remove</Btn>
 
-                        <Btn  >Add to Favorites</Btn>
+                        <Btn>Add to Favorites</Btn>
 
                     </div>
                 </Wrapper>
 
             </Container>
+            <hr />
         </>
     )
 }

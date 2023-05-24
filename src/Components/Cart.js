@@ -38,7 +38,7 @@ function Cart() {
                 </AddContainer>
                 <hr className=" my-3 w-[98%] bg-redfood h-[1px] border-0 " />
                 <Head>Your Cart</Head>
-
+                <hr className=' my-3 w-[98%]' />
                 <Wrapper>
                     {
                         data?.map((item) => {
@@ -84,7 +84,7 @@ export default Cart
 const Container = tw.div` mt-2 mx-auto w-[98vw] max-w-[98vw]     rounded-xl flex flex-col-reverse lg:flex-row`
 const Section = tw.div`lg:max-w-[75%] w-full p-6 mx-auto bg-white`
 const Head = tw.h1`text-xl`
-const Wrapper = tw.div`w-[98%] mt-6 my-3 pb-10`
+const Wrapper = tw.div`w-[98%]  my-3 mt-8 pb-10`
 const AddContainer = tw.div`flex items-center mt-5 `
 const Address = tw.div`flex-1`
 const ChangeBtn = tw.button` text-redfood mx-3 hover:text-orangefood`
