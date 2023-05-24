@@ -42,7 +42,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/trial" element={<TrialPage />} ></Route>
           <Route path="/subscribe" element={<SubscribePage />} ></Route>
-          <Route path="menu/:tab" element={<Menu />} />
+          <Route path="menu/:tab" element={<AuthRoute><Menu /></AuthRoute>} />
         </Route>
         <Route path="/cart" element={<AuthRoute><Navbar /><Cart /></AuthRoute>} ></Route>
         <Route path="/findfood" element={<><Navbar /><Outlet /></>} >
