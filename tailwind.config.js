@@ -27,7 +27,8 @@ module.exports = {
           'BlinkMacSystemFont',]
       },
       colors: {
-
+        "ssorange": "#ff8e27",
+        "ssgreen": "#00a850",
         'redfood': '#bf0404',
         'orangefood': '#f23005',
         'greenfood': '#467302',

@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: proxima-nova, sans-serif;
 }
 
 html {
@@ -10,7 +11,7 @@ html {
 * {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
   scroll-behavior: smooth;
 }
 
@@ -49,7 +50,7 @@ a {
 
 /* Intro Section */
 .intro {
-  background: url("../public/images/intro.jpg") no-repeat center center/cover;
+  background: url("../public/images/hero.png") no-repeat center center/cover;
 }
 
 /* Food Section */
