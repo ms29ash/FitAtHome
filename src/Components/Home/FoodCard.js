@@ -2,73 +2,73 @@ import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import tw from "tailwind-styled-components";
 import { Link } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import ReviewStar from "./ReviewStar";
 
 function FoodCard(props) {
   let { foodItem } = props;
 
   return (
     <>
-      <Container>
+      <Container >
         <Wrapper>
           <Link to={`search/foodDetail/${foodItem?._id}`}>
-            {
+
+            {/* Box for image and food type */}
+            <Box>
+
               <FoodImg
                 src={foodItem?.image}
                 alt=""
                 placeholder={<LoadFoodImg />}
                 threshold={100}
               />
-            }
+              <FoodTypeIcon>
+
+                <FoodTypeImg
+                  src={
+                    foodItem?.type === "Veg"
+                      ? "/images/veg_icon.png"
+                      : foodItem?.type === "Non-Veg"
+                        ? "images/nonveg_icon.png"
+                        : foodItem?.type === "Vegan"
+                          ? "images/vegan_icon.png"
+                          : ""
+                  }
+                  alt=""
+                />
+                <p>{foodItem?.type}</p>
+              </FoodTypeIcon>
+            </Box>
 
 
 
+            {/* Description Part */}
             <Text>
+              {/* First Part of Description With name Price */}
               <Top>
 
-                {
-                  foodItem?.name.length < 25 ?
+                {foodItem?.name.length < 20 ?
 
-                    <TextHead className="mb-2">{foodItem?.name.slice(0, 25)}</TextHead>
-                    :
-                    <TextHead className="mb-2">{foodItem?.name.slice(0, 20)}..</TextHead>
-                }
-
-                <div className="flex items-center">
-
-                  <FoodTypeIcon
-                    src={
-                      foodItem?.type === "Veg"
-                        ? "/images/veg_icon.png"
-                        : foodItem?.type === "Non-Veg"
-                          ? "images/nonveg_icon.png"
-                          : foodItem?.type === "Vegan"
-                            ? "images/vegan_icon.png"
-                            : ""
-                    }
-                    alt=""
-                  />
-                  <ReviewBox >
-
-                    <FaStar style={{ color: 'white' }} />
-                    <Review >{foodItem?.ratings}</Review>
-                  </ReviewBox>
-
-                </div>
+                  <TextHead className="mb-2">{foodItem?.name.slice(0, 20)}</TextHead>
+                  :
+                  <TextHead className="mb-2">{foodItem?.name.slice(0, 20)}..</TextHead>}
+                <p className=" whitespace-nowrap  text-black text-3xl font-bold  ">
+                  &#8377; {foodItem?.price}
+                </p>
               </Top>
+              {/* Second Part of Description With name Description and Rating */}
               <Details>
                 <p className="text-xs text-slate-700 leading-5" >
-                  {foodItem?.description.slice(0, 132)}...
+                  {foodItem?.description.slice(0, 88)}...
                 </p>
 
-                <hr className="my-3" />
-                <Price>
+                {/* Rating stars */}
+                <ReviewStar rating={foodItem?.ratings} />
 
-                  <p className="  h-[15%] text-black text-md  ">
-                    &#8377; {foodItem?.price}.00
-                  </p>
-                  <BuyBtn>Buy Now</BuyBtn>
-                </Price>
+                <hr className="my-3" />
+                {/* Add to Cart Button */}
+                <BuyBtn>Add to Cart</BuyBtn>
+
               </Details>
 
             </Text>
@@ -82,17 +82,25 @@ function FoodCard(props) {
 export default FoodCard;
 
 const Container = tw.div`scroll-end scroll-mx-5 shrink-0   `;
-const Wrapper = tw.div`card-container my-3 transition-all shadow-md   rounded-md w-[300px] \  hover:shadow-2xl duration-300  transition-all bg-white shadow-lg`;
+const Wrapper = tw.div`card-container my-3   rounded-md w-[300px] \  hover:shadow-2xl duration-300  transition-all bg-white shadow-lg`;
+
+//Image and Food Type
+const Box = tw.div` grid place-items-center relative `
 const FoodImg = tw(
   LazyLoadImage
-)`rounded-t-md object-cover w-[100%]  mx-auto aspect-[6/3] bg-white `;
+)`rounded-t-md object-cover w-[100%]  mx-auto aspect-[3/2] bg-white `;
+const FoodTypeIcon = tw.div`flex absolute items-center bottom-2 left-2 bg-white font-bold  px-2 py-[0.35rem] text-xs rounded-md `;
+const FoodTypeImg = tw.img` w-[15px] h-[15px] mr-2 `;
+
+
 const LoadFoodImg = tw.img`rounded-t-md object-cover w-[250px] h-[187px] bg-gray-400 `;
-const FoodTypeIcon = tw.img` mr-3 w-[20px] h-[20px]`;
+// Description
 const Text = tw.div`p-3 `;
+//Top Part
 const Top = tw.div`flex justify-between items-center`
+const TextHead = tw.h1`text-base font-bold text-black transition-all `;
+//Second Part
 const Details = tw.div` justify-between items-center w-full mt-2`
-const TextHead = tw.h1`text-sm h-[30%] font-bold text-black`;
-const ReviewBox = tw.div`flex h-[20px] justify-between items-center rounded-md bg-redfood px-2 `
-const Review = tw.div`rounded-sm h-[20px] text-sm  text-white ml-1`
-const Price = tw.div`flex  justify-between items-center`
-const BuyBtn = tw.button`text-redfood `
+
+//Add to Cart Btn
+const BuyBtn = tw.button`text-ssorange font-bold  border-2 border-ssorange w-full py-2 rounded-md hover:text-white hover:bg-ssorange transition-all `
