@@ -3,13 +3,18 @@ import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { setType } from "../../features/filter/foodFilterSlice";
 import { AiOutlineCaretDown } from "react-icons/ai";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function FindFoodSideBar() {
   const refContainer = useRef();
   const refGroup = useRef();
   const refArrow = useRef();
   const dispatch = useDispatch();
-  const type = useSelector((state) => state.food.type);
+
+  let [searchParams] = useSearchParams();
+  const type = searchParams.get('category')
+  const navigate = useNavigate();
+
 
   return (
     <Container ref={refContainer}>
@@ -29,7 +34,18 @@ function FindFoodSideBar() {
 
         <Group ref={refGroup}>
           {/* <Head>Type</Head> */}
-
+          <Option>
+            <Checkbox
+              type="checkbox"
+              checked={type === null}
+              name="type"
+              id="all"
+              onChange={() => {
+                navigate('/food')
+              }}
+            />
+            <OptionText $typeOf={type === null} htmlFor="all">All</OptionText>
+          </Option>
           <Option>
             <Checkbox
               type="checkbox"
@@ -37,7 +53,7 @@ function FindFoodSideBar() {
               name="type"
               id="veg"
               onChange={() => {
-                dispatch(setType("Veg"));
+                navigate('/food?category=Veg')
               }}
             />
             <OptionText $typeOf={type === "Veg"} htmlFor="veg">Veg</OptionText>
@@ -49,7 +65,7 @@ function FindFoodSideBar() {
               name="type"
               id="non-veg"
               onChange={() => {
-                dispatch(setType("Non-Veg"));
+                navigate('/food?category=Non-Veg');
               }}
             />
             <OptionText $typeOf={type === "Non-Veg"} htmlFor="non-veg">Non-Veg</OptionText>
@@ -61,23 +77,23 @@ function FindFoodSideBar() {
               name="type"
               id="vegan"
               onChange={() => {
-                dispatch(setType("Vegan"));
+                navigate('/food?category=Vegan')
               }}
             />
             <OptionText $typeOf={type === "Vegan"} htmlFor="vegan">Vegan</OptionText>
           </Option>
-          <Option>
+          {/* <Option>
             <Checkbox
               type="checkbox"
-              checked={type === null}
+              checked={type === "drinks"}
               name="type"
-              id="all"
+              id="drinks"
               onChange={() => {
-                dispatch(setType(null));
+                dispatch(setType("drinks"));
               }}
             />
-            <OptionText $typeOf={type === null} htmlFor="all">All</OptionText>
-          </Option>
+            <OptionText $typeOf={type === "Drinks"} htmlFor="drinks">Drinks</OptionText>
+          </Option> */}
         </Group>
       </Wrapper>
     </Container>
@@ -96,5 +112,5 @@ const Head = tw.p`text-xl mx-3 my-1`;
 const Group = tw.div`mt-4  w-full   hidden xl:block`;
 const Option = tw.div`flex items-center mt-2 mx-3   rounded `;
 const Checkbox = tw.input` opacity-0 `;
-const OptionText = tw.label` text-sm  font-bold  -ml-2 w-full py-3 text-center cursor-pointer   bg-slate-100 rounded transition-all duration-200 ${(p) => (p.$typeOf ? "bg-redfood text-white" : "hover:bg-slate-200 text-black/80")}
+const OptionText = tw.label` text-sm  font-bold  -ml-2 w-full py-3 text-center cursor-pointer   bg-slate-100 rounded transition-all duration-200 ${(p) => (p.$typeOf ? "bg-black text-white" : "hover:bg-slate-200 text-black/80")}
 `;

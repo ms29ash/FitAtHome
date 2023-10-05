@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 
 
-function FoodCard(props) {
+function Food(props) {
     const [alert, setAlert] = useState(null)
     const { foodItem } = props || {};
     const dispatch = useDispatch()
@@ -94,7 +94,7 @@ function FoodCard(props) {
     )
 }
 
-export default FoodCard
+export default Food
 const Container = tw.div`  shadow-lg rounded bg-white  lg:w-[19%] md:w-[24%] sm:w-[32%] w-[49%] mx-[0.5%] xl:mb-6 mb-3   py-2 relative `
 const Img = tw(LazyLoadImage)`rounded-t-lg object-cover aspect-[4/2] w-full 	`
 const Wrapper = tw.div`xl:px-4 xl:py-2 px-1 py-2  flex flex-col  justify-between  `

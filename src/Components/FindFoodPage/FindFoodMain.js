@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import tw from "tailwind-styled-components";
-import FoodCard from "./FoodCard";
+import FoodCard from "../Home/FoodCard";
 import { useQuery, useQueryClient } from "react-query";
 import axios from "../../axios";
 import { useSelector } from 'react-redux'
+import { useSearchParams } from "react-router-dom";
+
 
 function FindFoodMain() {
+  let [searchParams] = useSearchParams();
   const queryClient = useQueryClient();
-  const type = useSelector((state) => state.food.type)
+  const type = searchParams.get('category') || null;
+  // const type = useSelector((state) => state.food.type)
   const fetchFood = async () => {
     return axios.get("/food");
   };
@@ -50,4 +54,4 @@ function FindFoodMain() {
 
 export default FindFoodMain;
 
-const Container = tw.div` xl:p-4 p-1  w-[100%] h-max  items-stretch flex flex-wrap xl:mt-1 mt-6  `;
+const Container = tw.div` xl:p-4 p-1  w-[100%] h-max  items-stretch  flex-wrap xl:mt-1 mt-6  grid grid-cols-4`;

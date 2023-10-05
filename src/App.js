@@ -7,6 +7,7 @@ import {
   Outlet
 } from "react-router-dom";
 import './App.css';
+import './Styles/tailwind.css';
 import Home from '../src/Pages/Home';
 import Navbar from './Components/Navbar';
 import FindFood from './Pages/FindFood';
@@ -42,10 +43,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/trial" element={<TrialPage />} ></Route>
           <Route path="/subscribe" element={<SubscribePage />} ></Route>
-          <Route path="menu/:tab" element={<AuthRoute><Menu /></AuthRoute>} />
         </Route>
+        <Route path="menu/:tab" element={<AuthRoute><Navbar /><Menu /></AuthRoute>} />
         <Route path="/cart" element={<AuthRoute><Navbar /><Cart /></AuthRoute>} ></Route>
-        <Route path="/findfood" element={<><Navbar /><Outlet /></>} >
+        <Route path="/food" element={<><Navbar /><Outlet /></>} >
           <Route index element={<FindFood />} />
           <Route path="foodDetail"  >
             <Route path=":id" element={<FoodDetails />} ></Route>
