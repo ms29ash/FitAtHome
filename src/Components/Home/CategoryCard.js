@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
-import { useDispatch } from "react-redux";
-import { setType } from "../../features/filter/foodFilterSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { AiFillRightCircle } from "react-icons/ai"
 
 function CategoryCard(props) {
-  const dispatch = useDispatch();
   const { title, image, icon } = props;
 
   return (
@@ -15,10 +12,8 @@ function CategoryCard(props) {
       <Wrapper>
         {
           <Link
-            to="/findfood"
-            onClick={() => {
-              dispatch(setType(title));
-            }}>
+            to={`/food?category=${title}`}
+          >
             <Img
               placeholder={<LoadImg />}
               threshold={100}
