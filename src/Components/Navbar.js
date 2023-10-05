@@ -1,17 +1,14 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import tw from "tailwind-styled-components";
 import HamburgerMenu from "./HamburgerMenu";
-import { BsPerson } from 'react-icons/bs'
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from 'universal-cookie'
 import { useEffect } from "react";
 import { fetchUserData } from "../features/auth/userDataSlice";
 import { BsPersonFill } from 'react-icons/bs'
 import { AiFillFire } from 'react-icons/ai'
-import { FiHelpCircle } from 'react-icons/fi'
-import { HiMiniFire } from 'react-icons/hi'
 import { FaBoxOpen } from 'react-icons/fa'
 import { MdNotifications } from 'react-icons/md'
 
@@ -28,6 +25,9 @@ function Navbar() {
   const name = useSelector(state => state.userData.name)
   const dispatch = useDispatch()
   const authToken = cookies.get('authToken')
+
+  let { pathname } = useLocation();
+
 
 
 
@@ -69,10 +69,10 @@ function Navbar() {
 
         {/* Section 2 Links */}
         <Wrapper>
-          <LinkTo to="/" >Veg</LinkTo>
-          <LinkTo to="/" >Non-Veg</LinkTo>
-          <LinkTo to="/" >Vegan</LinkTo>
-          <LinkTo to="/" >Drinks</LinkTo>
+          <LinkTo selected={pathname === '/food'} to="/food" >Menu</LinkTo>
+          {/* <LinkTo to="/food?category=Non-Veg" >Non-Veg</LinkTo>
+          <LinkTo to="/food?category=Vegan" >Vegan</LinkTo> */}
+          {/* <LinkTo to="/food?category=drink" >Drinks</LinkTo> */}
 
         </Wrapper>
 
@@ -83,7 +83,7 @@ function Navbar() {
           <NavLink to="/findfood" className="relative" ><MdNotifications className="mr-1" /> <Notification>3</Notification> </NavLink>
           {
             isLoggedIn === true ?
-              <NavLink to="/menu/order"><BsPersonFill className="mr-1" />{name ? name.substr(0, 5) : 'Person'}</NavLink>
+              <NavLink to="/menu/order"><BsPersonFill className="mr-1" /></NavLink>
               :
               <Button to="/signin"><p className="relative z-[1]" >Login</p> </Button>
           }
@@ -116,7 +116,7 @@ const Container = tw.header`w-screen fixed top-0 right-0 left-0 flex items-cente
   }  `
 
 const Nav = tw.nav`
-flex py-4 w-full max-w-[1400px] px-[5%]    items-center z-[100]  rounded-lg  top-0 right-0 left-0
+flex py-4 w-full max-w-[1600px] px-[5%]    items-center z-[100]  rounded-lg  top-0 right-0 left-0
  
 `;
 const LogoWrapper = tw.div`inline-block w-[100px]`;
@@ -124,14 +124,15 @@ const Img = tw.img`w-full`
 const HamburgerIcon = tw.div` top-[25px] md:hidden right-3 absolute`;
 
 //Section 2
-const Wrapper = tw.div` flex-1  flex space-x-8 px-[5%] `
-const LinkTo = tw(Link)`font-bold w-full text-center whitespace-nowrap text-gray-700 relative before:absolute before:-bottom-3 before:w-0 hover:before:w-full before:left-0 before:h-1 before:rounded-full before:transition-all  before:bg-ssorange hover:text-ssorange `;
+const Wrapper = tw.div` flex-1  flex space-x-8 pl-[10%]   `
+const LinkTo = tw(Link)`font-bold  px-5 text-center whitespace-nowrap text-gray-700 relative before:absolute before:-bottom-3 before:w-0 hover:before:w-full before:left-0 before:h-1 before:rounded-full before:transition-all  before:bg-ssorange hover:text-ssorange ${p => p.selected === true && 'before:w-full text-ssorange'
+  }  `;
 
 
 //Section 3
 const NavLinks = tw.div` 
  flex-1 md:!flex hidden  justify-end items-center  `;
-const NavLink = tw(Link)`ml-10 text-2xl items-center  flex hover:bg-grayfood/20 p-2 aspect-square rounded-full   font-bold hover:underline text-black transition-all `;
+const NavLink = tw(Link)`ml-10 text-2xl items-center  flex hover:bg-grayfood/10 p-2 aspect-square rounded-full   font-bold hover:underline text-black transition-all `;
 const Button = tw(Link)`ml-10 text-base items-center flex bg-ssorange text-white px-8 py-3  rounded-lg   font-bold   hover-btn before:bg-ssgreen `;
 const Notification = tw.small` text-xs absolute right-2 top-1 bg-ssorange text-white w-4 text-center aspect-square rounded-full  `
 
