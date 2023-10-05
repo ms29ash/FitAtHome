@@ -1,63 +1,19 @@
 import React from 'react'
-import tw from 'tailwind-styled-components'
-import { FaTruck, FaMoneyBillWave } from 'react-icons/fa'
-import { GiHotMeal, GiPayMoney } from 'react-icons/gi'
 
-function Service() {
+function Service({ service }) {
     return (
-        <Container>
-            <h1 className="w-full py-4 text-redfood text-center text-3xl" >Services</h1>
+        <div className="flex  flex-col items-center shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] aspect-[4/5] rounded-lg justify-center  " >
+            <div className={`bg-[${service?.color}]/30 rounded-full p-4 `} >
+                <img className="w-28" src={`/images/service/${service?.image}`} alt="" />
 
-            <Wrapper>
-                <IconContainer>
-                    <Icon>  <FaTruck /></Icon>
-                    <p>Free Delivery</p>
-                </IconContainer>
-                <IconContainer>
-                    <Icon> <GiHotMeal /></Icon>
-                    <p>Fresh Food</p>
-                </IconContainer>
-                <IconContainer>
-                    <Icon>  <FaMoneyBillWave /></Icon>
-                    <p>Affordable Prices</p>
-                </IconContainer>
-                <IconContainer>
-                    <Icon>  <GiPayMoney /></Icon>
-                    <p>Pay on Delivery</p>
-                </IconContainer>
-            </Wrapper>
-        </Container>
+            </div>
+            <div className="text-black text-center py-6 px-8" >
+                <h2>{service?.title}</h2>
+                <p className="text-gray-900  text-sm my-3" >{service?.description}</p>
+            </div>
+        </div>
     )
 }
 
 export default Service
 
-const Container = tw.section` pb-10  `
-const Wrapper = tw.div`
-flex
-text-redfood
-mx-auto
-lg:w-[60%]
-w-[95%]
-flex-wrap
-py-6
-`
-const IconContainer = tw.div`
-md:w-[25%]
-w-[45%]
-flex
-my-4
-items-center
-flex-col
-`
-const Icon = tw.div`
-grid
-place-items-center
-text-4xl
-border-2
-w-[40%]
-aspect-[1/1]
-border-dotted
-rounded-full
-border-redfood
-`

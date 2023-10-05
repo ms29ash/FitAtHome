@@ -5,7 +5,7 @@ import Category from '../Components/Home/Category'
 import Trial from '../Components/Home/Trial'
 import Subscribe from '../Components/Home/Subscribe'
 import Testimonials from '../Components/Home/Testimonials'
-import Service from '../Components/Home/Service'
+import Services from '../Components/Home/Services'
 
 
 function Home(props) {
@@ -16,7 +16,7 @@ function Home(props) {
             <Hero />
             <Category />
             <Food />
-            <Service />
+            <Services />
             <Trial />
             <Subscribe />
             <Testimonials />
