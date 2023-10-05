@@ -19,7 +19,7 @@ function ReviewStar({ rating }) {
             {stars > 0 &&
                 Array(stars).fill('').map((i, n) => {
 
-                    return <FaStar style={{ color: '' }} className="text-ssorange" />
+                    return <FaStar key={n} style={{ color: '' }} className="text-ssorange" />
                 })
             }
             {

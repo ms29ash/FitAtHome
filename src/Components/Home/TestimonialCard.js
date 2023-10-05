@@ -39,7 +39,7 @@ const Wrapper = tw.div`ml-[5%] w-[50%] mr-[3%] `;
 const Box = tw.div` w-[42%] `
 const Img = tw.img` aspect-[4/3] object-cover rounded bottom-6 left-6 relative shadow-xl  `
 const Buttons = tw.div`mt-4`
-const LeftBtn = tw.button`bg-redfood hover:bg-orangefood text-white text-xl mr-2 p-2 rounded-full shadow-xl`
+const LeftBtn = tw.button`bg-ssorange hover:bg-ssgreen  text-white text-xl mr-2 p-2 rounded-full shadow-xl`
 const RightBtn = tw(LeftBtn)` bg-slate-200 hover:bg-slate-400 text-black`
 
 

@@ -12,7 +12,7 @@ function Services() {
 
     return (
         <Container>
-            <h1 className="w-full py-4 text-black text-center text-4xl" >Services</h1>
+            <h1 className="w-full py-4 md:!pb-6 text-black text-center text-4xl" >Services</h1>
 
             <Wrapper>
                 {isSuccess &&
@@ -28,16 +28,13 @@ function Services() {
 
 export default Services
 
-const Container = tw.section` pb-10  `
+const Container = tw.section` pb-10 md:pt-12   `
 const Wrapper = tw.div`
-grid grid-cols-4 justify-between
+grid grid-cols-2 lg:!grid-cols-4 justify-between
+px-[5%]
 max-w-[1400px]
-gap-x-8
+gap-x-[2.5%] 
+gap-y-[5%]
 mx-auto
 py-6
 `
-
-// < Service img = { 'delivery.png'} color = { '#ff8e27'} />
-//             <Service img={'payment.png'} color={'#ADD90D'} />
-//             <Service img={'affordable.png'} color={'#F2D027'} />
-//             <Service img={'food.png'} color={'#9BF2E2'} />

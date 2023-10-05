@@ -14,9 +14,12 @@ h6 {
 
 @layer utilities {
   .headings {
-    @apply font-bold text-4xl text-center my-5;
+    @apply font-bold text-4xl text-center ;
   }
 
+  .hover-btn{
+    @apply relative  before:absolute  before:top-0 before:bottom-0 before:left-0  before:rounded-xl before:transition-all hover:before:w-full duration-300 before:w-0 rounded-xl font-bold  text-center
+  }
   .btn {
     @apply bg-redfood hover:bg-orangefood rounded-full cursor-pointer text-white;
   }

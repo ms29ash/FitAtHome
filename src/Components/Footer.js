@@ -83,10 +83,10 @@ function Footer() {
 
 export default Footer;
 
-const Container = tw.footer`md:pt-12 pt-2 pb-6 bg-redfood grid  md:grid-cols-5    items-start  text-white grid-cols-2`;
+const Container = tw.footer`md:pt-12 pt-2 pb-6 bg-black grid  md:grid-cols-5    items-start  text-white grid-cols-2`;
 const Wrapper = tw.div`flex flex-col mt-6 md:mt-4 ml-[20%]`
 const Head = tw.h3`text-lg mb-3`
 const Img = tw.img`w-[30%] md:w-[50%] mx-auto`
 const LinkTo = tw(Link)`text-gray-300 hover:text-white my-2 text-sm  `;
-const Social = tw.div` flex w-screen justify-center flex-col items-center py-6 text-redfood`
+const Social = tw.div` flex w-screen justify-center flex-col items-center py-6 text-white bg-black`
 const Icons = tw.div`flex text-3xl space-x-7 mt-2 `

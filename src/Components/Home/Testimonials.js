@@ -44,6 +44,6 @@ function Testimonials() {
 export default Testimonials
 
 const Wrapper = tw.div`w-screen `
-const Slider = tw.div`slider  overflow-x-visible relative w-[98vw] mx-[1vw] flex items-stretch gap-6 snap-x snap-mandatory overflow-x-auto pb-4`
+const Slider = tw.div`slider   relative w-[98vw] mx-[1vw] flex items-stretch gap-6 snap-x snap-mandatory overflow-x-auto pb-4`
 const Container = tw.div`relative flex flex-col items-center `;
 const Head = tw.h1``;
