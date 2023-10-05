@@ -21,4 +21,4 @@ export default SubscribePage
 
 const Container = tw.div` h-fit w-screeen grid place-items-center  mb-[5vh] `
 const Wrapper = tw.div`grid md:w-[80vw] w-[90vw] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center		gap-[1vw]	 md:flex-row justify-items-center	 `
-const Head = tw.h1`col-span-1 md:col-span-2 lg:col-span-3 mb-6 mt-10`
+const Head = tw.h1`col-span-1 md:col-span-2 lg:col-span-3 mb-6 mt-10 text-3xl`
