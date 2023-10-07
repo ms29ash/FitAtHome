@@ -45,6 +45,7 @@ function Navbar() {
   })
 
 
+
   //Sticky Navbar
   useEffect(() => {
     const handleSticky = () => {
@@ -78,19 +79,19 @@ function Navbar() {
 
         {/* Section 3 Icons */}
         <NavLinks ref={navlink} >
-          <NavLink to="/subscribe">
-            <AiFillFire className="text-[2.5rem] mr-1 p-2 rounded-full hover:bg-grayfood/10" />
+          <NavLink to="/fire" >
+            <AiFillFire className={`${icon} ${pathname === '/fire' && 'bg-grayfood/20'}`} />
             <NavLinkTxt>Fire</NavLinkTxt>
           </NavLink>
-          <NavLink to="/cart" className="relative" >
-            <FaBoxOpen className="text-[2.5rem] mr-1 p-2 rounded-full hover:bg-grayfood/10" />
+          <NavLink to="/box" className="relative" >
+            <FaBoxOpen className={`${icon} ${pathname === '/box' && 'bg-grayfood/20'}`} />
             <NavLinkTxt>Box</NavLinkTxt>
             <Notification>{basket?.length}</Notification>
 
 
           </NavLink>
-          <NavLink to="/findfood" className="relative" >
-            <MdNotifications className="text-[2.5rem] mr-1 p-2 rounded-full hover:bg-grayfood/10" />
+          <NavLink to="/notification" className="relative"  >
+            <MdNotifications className={`${icon} ${pathname === '/notification' && 'bg-grayfood/20'}`} />
             <NavLinkTxt>Notification</NavLinkTxt>
             <Notification>3</Notification>
           </NavLink>
@@ -146,6 +147,7 @@ const LinkTo = tw(Link)`font-bold  px-5 text-center whitespace-nowrap text-gray-
 const NavLinks = tw.div` 
  flex-1 md:!flex hidden  justify-end items-center  `;
 const NavLink = tw(Link)`ml-10 text-2xl items-center  flex  p-2 aspect-square rounded-full   font-bold  text-black transition-all flex-col justify-center  `;
+const icon = `text-[2.5rem] mr-1 p-2 rounded-full hover:bg-grayfood/10 `
 const NavLinkTxt = tw.p`text-xs `;
 const Button = tw(Link)`ml-10 text-base items-center flex bg-ssorange text-white px-8 py-3  rounded-lg   font-bold   hover-btn before:bg-ssgreen `;
 const Notification = tw.small` text-xs absolute right-[30%] top-[20%] bg-ssorange text-white w-4 text-center aspect-square rounded-full  `

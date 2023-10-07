@@ -28,6 +28,7 @@ import AuthRoute from './Components/Routes/AuthRoute';
 import Menu from './Pages/Menu';
 
 import { Toaster } from 'react-hot-toast';
+import Notification from './Pages/Notification';
 
 
 
@@ -44,10 +45,11 @@ function App() {
         <Route path="/" element={<><Navbar /><Outlet /><Footer /></>} >
           <Route index element={<Home />} />
           <Route path="/trial" element={<TrialPage />} ></Route>
-          <Route path="/subscribe" element={<SubscribePage />} ></Route>
+          <Route path="/fire" element={<SubscribePage />} ></Route>
+          <Route path="/notification" element={<Notification />} ></Route>
         </Route>
         <Route path="menu/:tab" element={<AuthRoute><Navbar /><Menu /></AuthRoute>} />
-        <Route path="/cart" element={<AuthRoute><Navbar /><Cart /></AuthRoute>} ></Route>
+        <Route path="/box" element={<AuthRoute><Navbar /><Cart /></AuthRoute>} ></Route>
         <Route path="/food" element={<><Navbar /><Outlet /></>} >
           <Route index element={<FindFood />} />
           <Route path=":id" element={<FoodDetails />} ></Route>
