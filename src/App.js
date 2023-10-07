@@ -27,6 +27,8 @@ import Cart from './Components/Cart/Cart';
 import AuthRoute from './Components/Routes/AuthRoute';
 import Menu from './Pages/Menu';
 
+import { Toaster } from 'react-hot-toast';
+
 
 
 function App() {
@@ -65,6 +67,8 @@ function App() {
         </Route>
       </Routes>
 
+
+      <Toaster position="top-right" gutter={8} reverseOrder={true} toastOptions={{ duration: 1800, }} containerStyle={{ marginTop: "10vh" }} />
 
     </>
   );
