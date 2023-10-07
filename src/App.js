@@ -48,7 +48,7 @@ function App() {
           <Route path="/fire" element={<SubscribePage />} ></Route>
           <Route path="/notification" element={<Notification />} ></Route>
         </Route>
-        <Route path="menu/:tab" element={<AuthRoute><Navbar /><Menu /></AuthRoute>} />
+        <Route path="menu" element={<AuthRoute><Navbar /><Menu /></AuthRoute>} />
         <Route path="/box" element={<AuthRoute><Navbar /><Cart /></AuthRoute>} ></Route>
         <Route path="/food" element={<><Navbar /><Outlet /></>} >
           <Route index element={<FindFood />} />

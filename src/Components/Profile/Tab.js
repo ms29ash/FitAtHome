@@ -19,4 +19,4 @@ function Tab({ tab }) {
 
 export default Tab
 
-const Container = tw.div`flex-1 w-full p-4 `
+const Container = tw.div`flex-1 w-full p-4 max-h-[80vh] overflow-y-scroll`

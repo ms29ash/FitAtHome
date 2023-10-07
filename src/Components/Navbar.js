@@ -97,7 +97,7 @@ function Navbar() {
           </NavLink>
           {
             isLoggedIn === true ?
-              <NavLink to="/menu/order"><BsPersonFill className=" p-2 bg-grayfood/10 text-5xl mr-1 rounded-full hover:bg-grayfood/30 " /></NavLink>
+              <NavLink to="/menu"><BsPersonFill className=" p-2 bg-grayfood/10 text-5xl mr-1 rounded-full hover:bg-grayfood/30 " /></NavLink>
               :
               <Button to="/signin"><p className="relative z-[1]" >Login</p> </Button>
           }

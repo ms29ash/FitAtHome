@@ -1,5 +1,5 @@
 import React from 'react'
-import tw from 'tailwind-styled-components/dist/tailwind'
+import tw from 'tailwind-styled-components'
 import Favorite from './Favorite'
 
 

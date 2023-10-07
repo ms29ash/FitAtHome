@@ -4,19 +4,20 @@ import tw from 'tailwind-styled-components'
 import Tab from '../Components/Profile/Tab'
 import ProfileDetail from '../Components/Profile/ProfileDetail'
 import Sidebar from '../Components/Profile/Sidebar'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
+
 
 function Menu() {
-    const { pathname } = useLocation()
-    const tab = pathname.split('/')
+    let [searchParams] = useSearchParams()
+    const tab = searchParams.get('tab') || 'order';
     return (
         <Container>
             <ContainerIn>
 
                 <ProfileDetail />
                 <Wrapper>
-                    <Sidebar tab={pathname} />
-                    <Tab tab={tab[2]} />
+                    <Sidebar tab={tab} />
+                    <Tab tab={tab} />
                 </Wrapper>
             </ContainerIn>
         </Container>

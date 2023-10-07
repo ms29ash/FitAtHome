@@ -8258,11 +8258,6 @@ react-lazy-load-image-component@^1.5.4:
     lodash.debounce "^4.0.8"
     lodash.throttle "^4.1.1"
 
-react-notifications-component@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-notifications-component/-/react-notifications-component-4.0.1.tgz#c4cf71eb40375f346e2a4dc2b395a8590895d253"
-  integrity sha512-NRBkWO19AsXmN0b8YQ0L12eoCAhrnmIZtGm77ATWSfQEXPL5PYSyeACpx7tePP+R2De9b0IP4yk9vY4TtzC02w==
-
 react-otp-input@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-otp-input/-/react-otp-input-2.4.0.tgz#0f0a3de1d8c8d564e2e4fbe5d6b7b56e29e3a6e6"
