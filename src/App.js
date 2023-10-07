@@ -23,7 +23,7 @@ import Verify from './Components/Verify';
 import ForgetPassNewPass from './Components/ForgetPassNewPass';
 import NewPass from './Components/NewPass';
 import Footer from './Components/Footer';
-import Cart from './Components/Cart';
+import Cart from './Components/Cart/Cart';
 import AuthRoute from './Components/Routes/AuthRoute';
 import Menu from './Pages/Menu';
 
@@ -48,9 +48,7 @@ function App() {
         <Route path="/cart" element={<AuthRoute><Navbar /><Cart /></AuthRoute>} ></Route>
         <Route path="/food" element={<><Navbar /><Outlet /></>} >
           <Route index element={<FindFood />} />
-          <Route path="foodDetail"  >
-            <Route path=":id" element={<FoodDetails />} ></Route>
-          </Route>
+          <Route path=":id" element={<FoodDetails />} ></Route>
         </Route>
 
 

@@ -1,4 +1,4 @@
-import axios from '../axios'
+import axios from '../../axios'
 
 
 const loadScript = () => {
@@ -15,7 +15,7 @@ const loadScript = () => {
     })
 }
 
-const loadPayment = async (orderAmount, address) => {
+const loadPayment = async (orderAmount, address, response) => {
     const res = await loadScript();
 
     if (!res) {
@@ -45,7 +45,9 @@ const loadPayment = async (orderAmount, address) => {
                     razorpayOrderId: res.razorpay_order_id,
                     razorpaySignature: res.razorpay_signature,
                 })
-                alert(result?.data.msg)
+                if (result.data) {
+                    response()
+                }
             },
             image: 'https://fitathome-4a700.web.app/images/LogoInv.png',
             prefill: {

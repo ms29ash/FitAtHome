@@ -5,17 +5,25 @@ import { RiCheckLine } from 'react-icons/ri'
 import CartCard from './CartCard'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import loadPayment from './Payment'
+import { useNavigate } from 'react-router-dom'
 
 function Cart() {
     const data = useSelector(state => state.basket.basket)
     const address = useSelector(state => state?.userData?.userData?.address || null)
     const [total, setTotal] = useState();
     const [subTotal, setSubTotal] = useState(0);
+    const navigate = useNavigate()
+
+
+    //Navigate after payment
+    const navigation = () => {
+        navigate('/menu/order')
+    }
 
     useEffect(() => {
         const total =
             data.reduce((total, item) =>
-                total + (item.item.price * item.quantity)
+                total + (item.price * item.quantity)
                 , 0)
         setTotal(total)
         const subTotal = total + ((total * 20) / 100) + (total > 500 ? 50 : total === 0 ? 0 : 100);
@@ -36,13 +44,13 @@ function Cart() {
                     {address === null ? <ChangeBtn>Set Address</ChangeBtn> : <ChangeBtn>Change</ChangeBtn>}
 
                 </AddContainer>
-                <hr className=" my-3 w-[98%] bg-redfood h-[1px] border-0 " />
+                <hr className=" my-3 w-[98%] bg-black h-[1px] border-0 " />
                 <Head>Your Cart</Head>
                 <hr className=' my-3 w-[98%]' />
                 <Wrapper>
                     {
                         data?.map((item) => {
-                            return <CartCard item={item} key={item.item._id} />
+                            return <CartCard item={item} key={item.id} />
                         })
                     }
                 </Wrapper>
@@ -73,7 +81,7 @@ function Cart() {
                     </tfoot>
                 </table>
 
-                <Btn onClick={() => loadPayment(subTotal, address)} disabled={subTotal === 0} ><p>Pay Now</p> <AiOutlineArrowRight /></Btn>
+                <Btn onClick={() => loadPayment(subTotal, address, navigation)} disabled={subTotal === 0} ><p className="z-[1]" >Pay Now</p> <AiOutlineArrowRight /></Btn>
             </Total>
         </Container>
     )
@@ -87,8 +95,8 @@ const Head = tw.h1`text-xl`
 const Wrapper = tw.div`w-[98%]  my-3 mt-8 pb-10`
 const AddContainer = tw.div`flex items-center mt-5 `
 const Address = tw.div`flex-1`
-const ChangeBtn = tw.button` text-redfood mx-3 hover:text-orangefood`
+const ChangeBtn = tw.button` text-ssorange mx-3 hover:text-orangefood`
 const CheckIcon = tw(RiCheckLine)`bg-redfood text-white rounded-full  mr-2 text-lg`
 const Total = tw.div`flex  w-full   flex-col items-center mb-6 h-fit bg-white py-3 lg:!w-[23%] mx-auto `
 const Th = tw.th`text-left`
-const Btn = tw.button` bg-redfood hover:bg-orangefood text-white  px-8 py-4 text-xl font-bold rounded-lg fixed bottom-6 right-5  flex items-center space-x-4 lg:static lg:!rounded-full  lg:py-2  lg:mt-4 lg:w-[90%] justify-center disabled:opacity-50 disabled:hover:bg-redfood`
+const Btn = tw.button` bg-ssorange  text-white  px-8 py-4 text-xl font-bold rounded-lg fixed bottom-6 lg:bottom-0 right-5  flex items-center space-x-4 lg:relative  lg:py-2  lg:mt-4 lg:w-[90%] justify-center disabled:opacity-50 disabled:hover:bg-redfood before:bg-ssgreen hover-btn  `

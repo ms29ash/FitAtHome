@@ -7,8 +7,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "../axios";
 import { useDispatch, useSelector } from 'react-redux'
 import { addCart } from '../features/basket/basketSlice'
-import AddToCartAlert from "./AddToCartAlert";
-import laodPayment from './Payment'
+import AddToCartAlert from "./Cart/AddToCartAlert";
+import laodPayment from './Cart/Payment'
 
 function FoodDetail() {
     const [alert, setAlert] = useState(null)

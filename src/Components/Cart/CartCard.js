@@ -1,26 +1,40 @@
 import React, { useRef } from 'react'
 import tw from 'tailwind-styled-components'
 import { useDispatch } from 'react-redux'
-import { setQuantity, removeCart } from '../features/basket/basketSlice'
+import { setQuantity, removeCart } from '../../features/basket/basketSlice'
+import axios from '../../axios';
+import { useQuery } from 'react-query';
 
 function CartCard({ item }) {
-    const { image, name, price, type } = item.item;
+    const { quantity, id } = item;
     const dispatch = useDispatch();
     const refSelect = useRef()
 
+
+    const fetchFood = async (id) => {
+        return axios.get(`/food/${id}`);
+    };
+
+    const { data, isSuccess, isLoading, isError, error } = useQuery(
+        ["food", id],
+        () => fetchFood(id)
+    );
+
+    const { image, name, price, type } = data?.data.food || {}
+
     const onChangeHandler = () => {
         if (refSelect.current.value === '0') {
-            dispatch(removeCart({ name: name }))
+            dispatch(removeCart(id))
         } else {
-            dispatch(setQuantity({ name: name, quantity: parseInt(refSelect.current.value) }))
+            dispatch(setQuantity({ id: id, quantity: parseInt(refSelect.current.value) }))
         }
     }
 
-    const removeHandler = () => { dispatch(removeCart({ name: name })) }
+    const removeHandler = () => { dispatch(removeCart(id)) }
 
     return (
         <>
-            <Container>
+            {isSuccess && <Container>
                 <Img src={image} alt="" />
                 <Wrapper>
 
@@ -59,7 +73,7 @@ function CartCard({ item }) {
                     </div>
                 </Wrapper>
 
-            </Container>
+            </Container>}
             <hr />
         </>
     )
@@ -78,6 +92,6 @@ const Wrapper = tw.div` ml-4`
 const Select = tw.select` drop-shadow-4xl shadow-lg bg-gray-200 px-2 py-1 text-base rounded-lg mt-2 border-[2px] border-slate-400 mt-[6%] mb-[4%] `
 const FoodTypeIcon = tw.div` my-2  items-center flex`;
 
-const Price = tw.p`my-3 h-[15%] absolute top-2 right-2  text-redfood text-xl font-bold`
+const Price = tw.p`my-3 h-[15%] absolute top-2 right-2  text-black text-xl font-bold`
 
-const Btn = tw.button` mr-4 hover:text-redfood text-sm hover:underline`
+const Btn = tw.button` mr-4 hover:text-ssorange text-sm hover:underline`

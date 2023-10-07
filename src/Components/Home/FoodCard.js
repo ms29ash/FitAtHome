@@ -1,78 +1,114 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import tw from "tailwind-styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReviewStar from "./ReviewStar";
+import { useDispatch } from "react-redux";
+import { addCart, removeCart } from '../../features/basket/basketSlice'
+import { useSelector } from "react-redux";
 
-function FoodCard(props) {
-  let { foodItem } = props;
+function FoodCard({ foodItem }) {
+  const [basket, setBasket] = useState(false)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+  const cart = useSelector(state => state.basket.basket)
+
+
+
+  useEffect(() => {
+    const checkBasket = (cart, id) => {
+      const idToCheck = cart?.some(item => item.id === id);
+      setBasket(idToCheck);
+    }
+    checkBasket(cart, foodItem?._id)
+  }, [cart])
+
+
+  //Add to Cart Function
+  const addToCart = (e) => {
+    if (isLoggedIn === true) {
+      dispatch(addCart({ quantity: 1, id: foodItem?._id, price: foodItem?.price }))
+    } else {
+      navigate('/signin')
+    }
+  }
+  //Remove from Cart Function
+  const removeFromCart = (e) => {
+    if (isLoggedIn === true) {
+      dispatch(removeCart(foodItem?._id))
+    } else {
+      navigate('/signin')
+    }
+  }
+
 
   return (
     <>
       <Container >
         <Wrapper>
-          <Link to={`search/foodDetail/${foodItem?._id}`}>
 
-            {/* Box for image and food type */}
-            <Box>
+          {/* Box for image and food type */}
+          <Box onClick={() => navigate(`food/${foodItem?._id}`)} >
 
-              <FoodImg
-                src={foodItem?.image}
+            <FoodImg
+              src={foodItem?.image}
+              alt=""
+              placeholder={<LoadFoodImg />}
+              threshold={100}
+            />
+            <FoodTypeIcon>
+
+              <FoodTypeImg
+                src={
+                  foodItem?.type === "Veg"
+                    ? "/images/veg_icon.png"
+                    : foodItem?.type === "Non-Veg"
+                      ? "images/nonveg_icon.png"
+                      : foodItem?.type === "Vegan"
+                        ? "images/vegan_icon.png"
+                        : ""
+                }
                 alt=""
-                placeholder={<LoadFoodImg />}
-                threshold={100}
               />
-              <FoodTypeIcon>
-
-                <FoodTypeImg
-                  src={
-                    foodItem?.type === "Veg"
-                      ? "/images/veg_icon.png"
-                      : foodItem?.type === "Non-Veg"
-                        ? "images/nonveg_icon.png"
-                        : foodItem?.type === "Vegan"
-                          ? "images/vegan_icon.png"
-                          : ""
-                  }
-                  alt=""
-                />
-                <p>{foodItem?.type}</p>
-              </FoodTypeIcon>
-            </Box>
+              <p>{foodItem?.type}</p>
+            </FoodTypeIcon>
+          </Box>
 
 
 
-            {/* Description Part */}
-            <Text>
-              {/* First Part of Description With name Price */}
-              <Top>
+          {/* Description Part */}
+          <Text>
+            {/* First Part of Description With name Price */}
+            <Top>
 
-                {foodItem?.name.length < 20 ?
+              {foodItem?.name.length < 20 ?
 
-                  <TextHead className="mb-2">{foodItem?.name.slice(0, 20)}</TextHead>
-                  :
-                  <TextHead className="mb-2">{foodItem?.name.slice(0, 20)}..</TextHead>}
-                <p className=" whitespace-nowrap  text-black text-3xl font-bold  ">
-                  &#8377; {foodItem?.price}
-                </p>
-              </Top>
-              {/* Second Part of Description With name Description and Rating */}
-              <Details>
-                <p className="text-xs text-slate-700 leading-5" >
-                  {foodItem?.description.slice(0, 88)}...
-                </p>
+                <TextHead className="mb-2">{foodItem?.name.slice(0, 20)}</TextHead>
+                :
+                <TextHead className="mb-2">{foodItem?.name.slice(0, 20)}..</TextHead>}
+              <p className=" whitespace-nowrap  text-black text-3xl font-bold  ">
+                &#8377; {foodItem?.price}
+              </p>
+            </Top>
+            {/* Second Part of Description With name Description and Rating */}
+            <Details>
+              <p className="text-xs text-slate-700 leading-5" >
+                {foodItem?.description.slice(0, 88)}...
+              </p>
 
-                {/* Rating stars */}
-                <ReviewStar rating={foodItem?.ratings} />
+              {/* Rating stars */}
+              <ReviewStar rating={foodItem?.ratings} />
 
-                <hr className="my-3" />
-                {/* Add to Cart Button */}
-                <BuyBtn>Add to Cart</BuyBtn>
+              <hr className="my-3" />
+              {/* Add to Cart Button */}
+              {basket === false ?
+                <BuyBtn onClick={() => addToCart()}>Add to Cart</BuyBtn> : <RemoveBtn onClick={() => removeFromCart()}>Added to Cart</RemoveBtn>
+              }
 
-              </Details>
+            </Details>
 
-            </Text>
-          </Link>
+          </Text>
         </Wrapper>
       </Container>
     </>
@@ -103,4 +139,5 @@ const TextHead = tw.h1`text-base font-bold text-black transition-all `;
 const Details = tw.div` justify-between items-center w-full mt-2`
 
 //Add to Cart Btn
-const BuyBtn = tw.button`text-ssorange font-bold  border-2 border-ssorange w-full py-2 rounded-md hover:text-white hover:bg-ssorange transition-all `
+const BuyBtn = tw.button`text-ssorange font-bold  border-2 border-ssorange w-full py-2 rounded-md hover:text-white hover:bg-ssorange transition-all select-none `
+const RemoveBtn = tw.button`text-white font-bold  border-2 bg-ssorange w-full py-2 rounded-md  transition-all select-none `

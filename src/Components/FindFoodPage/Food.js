@@ -28,7 +28,7 @@ function Food(props) {
         if (isLoggedIn === true) {
 
             setAlert('Added to Cart')
-            dispatch(addCart({ quantity: 1, item: foodItem }));
+            dispatch(addCart({ quantity: 1, id: foodItem }));
             setTimeout(() => {
                 setAlert(null);
             }, 2000);
