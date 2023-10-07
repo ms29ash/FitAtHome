@@ -6,6 +6,9 @@ import ReviewStar from "./ReviewStar";
 import { useDispatch } from "react-redux";
 import { addCart, removeCart } from '../../features/basket/basketSlice'
 import { useSelector } from "react-redux";
+import toast from 'react-hot-toast';
+import CustomToast from "../Cart/AddToCartAlert";
+
 
 function FoodCard({ foodItem }) {
   const [basket, setBasket] = useState(false)
@@ -13,6 +16,8 @@ function FoodCard({ foodItem }) {
   const navigate = useNavigate()
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
   const cart = useSelector(state => state.basket.basket)
+
+
 
 
 
@@ -25,10 +30,13 @@ function FoodCard({ foodItem }) {
   }, [cart])
 
 
+
   //Add to Cart Function
   const addToCart = (e) => {
     if (isLoggedIn === true) {
       dispatch(addCart({ quantity: 1, id: foodItem?._id, price: foodItem?.price }))
+
+      CustomToast(foodItem?.image, foodItem.name, 'Added to cart', 'success')
     } else {
       navigate('/signin')
     }
@@ -37,6 +45,7 @@ function FoodCard({ foodItem }) {
   const removeFromCart = (e) => {
     if (isLoggedIn === true) {
       dispatch(removeCart(foodItem?._id))
+      CustomToast(foodItem?.image, foodItem.name, 'Removed from cart')
     } else {
       navigate('/signin')
     }
@@ -49,7 +58,7 @@ function FoodCard({ foodItem }) {
         <Wrapper>
 
           {/* Box for image and food type */}
-          <Box onClick={() => navigate(`food/${foodItem?._id}`)} >
+          <Box onClick={() => navigate(`/food/${foodItem?._id}`)} >
 
             <FoodImg
               src={foodItem?.image}

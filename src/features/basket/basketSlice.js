@@ -40,16 +40,15 @@ export const basketSlice = createSlice({
             }
         }
         ,
-        // decrement: (state) => {
-        //     state.value -= 1
-        // },
-        // incrementByAmount: (state, action) => {
-        //     state.value += action.payload
-        // },
+        resetCart: (state, action) => {
+            state.basket = []
+        }
+        ,
+
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addCart, setQuantity, removeCart } = basketSlice.actions
+export const { addCart, setQuantity, removeCart, resetCart } = basketSlice.actions
 
 export default basketSlice.reducer

@@ -7,8 +7,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "../axios";
 import { useDispatch, useSelector } from 'react-redux'
 import { addCart } from '../features/basket/basketSlice'
-import AddToCartAlert from "./Cart/AddToCartAlert";
 import laodPayment from './Cart/Payment'
+import ReviewStar from "./Home/ReviewStar";
 
 function FoodDetail() {
     const [alert, setAlert] = useState(null)
@@ -26,14 +26,10 @@ function FoodDetail() {
         () => fetchFood(id)
     );
 
+
     const { image, name, description, type, price, ratings } =
-        food?.data?.food[0] || {};
-    let host;
-    if (window.location.hostname === 'localhost') {
-        host = `http://${window.location.host}`;
-    } else {
-        host = `https://${window.location.host}`;
-    }
+        food?.data?.food || {};
+
 
     const addToCart = () => {
         if (isLoggedIn === true) {
@@ -50,7 +46,6 @@ function FoodDetail() {
     return (
 
         <Wrapper>
-            <AddToCartAlert alert={alert} />
             {<>
 
                 <Img
@@ -64,21 +59,17 @@ function FoodDetail() {
                     <SmallDesc>
 
 
-                        <ReviewBox >
-
-                            <FaStar style={{ color: 'white' }} />
-                            <Review >{ratings}</Review>
-                        </ReviewBox>
+                        <ReviewStar rating={ratings} />
                         <FoodType>
 
                             {<FoodTypeIcon
                                 src={
                                     type === "Veg"
-                                        ? `${host}/images/veg_icon.png`
+                                        ? `/images/veg_icon.png`
                                         : type === "Non-Veg"
-                                            ? `${host}/images/nonveg_icon.png`
+                                            ? `/images/nonveg_icon.png`
                                             : type === "Vegan"
-                                                ? `${host}/images/vegan_icon.png`
+                                                ? `/images/vegan_icon.png`
                                                 : ""
                                 }
                                 alt=""
@@ -107,7 +98,7 @@ function FoodDetail() {
 export default FoodDetail;
 
 const Wrapper = tw.div`flex flex-col md:flex-row  items-center w-full mb-[3vh] bg-white py-6 px-5 rounded-lg shadow-lg relative`;
-const Img = tw(LazyLoadImage)`w-full  md:w-[45%] aspect-[12/9] object-cover `;
+const Img = tw(LazyLoadImage)`w-full  md:w-[45%] aspect-[12/9] object-cover  rounded-lg`;
 const LoadFoodImg = tw.img`rounded-md w-[50%] h-full bg-gray-400 `;
 const Details = tw.div`text-lg mx-auto px-4`;
 const Head = tw.h1`text-2xl mt-5 mb-2 xl:my-2`;
@@ -117,9 +108,7 @@ const Price = tw.p`text-2xl my-2 `;
 const FoodType = tw.div`flex items-center my-2 mx-5`
 const Type = tw.p``;
 const FoodTypeIcon = tw.img` mr-2 w-[30px] h-[30px]`;
-const ReviewBox = tw.div`flex w-16 justify-end items-center rounded-md bg-redfood px-2 py-1 my-5`
-const Review = tw.div`rounded-sm bg-inherit text-white ml-1`
 
 const Buttons = tw.div``
-const BuyButton = tw.button`mr-2 mt-5 bg-redfood text-white py-3 px-5 rounded-full text-sm hover:bg-orangefood disabled:opacity-50`
-const AddButton = tw(BuyButton)`bg-greenfood hover:bg-grayfood`
+const BuyButton = tw.button`mr-2 mt-5 bg-ssorange/90  py-3 px-5 rounded-lg min-w-[150px] text-sm  transition-all  text-white disabled:opacity-50 font-bold before:bg-ssorange   `
+const AddButton = tw(BuyButton)`bg-ssgreen   hover:bg-ssgreen `

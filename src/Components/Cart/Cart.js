@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import tw from 'tailwind-styled-components'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RiCheckLine } from 'react-icons/ri'
 import CartCard from './CartCard'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import loadPayment from './Payment'
 import { useNavigate } from 'react-router-dom'
+import { resetCart } from '../../features/basket/basketSlice'
+
+
 
 function Cart() {
     const data = useSelector(state => state.basket.basket)
@@ -13,11 +16,12 @@ function Cart() {
     const [total, setTotal] = useState();
     const [subTotal, setSubTotal] = useState(0);
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
 
-    //Navigate after payment
-    const navigation = () => {
-        navigate('/menu/order')
+    //Payment Response
+    const response = () => {
+        dispatch(resetCart())
     }
 
     useEffect(() => {
@@ -81,7 +85,7 @@ function Cart() {
                     </tfoot>
                 </table>
 
-                <Btn onClick={() => loadPayment(subTotal, address, navigation)} disabled={subTotal === 0} ><p className="z-[1]" >Pay Now</p> <AiOutlineArrowRight /></Btn>
+                <Btn onClick={() => loadPayment(subTotal, address, response)} disabled={subTotal === 0} ><p className="z-[1]" >Pay Now</p> <AiOutlineArrowRight /></Btn>
             </Total>
         </Container>
     )

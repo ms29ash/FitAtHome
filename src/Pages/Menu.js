@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import tw from 'tailwind-styled-components/dist/tailwind'
+import tw from 'tailwind-styled-components'
 import Tab from '../Components/Profile/Tab'
 import ProfileDetail from '../Components/Profile/ProfileDetail'
 import Sidebar from '../Components/Profile/Sidebar'

@@ -22,7 +22,7 @@ function Navbar() {
   const [sticky, setSticky] = useState(false);
   const navlink = useRef(null);
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
-  const name = useSelector(state => state.userData.name)
+  const basket = useSelector(state => state.basket.basket)
   const dispatch = useDispatch()
   const authToken = cookies.get('authToken')
 
@@ -78,12 +78,25 @@ function Navbar() {
 
         {/* Section 3 Icons */}
         <NavLinks ref={navlink} >
-          <NavLink to="/subscribe"><AiFillFire className="mr-1" /></NavLink>
-          <NavLink to="/cart"><FaBoxOpen className="mr-1" /></NavLink>
-          <NavLink to="/findfood" className="relative" ><MdNotifications className="mr-1" /> <Notification>3</Notification> </NavLink>
+          <NavLink to="/subscribe">
+            <AiFillFire className="text-[2.5rem] mr-1 p-2 rounded-full hover:bg-grayfood/10" />
+            <NavLinkTxt>Fire</NavLinkTxt>
+          </NavLink>
+          <NavLink to="/cart" className="relative" >
+            <FaBoxOpen className="text-[2.5rem] mr-1 p-2 rounded-full hover:bg-grayfood/10" />
+            <NavLinkTxt>Box</NavLinkTxt>
+            <Notification>{basket?.length}</Notification>
+
+
+          </NavLink>
+          <NavLink to="/findfood" className="relative" >
+            <MdNotifications className="text-[2.5rem] mr-1 p-2 rounded-full hover:bg-grayfood/10" />
+            <NavLinkTxt>Notification</NavLinkTxt>
+            <Notification>3</Notification>
+          </NavLink>
           {
             isLoggedIn === true ?
-              <NavLink to="/menu/order"><BsPersonFill className="mr-1" /></NavLink>
+              <NavLink to="/menu/order"><BsPersonFill className=" p-2 bg-grayfood/10 text-5xl mr-1 rounded-full hover:bg-grayfood/30 " /></NavLink>
               :
               <Button to="/signin"><p className="relative z-[1]" >Login</p> </Button>
           }
@@ -116,7 +129,7 @@ const Container = tw.header`w-screen fixed top-0 right-0 left-0 flex items-cente
   }  `
 
 const Nav = tw.nav`
-flex py-4 w-full max-w-[1600px] px-[5%]    items-center z-[100]  rounded-lg  top-0 right-0 left-0
+flex  w-full max-w-[1600px] px-[5%]    items-center z-[100]  rounded-lg  top-0 right-0 left-0
  
 `;
 const LogoWrapper = tw.div`inline-block w-[100px]`;
@@ -132,7 +145,8 @@ const LinkTo = tw(Link)`font-bold  px-5 text-center whitespace-nowrap text-gray-
 //Section 3
 const NavLinks = tw.div` 
  flex-1 md:!flex hidden  justify-end items-center  `;
-const NavLink = tw(Link)`ml-10 text-2xl items-center  flex hover:bg-grayfood/10 p-2 aspect-square rounded-full   font-bold hover:underline text-black transition-all `;
+const NavLink = tw(Link)`ml-10 text-2xl items-center  flex  p-2 aspect-square rounded-full   font-bold  text-black transition-all flex-col justify-center  `;
+const NavLinkTxt = tw.p`text-xs `;
 const Button = tw(Link)`ml-10 text-base items-center flex bg-ssorange text-white px-8 py-3  rounded-lg   font-bold   hover-btn before:bg-ssgreen `;
-const Notification = tw.small` text-xs absolute right-2 top-1 bg-ssorange text-white w-4 text-center aspect-square rounded-full  `
+const Notification = tw.small` text-xs absolute right-[30%] top-[20%] bg-ssorange text-white w-4 text-center aspect-square rounded-full  `
 

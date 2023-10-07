@@ -45,7 +45,7 @@ const loadPayment = async (orderAmount, address, response) => {
                     razorpayOrderId: res.razorpay_order_id,
                     razorpaySignature: res.razorpay_signature,
                 })
-                if (result.data) {
+                if (result.status === 200) {
                     response()
                 }
             },
