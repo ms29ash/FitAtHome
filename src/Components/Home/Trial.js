@@ -8,8 +8,8 @@ function Trial() {
         <Container id="trial">
             <Wrapper >
                 <TextTop >Start a healthy life</TextTop>
-                <TextBottom  >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet quas illum consequuntur voluptatibus tempore nesciunt eligendi, optio vitae vel ipsam laboriosam</TextBottom>
-                <Button to="/trial" > Get a free trial</Button>
+                <TextBottom  >Embark on a transformative journey towards a healthier, more vibrant you with Sweet and Savor. Our commitment to your well-being drives us to curate a diverse range of nutritious and delightful meals, making the path to a balanced and fulfilling life easier and enjoyable. Whether you're striving for fitness milestones or seeking the goodness of fresh, wholesome ingredients, we invite you to savor every bite and embrace the joy of a nourished, active lifestyle. Start your healthy journey today, because your well-being matters.</TextBottom>
+                <Button to="/trial" > <p className="z-1 relative" >Get a free trial</p> </Button>
             </Wrapper>
         </Container>
     )
@@ -17,13 +17,13 @@ function Trial() {
 
 export default Trial
 
-const Container = tw.div`grid place-items-center h-[500px] bg-blend-overlay`
+const Container = tw.div`grid place-items-center py-20 bg-blend-overlay`
 
 const Wrapper = tw.div`flex flex-col items-center`
 
-const Button = tw(Link)` text-center text-md font-bold hover:bg-orangefood bg-redfood rounded-full px-10 py-3   text-white  lg:text-xl mt-5 mx-auto uppercase`
+const Button = tw(Link)` text-center text-md font-bold  bg-ssorange before:bg-ssgreen  hover-btn px-20 py-3   text-white  lg:text-xl mt-5 mx-auto uppercase`
 
 const Text = tw.p`lg:text-5xl text-3xl text-center my-2 lg:my-5 font-bold `
 
-const TextTop = tw(Text)`text-black`
-const TextBottom = tw.p`text-slate-800 text-md text-center lg:w-[50%] md:w-[80%] w-full`
+const TextTop = tw(Text)`text-black text-4xl mb-6 `
+const TextBottom = tw.p`text-slate-800 text-md  text-bold text-center max-w-[1000px] px-[10%] w-full`
