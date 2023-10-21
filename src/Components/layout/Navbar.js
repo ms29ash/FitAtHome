@@ -6,7 +6,7 @@ import HamburgerMenu from "./HamburgerMenu";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
 import { useEffect } from "react";
-import { fetchUserData } from "../features/auth/userDataSlice";
+import { fetchUserData } from "../../features/auth/userDataSlice";
 import { BsPersonFill } from "react-icons/bs";
 import { AiFillFire } from "react-icons/ai";
 import { FaBoxOpen } from "react-icons/fa";
