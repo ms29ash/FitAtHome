@@ -10,7 +10,7 @@ import {
   setQuantity,
 } from "../../features/basket/basketSlice";
 import { useSelector } from "react-redux";
-import CustomToast from "../Cart/AddToCartAlert";
+import CustomToast from "../Box/AddToCartAlert";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 function FoodCard({ foodItem }) {
