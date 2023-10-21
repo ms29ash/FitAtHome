@@ -26,6 +26,19 @@ export const fetchUserData = createAsyncThunk('userData/fetch', async (authtoken
     }
 })
 
+export const addAddress = createAsyncThunk('userData/addAddress', async (data, { rejectWithValue }) => {
+    try {
+        const res = await axios.put('userData/addAddress', {
+            address: data.address,
+            token: data.token
+        })
+        console.log(res)
+        return data.address
+    } catch (error) {
+        console.log(error);
+
+    }
+})
 
 
 export const userDataSlice = createSlice({
@@ -42,6 +55,8 @@ export const userDataSlice = createSlice({
             state.name = null
             state.verified = null
             state.userData = null
+        }).addCase(addAddress.fulfilled, (state, action) => {
+            state.userData.address.push(action.payload)
         })
     }
 })

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logoutUser } from "../auth/authSlice";
 
 const initialState = {
   basket: [],
@@ -43,6 +44,12 @@ export const basketSlice = createSlice({
     resetCart: (state, action) => {
       state.basket = [];
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(logoutUser, (state) => {
+      console.log("basket");
+      state.basket = [];
+    });
   },
 });
 
