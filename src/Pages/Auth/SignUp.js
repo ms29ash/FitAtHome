@@ -2,13 +2,23 @@ import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { signupUser } from "../features/auth/authSlice";
-import BrandLogo, { Container, Button, Wrapper, Form, Label, Input, Error, Text, Errors } from './Form'
+import { signupUser } from "../../features/auth/authSlice";
+import BrandLogo, {
+  Container,
+  Button,
+  Wrapper,
+  Form,
+  Label,
+  Input,
+  Error,
+  Text,
+  Errors,
+} from "../../Components/Auth/Form";
 
 function SignUp(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error } = useSelector(state => state.auth)
+  const { loading, error } = useSelector((state) => state.auth);
   const {
     register,
     control,
@@ -17,18 +27,17 @@ function SignUp(props) {
   } = useForm({ criteriaMode: "all" });
 
   const onSubmit = (data, e) => {
-    dispatch(signupUser(data)).unwrap().then((auth) => {
-      if (auth.success === true) {
-        navigate('verify')
-      }
-
-    })
+    dispatch(signupUser(data))
+      .unwrap()
+      .then((auth) => {
+        if (auth.success === true) {
+          navigate("verify");
+        }
+      });
   };
 
-
-  const password = useWatch({ control, name: 'password' })
+  const password = useWatch({ control, name: "password" });
   const isPasswordEqual = (cpassword) => cpassword === password;
-
 
   return (
     <Container className="signup-page ">
@@ -47,8 +56,8 @@ function SignUp(props) {
             {errors.name?.type === "required"
               ? "Name is required"
               : errors.name?.type === "minLength"
-                ? "Enter Valid Name"
-                : ""}
+              ? "Enter Valid Name"
+              : ""}
           </Error>
           <Label htmlFor="email">Email</Label>
           <Input
@@ -64,8 +73,8 @@ function SignUp(props) {
             {errors.email?.type === "required"
               ? "Email is required"
               : errors.email?.type === "pattern"
-                ? "Invalid email"
-                : ""}
+              ? "Invalid email"
+              : ""}
           </Error>
 
           <Label htmlFor="password">Password</Label>
@@ -80,25 +89,33 @@ function SignUp(props) {
             {errors.password?.type === "required"
               ? "Password is required"
               : errors.password?.type === "minLength"
-                ? "Too Short"
-                : ""}
+              ? "Too Short"
+              : ""}
           </Error>
           <Label htmlFor="cpassword">Confirm Password</Label>
           <Input
             type="password"
             placeholder="Confirm Password"
             id="cpassword"
-            {...register("cpassword", { required: true, minLength: 5, validate: isPasswordEqual })}
+            {...register("cpassword", {
+              required: true,
+              minLength: 5,
+              validate: isPasswordEqual,
+            })}
           />
           <Error>
             {errors.cpassword?.type === "required"
               ? "Password is required"
               : errors.cpassword?.type === "minLength"
-                ? "Too Short"
-                : errors.cpassword?.type === 'validate' ? "Not equal to password" : ""}
+              ? "Too Short"
+              : errors.cpassword?.type === "validate"
+              ? "Not equal to password"
+              : ""}
           </Error>
 
-          <Button disabled={loading} type="submit">Next</Button>
+          <Button disabled={loading} type="submit">
+            Next
+          </Button>
         </Form>
         <Text>
           Already have an account{" "}
@@ -112,4 +129,3 @@ function SignUp(props) {
 }
 
 export default SignUp;
-

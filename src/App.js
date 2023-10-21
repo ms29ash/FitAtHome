@@ -9,15 +9,15 @@ import Navbar from "./Components/Navbar";
 import Menu from "./Pages/Menu";
 import TrialPage from "./Components/TrialPage";
 import SubscribePage from "./Pages/SubscribePage";
-import SignIn from "./Components/SignIn";
-import SignUp from "./Components/SignUp";
+import SignIn from "./Pages/Auth/SignIn";
+import SignUp from "./Pages/Auth/SignUp";
 import ScrollToTop from "./Components/ScrollToTop";
 import FoodDetails from "./Components/FoodDetails";
-import ForgetPass from "./Components/ForgetPass";
-import ForgetPassOtp from "./Components/ForgetPassOtp";
-import Verify from "./Components/Verify";
-import ForgetPassNewPass from "./Components/ForgetPassNewPass";
-import NewPass from "./Components/NewPass";
+import ForgetPass from "./Components/Auth/ForgetPass";
+import ForgetPassOtp from "./Components/Auth/ForgetPassOtp";
+import Verify from "./Components/Auth/Verify";
+import ForgetPassNewPass from "./Components/Auth/ForgetPassNewPass";
+import NewPass from "./Components/Auth/NewPass";
 import Footer from "./Components/Footer";
 import Box from "./Pages/Box";
 import AuthRoute from "./Components/Routes/AuthRoute";
@@ -81,6 +81,7 @@ function App() {
           <Route path=":id" element={<FoodDetails />}></Route>
         </Route>
 
+        {/* Auth Router */}
         <Route path="/signin" element={<SignIn />}></Route>
         <Route path="/signup">
           <Route index element={<SignUp />} />
