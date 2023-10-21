@@ -6,9 +6,9 @@ import "./App.css";
 import "./Styles/tailwind.css";
 import Home from "../src/Pages/Home";
 import Navbar from "./Components/Navbar";
-import FindFood from "./Pages/FindFood";
+import Menu from "./Pages/Menu";
 import TrialPage from "./Components/TrialPage";
-import SubscribePage from "./Components/SubscribePage";
+import SubscribePage from "./Pages/SubscribePage";
 import SignIn from "./Components/SignIn";
 import SignUp from "./Components/SignUp";
 import ScrollToTop from "./Components/ScrollToTop";
@@ -19,9 +19,9 @@ import Verify from "./Components/Verify";
 import ForgetPassNewPass from "./Components/ForgetPassNewPass";
 import NewPass from "./Components/NewPass";
 import Footer from "./Components/Footer";
-import Cart from "./Components/Cart/Cart";
+import Box from "./Pages/Box";
 import AuthRoute from "./Components/Routes/AuthRoute";
-import Menu from "./Pages/Menu";
+import User from "./Pages/User";
 
 import { Toaster } from "react-hot-toast";
 import Notification from "./Pages/Notification";
@@ -48,25 +48,28 @@ function App() {
           <Route path="/notification" element={<Notification />}></Route>
         </Route>
         <Route
-          path="menu"
+          path="user"
           element={
             <AuthRoute>
               <Navbar />
-              <Menu />
+              <User />
             </AuthRoute>
           }
         />
+        {/* Box Routes */}
         <Route
           path="/box"
           element={
             <AuthRoute>
               <Navbar />
-              <Cart />
+              <Box />
             </AuthRoute>
           }
         ></Route>
+
+        {/* Menu Routes */}
         <Route
-          path="/food"
+          path="/menu"
           element={
             <>
               <Navbar />
@@ -74,7 +77,7 @@ function App() {
             </>
           }
         >
-          <Route index element={<FindFood />} />
+          <Route index element={<Menu />} />
           <Route path=":id" element={<FoodDetails />}></Route>
         </Route>
 

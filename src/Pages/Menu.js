@@ -1,33 +1,20 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import tw from 'tailwind-styled-components'
-import Tab from '../Components/Profile/Tab'
-import ProfileDetail from '../Components/Profile/ProfileDetail'
-import Sidebar from '../Components/Profile/Sidebar'
-import { useLocation, useSearchParams } from 'react-router-dom';
-
+import React from "react";
+import tw from "tailwind-styled-components";
+import FindFoodSideBar from "../Components/FindFoodPage/FindFoodSideBar";
+import FindFoodMain from "../Components/FindFoodPage/FindFoodMain";
 
 function Menu() {
-    let [searchParams] = useSearchParams()
-    const tab = searchParams.get('tab') || 'order';
-    return (
-        <Container>
-            <ContainerIn>
-
-                <ProfileDetail />
-                <Wrapper>
-                    <Sidebar tab={tab} />
-                    <Tab tab={tab} />
-                </Wrapper>
-            </ContainerIn>
-        </Container>
-    )
+  return (
+    <Page>
+      <Container>
+        <FindFoodSideBar />
+        <FindFoodMain />
+      </Container>
+    </Page>
+  );
 }
 
-export default Menu
+export default Menu;
 
-const Container = tw.div` max-w-screen  min-h-[80vh] h-fit px-[5%]  bg-white mb-[5vh]`
-const ContainerIn = tw.div`w-full h-full flex flex-col justify-center items-center `
-const Wrapper = tw.div`
-flex  w-full  bg-white
-`
+const Page = tw.div`  py-200`;
+const Container = tw.div` flex w-[97vw] xl:flex-row flex-col  mx-auto xl:mb-[18vh] mb-[5vh]`;
