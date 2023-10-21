@@ -1,6 +1,6 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import SubscribeCard from "../Components/SubscribeCard";
+import SubscribeCard from "../Components/Subs/SubscribeCard";
 
 function SubscribePage() {
   return (
