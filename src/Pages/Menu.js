@@ -1,14 +1,14 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import FindFoodSideBar from "../Components/FindFoodPage/FindFoodSideBar";
-import FindFoodMain from "../Components/FindFoodPage/FindFoodMain";
+import MenuSideBar from "../Components/Menu/MenuSideBar";
+import MenuMain from "../Components/Menu/MenuMain";
 
 function Menu() {
   return (
     <Page>
       <Container>
-        <FindFoodSideBar />
-        <FindFoodMain />
+        <MenuSideBar />
+        <MenuMain />
       </Container>
     </Page>
   );
