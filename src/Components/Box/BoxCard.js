@@ -5,7 +5,7 @@ import { setQuantity, removeCart } from "../../features/basket/basketSlice";
 import axios from "../../axios";
 import { useQuery } from "react-query";
 
-function CartCard({ item }) {
+function BoxCard({ item }) {
   //props
   const { quantity, id } = item;
   //dispatch of redux
@@ -86,7 +86,7 @@ function CartCard({ item }) {
   );
 }
 
-export default CartCard;
+export default BoxCard;
 
 const Container = tw.div`
 w-full h-26 my-3 flex relative  

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { RiCheckLine } from "react-icons/ri";
-import CartCard from "../Components/Cart/CartCard";
+import BoxCard from "../Components/Box/BoxCard";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import loadPayment from "../Components/Cart/Payment";
+import loadPayment from "../Components/Box/Payment";
 import { useNavigate } from "react-router-dom";
 import { resetCart } from "../features/basket/basketSlice";
 
@@ -56,11 +56,11 @@ function Box() {
           )}
         </AddContainer>
         <hr className=" my-3 w-[98%] bg-black h-[1px] border-0 " />
-        <Head>Your Cart</Head>
+        <Head>Your Box</Head>
         <hr className=" my-3 w-[98%]" />
         <Wrapper>
           {data?.map((item) => {
-            return <CartCard item={item} key={item.id} />;
+            return <BoxCard item={item} key={item.id} />;
           })}
         </Wrapper>
       </Section>
