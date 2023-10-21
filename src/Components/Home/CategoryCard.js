@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { AiFillRightCircle } from "react-icons/ai"
+import { AiFillRightCircle } from "react-icons/ai";
 
 function CategoryCard(props) {
   const { title, image, icon } = props;
@@ -11,9 +11,7 @@ function CategoryCard(props) {
     <>
       <Wrapper>
         {
-          <Link
-            to={`/food?category=${title}`}
-          >
+          <Link to={`/menu?category=${title}`}>
             <Img
               placeholder={<LoadImg />}
               threshold={100}
@@ -23,7 +21,6 @@ function CategoryCard(props) {
             />
             <Detail>
               <Text>
-
                 <Image
                   placeholder={<LoadImg />}
                   threshold={100}
@@ -31,9 +28,9 @@ function CategoryCard(props) {
                   // src={image}
                   alt=""
                 />
-                <Head >{title}</Head>
+                <Head>{title}</Head>
               </Text>
-              <  AiFillRightCircle className=" lg:block  md:!text-2xl text-ssorange" />
+              <AiFillRightCircle className=" lg:block  md:!text-2xl text-ssorange" />
             </Detail>
           </Link>
         }
@@ -51,4 +48,4 @@ const LoadImg = tw.div`object-cover rounded-t-md w-full h-[10rem] bg-gray-400`;
 const Detail = tw.div` px-2 md:!px-4 py-1 md:!py-2 rounded-md absolute flex items-center bg-white bottom-4 right-5 left-5 justify-between group-hover:scale-105 transition-all  `;
 const Text = tw.div` flex items-center `;
 const Head = tw.h3`text-center font-bold text-sm md:!text-base  ml-2 `;
-const Image = tw.img` w-5 md:!w-7 `
+const Image = tw.img` w-5 md:!w-7 `;
