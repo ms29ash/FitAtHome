@@ -16,5 +16,5 @@ function Menu() {
 
 export default Menu;
 
-const Page = tw.div`  py-200`;
+const Page = tw.div`  py-200 bg-[#f2f2f2]`;
 const Container = tw.div` flex w-[97vw] xl:flex-row flex-col  mx-auto xl:mb-[18vh] mb-[5vh]`;

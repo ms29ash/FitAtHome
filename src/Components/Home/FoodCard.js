@@ -108,47 +108,38 @@ function FoodCard({ foodItem }) {
 
           {/* Description Part */}
           <Text>
-            {/* First Part of Description With name Price */}
-            <Top>
-              {foodItem?.name.length < 20 ? (
-                <TextHead className="mb-2">
-                  {foodItem?.name.slice(0, 20)}
-                </TextHead>
-              ) : (
-                <TextHead className="mb-2">
-                  {foodItem?.name.slice(0, 20)}..
-                </TextHead>
-              )}
-              <p className=" whitespace-nowrap  text-black text-3xl font-bold  ">
-                &#8377; {foodItem?.price}
-              </p>
-            </Top>
+            {/* name of food */}
+            <TextHead className="mb-2">
+              {/* {foodItem?.name.slice(0, 20)} */}
+              {foodItem?.name}
+            </TextHead>
             {/* Second Part of Description With name Description and Rating */}
             <Details>
-              <p className="text-xs text-slate-700 leading-5">
-                {foodItem?.description.slice(0, 88)}...
-              </p>
-
               {/* Rating stars */}
               <ReviewStar rating={foodItem?.ratings} />
 
               <hr className="my-3" />
-              {/* Add to Cart Button */}
-              {index < 0 ? (
-                <BuyBtn onClick={() => addToCart()}>Add to Cart</BuyBtn>
-              ) : (
-                <Btn>
-                  <BtnWrapper>
-                    <SmallBtn onClick={decreaseQuantity}>
-                      <AiOutlineMinus />
-                    </SmallBtn>
-                    <p className="px-4">{cart[index]?.quantity}</p>
-                    <SmallBtn>
-                      <AiOutlinePlus onClick={increaseQuantity} />
-                    </SmallBtn>
-                  </BtnWrapper>
-                </Btn>
-              )}
+              <Bottom>
+                <p className=" whitespace-nowrap  text-black flex-1 font-bold  ">
+                  &#8377; {foodItem?.price}
+                </p>
+                {/* Add to Cart Button */}
+                {index < 0 ? (
+                  <BuyBtn onClick={() => addToCart()}>Add to Cart</BuyBtn>
+                ) : (
+                  <Btn>
+                    <BtnWrapper>
+                      <SmallBtn onClick={decreaseQuantity}>
+                        <AiOutlineMinus />
+                      </SmallBtn>
+                      <p className="px-4">{cart[index]?.quantity}</p>
+                      <SmallBtn>
+                        <AiOutlinePlus onClick={increaseQuantity} />
+                      </SmallBtn>
+                    </BtnWrapper>
+                  </Btn>
+                )}
+              </Bottom>
             </Details>
           </Text>
         </Wrapper>
@@ -159,14 +150,14 @@ function FoodCard({ foodItem }) {
 
 export default FoodCard;
 
-const Container = tw.div`scroll-end scroll-mx-5 shrink-0   `;
-const Wrapper = tw.div`card-container my-3   rounded-md w-[300px] \  hover:shadow-2xl duration-300  transition-all bg-white shadow-lg`;
+const Container = tw.div`scroll-end scroll-mx-5 shrink-0 mx-2   `;
+const Wrapper = tw.div`card-container my-3   rounded-md  hover:shadow-2xl duration-300  transition-all bg-white shadow-lg`;
 
 //Image and Food Type
 const Box = tw.div` grid place-items-center relative `;
 const FoodImg = tw(
   LazyLoadImage
-)`rounded-t-md object-cover w-[100%]  mx-auto aspect-[3/2] bg-white `;
+)`rounded-t-md object-cover w-full  mx-auto aspect-[3/2] bg-white `;
 const FoodTypeIcon = tw.div`flex absolute items-center bottom-2 left-2 bg-white font-bold  px-2 py-[0.35rem] text-xs rounded-md `;
 const FoodTypeImg = tw.img` w-[15px] h-[15px] mr-2 `;
 
@@ -174,13 +165,13 @@ const LoadFoodImg = tw.img`rounded-t-md object-cover w-[250px] h-[187px] bg-gray
 // Description
 const Text = tw.div`p-3 `;
 //Top Part
-const Top = tw.div`flex justify-between items-center`;
-const TextHead = tw.h1`text-base font-bold text-black transition-all `;
+const TextHead = tw.h1`text-[0.9rem] font-bold text-black transition-all `;
 //Second Part
-const Details = tw.div` justify-between items-center w-full mt-2`;
+const Details = tw.div` justify-between items-center w-full `;
+const Bottom = tw.div`flex justify-between items-center`;
 //Add to Cart Btn
-const BuyBtn = tw.button`text-ssorange font-bold  border-2 border-ssorange w-full py-2 rounded-md hover:text-white hover:bg-ssorange transition-all select-none `;
+const BuyBtn = tw.button`flex-1 text-ssorange font-bold  border-2 border-ssorange w-full py-2 rounded-md   hover:bg-ssorange/20 transition-all select-none  text-xs `;
 //Increase and Decrease Btn
 const Btn = tw.div`flex  font-bold    w-full select-none justify-end `;
 const BtnWrapper = tw.div`flex  items-center font-bold      rounded-md  transition-all select-none `;
-const SmallBtn = tw.button` border-2 hover:bg-grayfood/20   p-2 border-ssorange rounded-lg `;
+const SmallBtn = tw.button` border-2 hover:bg-ssorange/20   p-2 border-ssorange rounded-lg `;
