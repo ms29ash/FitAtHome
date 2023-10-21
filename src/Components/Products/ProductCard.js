@@ -75,15 +75,15 @@ function ProductCard({ item }) {
     <div className=" rounded-lg h-full bg-white p-3 shadow-lg hover:shadow-xl cursor-pointer">
       <div className="w-full flex justify-center">
         <img
-          className="rounded-t-lg w-[8rem]  aspect-square object-cover"
-          src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/images/products/sliding_image/3874a.jpg?ts=1697346451"
+          className="rounded-t-lg w-[8rem]  aspect-square object-contain"
+          src={item?.image}
           alt=""
         />
       </div>
-      <h3 className="text-base">Banana Robusta Regular </h3>
-      <p className="text-[0.8rem] py-3">12 Pieces</p>
+      <h3 className="text-base">{item.name} </h3>
+      <p className="text-[0.8rem] py-3">{item?.quantity}</p>
       <div className="flex items-center">
-        <h1 className="text-base w-1/2">&#8377;60.00</h1>
+        <h1 className="text-base w-1/2">&#8377;{item?.price}</h1>
 
         {/* Buttons */}
         {true ? (
