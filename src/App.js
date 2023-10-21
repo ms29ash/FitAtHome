@@ -25,6 +25,7 @@ import User from "./Pages/User";
 
 import { Toaster } from "react-hot-toast";
 import Notification from "./Pages/Notification";
+import Products from "./Pages/Products";
 
 function App() {
   return (
@@ -78,6 +79,18 @@ function App() {
           }
         >
           <Route index element={<Menu />} />
+          <Route path=":id" element={<FoodDetails />}></Route>
+        </Route>
+        <Route
+          path="/product"
+          element={
+            <>
+              <Navbar />
+              <Outlet />
+            </>
+          }
+        >
+          <Route index element={<Products />} />
           <Route path=":id" element={<FoodDetails />}></Route>
         </Route>
 

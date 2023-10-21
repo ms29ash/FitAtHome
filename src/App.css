@@ -34,7 +34,7 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 0.75rem;
+  width: 0.5rem;
   height: 15px;
   border-radius: 30px;
 }
@@ -42,6 +42,7 @@ a {
 
 ::-webkit-scrollbar-thumb {
   background: #908f8f;
+  border-radius: 30px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

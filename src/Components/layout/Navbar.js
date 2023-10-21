@@ -64,7 +64,7 @@ function Navbar() {
           <LinkTo selected={pathname === "/menu"} to="/menu">
             Menu
           </LinkTo>
-          <LinkTo selected={pathname === "/products"} to="/food">
+          <LinkTo selected={pathname === "/product"} to="/product">
             Products
           </LinkTo>
           <LinkTo selected={pathname === "/plans"} to="/food">
