@@ -150,14 +150,14 @@ function FoodCard({ foodItem }) {
 
 export default FoodCard;
 
-const Container = tw.div`scroll-end scroll-mx-5 shrink-0 mx-2   `;
+const Container = tw.div`scroll-end scroll-mx-5 shrink-0    `;
 const Wrapper = tw.div`card-container my-3   rounded-md  hover:shadow-2xl duration-300  transition-all bg-white shadow-lg`;
 
 //Image and Food Type
 const Box = tw.div` grid place-items-center relative `;
 const FoodImg = tw(
   LazyLoadImage
-)`rounded-t-md object-cover w-full  mx-auto aspect-[3/2] bg-white `;
+)`rounded-t-md object-cover w-full max-w-[300px]  mx-auto aspect-[3/2] bg-white `;
 const FoodTypeIcon = tw.div`flex absolute items-center bottom-2 left-2 bg-white font-bold  px-2 py-[0.35rem] text-xs rounded-md `;
 const FoodTypeImg = tw.img` w-[15px] h-[15px] mr-2 `;
 

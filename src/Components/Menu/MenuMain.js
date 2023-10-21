@@ -50,4 +50,4 @@ function MenuMain() {
 
 export default MenuMain;
 
-const Container = tw.div` xl:p-4 p-1  w-[100%] h-max  items-stretch  flex-wrap xl:mt-1 mt-6  grid grid-cols-5`;
+const Container = tw.div` xl:p-4 p-1 flex-1 h-max  items-stretch  flex-wrap xl:mt-1 mt-6  grid grid-cols-4 space-x-4`;
