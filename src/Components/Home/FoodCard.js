@@ -36,9 +36,7 @@ function FoodCard({ foodItem }) {
   //Add to Cart Hanlder
   const addToCart = (e) => {
     if (isLoggedIn === true) {
-      dispatch(
-        addCart({ quantity: 1, id: foodItem?._id, price: foodItem?.price })
-      );
+      dispatch(addCart({ item: foodItem, quantity: 1 }));
 
       CustomToast(foodItem?.image, foodItem.name, "Added to cart", "success");
     } else {
@@ -174,4 +172,4 @@ const BuyBtn = tw.button`flex-1 text-ssorange font-bold  border-2 border-ssorang
 //Increase and Decrease Btn
 const Btn = tw.div`flex  font-bold    w-full select-none justify-end `;
 const BtnWrapper = tw.div`flex  items-center font-bold      rounded-md  transition-all select-none `;
-const SmallBtn = tw.button` border-2 hover:bg-ssorange/20   p-2 border-ssorange rounded-lg `;
+const SmallBtn = tw.div` border-2 hover:bg-ssorange/20   p-2 border-ssorange rounded-lg cursor-pointer `;

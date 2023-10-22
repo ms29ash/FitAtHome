@@ -5,7 +5,7 @@ const initialState = {
   basket: [],
 };
 export const getItemIndex = (basket, idToFind) => {
-  const ids = basket.map((item) => item.id);
+  const ids = basket.map((item) => item.item._id);
   return ids.indexOf(idToFind);
 };
 
@@ -14,7 +14,7 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addCart: (state, action) => {
-      const itemIndex = getItemIndex(state.basket, action.payload.id);
+      const itemIndex = getItemIndex(state.basket, action.payload.item._id);
       if (itemIndex && itemIndex < 0) {
         state.basket.push(action?.payload);
       } else {

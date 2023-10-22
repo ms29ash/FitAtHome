@@ -5,7 +5,7 @@ import tw from "tailwind-styled-components";
 function ProductSideBar() {
   const navigate = useNavigate();
   let [searchParams] = useSearchParams();
-  const type = searchParams.get("category");
+  const type = searchParams.get("category") || "vegetable";
 
   return (
     <div className="  min-w-[300px] h-full overflow-y-hidden  ">

@@ -31,54 +31,62 @@ function MenuSideBar() {
 
           <Group ref={refGroup}>
             {/* <Head>Type</Head> */}
-            <Option typeOf={type === null}>
+            <Option
+              typeOf={type === null}
+              onChange={() => {
+                navigate("/menu");
+              }}
+            >
               <Checkbox
                 type="checkbox"
                 checked={type === null}
                 name="type"
                 id="all"
-                onChange={() => {
-                  navigate("/menu");
-                }}
               />
               <Img src="./images/category/food.jpg" alt="" />
               <OptionText htmlFor="all">All</OptionText>
             </Option>
-            <Option typeOf={type === "Veg"}>
+            <Option
+              typeOf={type === "Veg"}
+              onChange={() => {
+                navigate("/menu?category=Veg");
+              }}
+            >
               <Checkbox
                 type="checkbox"
                 checked={type === "Veg"}
                 name="type"
                 id="veg"
-                onChange={() => {
-                  navigate("/menu?category=Veg");
-                }}
               />
               <Img src="./images/category/veg.jpg" alt="" />
               <OptionText htmlFor="veg">Veg</OptionText>
             </Option>
-            <Option typeOf={type === "Non-Veg"}>
+            <Option
+              typeOf={type === "Non-Veg"}
+              onChange={() => {
+                navigate("/menu?category=Non-Veg");
+              }}
+            >
               <Checkbox
                 type="checkbox"
                 checked={type === "Non-Veg"}
                 name="type"
                 id="non-veg"
-                onChange={() => {
-                  navigate("/menu?category=Non-Veg");
-                }}
               />
               <Img src="./images/category/nonveg.jpg" alt="" />
               <OptionText htmlFor="non-veg">Non-Veg</OptionText>
             </Option>
-            <Option typeOf={type === "Vegan"}>
+            <Option
+              typeOf={type === "Vegan"}
+              onChange={() => {
+                navigate("/menu?category=Vegan");
+              }}
+            >
               <Checkbox
                 type="checkbox"
                 checked={type === "Vegan"}
                 name="type"
                 id="vegan"
-                onChange={() => {
-                  navigate("/menu?category=Vegan");
-                }}
               />
               <Img src="./images/category/vegan.jpg" alt="" />
               <OptionText htmlFor="vegan">Vegan</OptionText>

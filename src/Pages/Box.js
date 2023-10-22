@@ -25,7 +25,7 @@ function Box() {
 
   useEffect(() => {
     const total = data.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) => total + item.item.price * item.quantity,
       0
     );
     setTotal(total);
@@ -92,7 +92,8 @@ function Box() {
           onClick={() => loadPayment(subTotal, address, response)}
           disabled={subTotal === 0}
         >
-          <p className="z-[1]">Pay Now</p> <AiOutlineArrowRight />
+          <p className="z-[1]">Pay Now</p>{" "}
+          <AiOutlineArrowRight className="z-[1]" />
         </Btn>
       </Total>
     </Container>
@@ -113,4 +114,4 @@ const CheckIcon = tw(
 )`bg-redfood text-white rounded-full  mr-2 text-lg`;
 const Total = tw.div`flex  w-full   flex-col items-center mb-6 h-fit bg-white py-3 lg:!w-[23%] mx-auto `;
 const Th = tw.th`text-left`;
-const Btn = tw.button` bg-ssorange  text-white  px-8 py-4 text-xl font-bold rounded-lg fixed bottom-6 lg:bottom-0 right-5  flex items-center space-x-4 lg:relative  lg:py-2  lg:mt-4 lg:w-[90%] justify-center disabled:opacity-50 disabled:hover:bg-redfood before:bg-ssgreen hover-btn  `;
+const Btn = tw.button` bg-ssorange  text-white  px-8 py-4 text-xl font-bold rounded-lg fixed bottom-6 lg:bottom-0 right-5  flex items-center space-x-4 lg:relative  lg:py-2  lg:mt-4 lg:w-[90%] justify-center disabled:opacity-50 disabled:hover:bg-redfood before:bg-ssgreen hover-btn   `;

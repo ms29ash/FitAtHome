@@ -10,7 +10,7 @@ function ProductsSection() {
     return axios.get("/product");
   };
 
-  const type = searchParams.get("category") || null;
+  const type = searchParams.get("category") || "vegetable";
   const { data } = useQuery("product", fetchProduct);
 
   const filterData = (data, category) => {

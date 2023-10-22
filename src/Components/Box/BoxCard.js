@@ -2,59 +2,55 @@ import React, { useRef } from "react";
 import tw from "tailwind-styled-components";
 import { useDispatch } from "react-redux";
 import { setQuantity, removeCart } from "../../features/basket/basketSlice";
-import axios from "../../axios";
-import { useQuery } from "react-query";
 
 function BoxCard({ item }) {
-  //props
-  const { quantity, id } = item;
   //dispatch of redux
   const dispatch = useDispatch();
   //select quantity ref
   const refSelect = useRef();
-  //fetching data of food
-  const fetchFood = async (id) => {
-    return axios.get(`/food/${id}`);
-  };
-  const { data, isSuccess } = useQuery(["food", id], () => fetchFood(id));
-  //data from  fetched data
-  const { image, name, price, type } = data?.data.food || {};
+
+  const { image, name, price, type, quantity, _id } = item?.item || {};
 
   //quantity change handler
   const onChangeHandler = () => {
     dispatch(
-      setQuantity({ id: id, quantity: parseInt(refSelect.current.value) })
+      setQuantity({ id: _id, quantity: parseInt(refSelect.current.value) })
     );
   };
 
   //Remove from cart handler
   const removeHandler = () => {
-    dispatch(removeCart(id));
+    dispatch(removeCart(_id));
   };
+
+  console.log(item);
 
   return (
     <>
-      {isSuccess && (
+      {item?.item && (
         <Container>
           <Img src={image} alt="" />
           <Wrapper>
             <p className="text-lg mt-[10%] font-bold">{name}</p>
-            <FoodTypeIcon>
-              <img
-                className="w-[25px] h-[25px] mr-2"
-                src={
-                  type === "Veg"
-                    ? "images/veg_icon.png"
-                    : type === "Non-Veg"
-                    ? "images/nonveg_icon.png"
-                    : type === "Vegan"
-                    ? "images/vegan_icon.png"
-                    : ""
-                }
-                alt=""
-              />
-              {type}
-            </FoodTypeIcon>
+            {type && (
+              <FoodTypeIcon>
+                <img
+                  className="w-[25px] h-[25px] mr-2"
+                  src={
+                    type === "Veg"
+                      ? "images/veg_icon.png"
+                      : type === "Non-Veg"
+                      ? "images/nonveg_icon.png"
+                      : type === "Vegan"
+                      ? "images/vegan_icon.png"
+                      : ""
+                  }
+                  alt=""
+                />
+                {type}
+              </FoodTypeIcon>
+            )}
+            {quantity && <p>{quantity}</p>}
             <Price className="  ">&#8377; {price}</Price>
 
             <Select

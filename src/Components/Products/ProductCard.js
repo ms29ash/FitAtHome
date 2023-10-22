@@ -33,7 +33,7 @@ function ProductCard({ item }) {
   //Add to Cart Hanlder
   const addToCart = (e) => {
     if (isLoggedIn === true) {
-      dispatch(addCart({ quantity: 1, id: item?._id, price: item?.price }));
+      dispatch(addCart({ item: item, quantity: 1 }));
 
       CustomToast(item?.image, item.name, "Added to cart", "success");
     } else {
@@ -71,6 +71,7 @@ function ProductCard({ item }) {
       navigate("/signin");
     }
   };
+
   return (
     <div className=" rounded-lg h-full bg-white p-3 shadow-lg hover:shadow-xl cursor-pointer">
       <div className="w-full flex justify-center">
@@ -86,7 +87,7 @@ function ProductCard({ item }) {
         <h1 className="text-base w-1/2">&#8377;{item?.price}</h1>
 
         {/* Buttons */}
-        {true ? (
+        {index < 0 ? (
           <BuyBtnWrapper>
             <BuyBtn onClick={() => addToCart()}>Add to Cart</BuyBtn>
           </BuyBtnWrapper>
@@ -96,7 +97,7 @@ function ProductCard({ item }) {
               <SmallBtn onClick={decreaseQuantity}>
                 <AiOutlineMinus />
               </SmallBtn>
-              <p className="px-4">{cart[index]?.quantity}1</p>
+              <p className="px-4">{cart[index]?.quantity}</p>
               <SmallBtn>
                 <AiOutlinePlus onClick={increaseQuantity} />
               </SmallBtn>
