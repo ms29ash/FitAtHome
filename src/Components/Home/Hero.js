@@ -37,8 +37,8 @@ function Hero() {
 export default Hero;
 
 const Wrapper = tw.div`
-w-screen  overflow-hidden h-screen `;
-const Container = tw.div` w-screen   intro aspect-[2/1] flex flex-col md:justify-center justify-around items-start px-[10vw] h-full `;
+w-screen  overflow-hidden h-[80vh] md:h-screen max-h-[700px] `;
+const Container = tw.div` w-screen   intro  flex flex-col md:justify-center justify-around items-start px-[10vw] h-full `;
 
 const Text = tw.div` w-full text-lg 3xl:text-[2xl] `;
 const Head = tw.h1`text-[2.5rem] md:text-[3.5rem] xl:text-[4rem] 3xl:text-[8rem] leading-[3rem] md:leading-[4rem] xl:leading-[5rem] 3xl:leading-[9rem] capitalize w-full md:w-[80%] lg:w-[50%] `;

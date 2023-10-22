@@ -127,23 +127,23 @@ function Navbar() {
 
 export default Navbar;
 
-const Container = tw.header`w-screen fixed top-0 right-0 left-0 flex items-center justify-center    z-50  ${(
+const Container = tw.header`w-screen  top-0 right-0 left-0 flex items-center justify-center    z-50  ${(
   p
 ) =>
   p.sticky === "true"
-    ? " bg-white md:fixed shadow-xl "
+    ? " bg-white static lg:fixed shadow-xl "
     : "static bg-transparent "}  `;
 
 const Nav = tw.nav`
-flex  w-full max-w-[1600px] px-[5%]    items-center z-[100]  rounded-lg  top-0 right-0 left-0
+flex  w-full max-w-[1600px] px-[5%] justify-between   items-center z-[100]  rounded-lg  top-0 right-0 left-0 py-3 xl:py-0
  
 `;
 const LogoWrapper = tw.div`inline-block w-[100px]`;
 const Img = tw.img`w-full`;
-const HamburgerIcon = tw.div` top-[25px] md:hidden right-3 absolute`;
+const HamburgerIcon = tw.div` top-[25px] xl:hidden static`;
 
 //Section 2
-const Wrapper = tw.div` flex-1  flex space-x-8 pl-[10%]   `;
+const Wrapper = tw.div` flex-1   space-x-8 pl-[10%] xl:!flex hidden   `;
 const LinkTo = tw(
   Link
 )`font-bold  px-5 text-center whitespace-nowrap text-gray-700 relative before:absolute before:-bottom-3 before:w-0 hover:before:w-full before:left-0 before:h-1 before:rounded-full before:transition-all  before:bg-ssorange hover:text-ssorange ${(
@@ -152,7 +152,7 @@ const LinkTo = tw(
 
 //Section 3
 const NavLinks = tw.div` 
- flex-1 md:!flex hidden  justify-end items-center  `;
+ flex-1 xl:!flex hidden  justify-end items-center  `;
 const NavLink = tw(
   Link
 )`ml-10 text-2xl items-center  flex  p-2 aspect-square rounded-full   font-bold  text-black transition-all flex-col justify-center  `;

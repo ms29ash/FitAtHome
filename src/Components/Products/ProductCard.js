@@ -10,7 +10,7 @@ import {
 import CustomToast from "../Box/AddToCartAlert";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-function ProductCard({ item }) {
+function ProductCard({ item, classes }) {
   //index of food in cart
   const [index, setIndex] = useState(1);
   const dispatch = useDispatch();
@@ -73,7 +73,9 @@ function ProductCard({ item }) {
   };
 
   return (
-    <div className=" rounded-lg h-full bg-white p-3 shadow-lg hover:shadow-xl cursor-pointer">
+    <div
+      className={`rounded-lg h-full bg-white p-3 shadow-lg hover:shadow-xl cursor-pointer ${classes} `}
+    >
       <div className="w-full flex justify-center">
         <img
           className="rounded-t-lg w-[8rem]  aspect-square object-contain"

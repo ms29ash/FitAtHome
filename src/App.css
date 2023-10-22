@@ -53,6 +53,13 @@ a {
 .intro {
   background: url("../public/images/hero.png") no-repeat center center/cover;
 }
+@media screen and (max-width: 768px) {
+
+  .intro {
+    background: url("../public/images/hero.png") no-repeat center center/cover;
+    background-position: 58% 0%;
+  }
+}
 
 /* Food Section */
 #food-section::-webkit-scrollbar {
