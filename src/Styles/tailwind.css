@@ -13,8 +13,8 @@ h6 {
 }
 
 @layer utilities {
-  .headings {
-    @apply font-bold text-4xl text-center ;
+  .heading {
+    @apply font-bold text-4xl text-left w-full ml-4 mb-6 ;
   }
 
   .hover-btn{

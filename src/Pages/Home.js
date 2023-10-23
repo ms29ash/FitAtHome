@@ -12,9 +12,13 @@ function Home(props) {
   return (
     <>
       <Hero />
-      <Category />
-      <Food />
-      <Products />
+      <div className="w-screen flex justify-center ">
+        <div className="max-w-[1600px] px-2 w-full items-center flex-col ">
+          <Category />
+          <Food />
+          <Products />
+        </div>
+      </div>
       <Services />
       <Trial />
       <Subscribe />

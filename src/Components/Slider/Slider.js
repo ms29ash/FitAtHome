@@ -69,7 +69,7 @@ function Slider({ children, containerClass, sliderClass }) {
   return (
     <Wrapper className={containerClass}>
       <LeftBtn $scroll={isAtScrollStart} onClick={leftScroll}>
-        <FaAngleLeft />
+        <FaAngleLeft className={Btn} />
       </LeftBtn>
       <SlideContainer
         className={`${sliderClass} [&>div]:min-w-[${widthDiv}px] `}
@@ -78,7 +78,7 @@ function Slider({ children, containerClass, sliderClass }) {
         {children}
       </SlideContainer>
       <RightBtn $scroll={isAtScrollEnd} onClick={rightScroll}>
-        <FaAngleRight />
+        <FaAngleRight className={Btn} />
       </RightBtn>
     </Wrapper>
   );
@@ -86,13 +86,16 @@ function Slider({ children, containerClass, sliderClass }) {
 
 export default Slider;
 
+const Wrapper = tw.div`relative flex justify-center w-full `;
 const SlideContainer = tw.div` w-full flex items-stretch gap-6 snap-x snap-mandatory overflow-x-auto pb-4  scrollbar-none select-none`;
-const Wrapper = tw.div`flex justify-center w-full `;
-const Button = tw.button`hidden mt-20 md:block w-16  h-20   z-20  text-black  px-4 py-3 text-5xl bg-white rounded stroke-1 relative cursor-pointer  shadow-[0px_3px_8px_rgba(0,0,0,0.24)] invisible group-hover:visible  ${(
-  p
-) => p.$scroll && "!invisible"}  `;
 
-const LeftBtn = tw(Button)`zz
+const Button = tw.button` absolute top-0 bottom-0  hidden  md:flex items-center justify-center   cursor-pointer invisible   group-hover:visible  ${(
+  p
+) => p.$scroll && "opacity-20"}  `;
+
+const Btn =
+  "w-[3.5rem] p-2 h-[3.5rem]   z-20  text-black  text-5xl bg-white rounded-full  shadow-[0px_3px_8px_rgba(0,0,0,0.24)] ";
+const LeftBtn = tw(Button)`
 -left-2`;
 
 const RightBtn = tw(Button)`

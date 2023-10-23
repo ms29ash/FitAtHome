@@ -13,22 +13,18 @@ function Products() {
   const { data } = useQuery("product", fetchProduct);
 
   return (
-    <div className="w-screen flex justify-center pt-6 ">
-      <Section>
-        <h1 className="w-full text-black mb-8 md:mb-16 font-bold text-4xl text-center">
-          Our Products
-        </h1>
-        <Slider>
-          {data?.data &&
-            data?.data?.map((item) => {
-              return <ProductCard item={item} key={item._id} />;
-            })}
-        </Slider>
-      </Section>
-    </div>
+    <Section>
+      <h1 className="heading  ">Our Products</h1>
+      <Slider>
+        {data?.data &&
+          data?.data?.map((item) => {
+            return <ProductCard item={item} key={item._id} />;
+          })}
+      </Slider>
+    </Section>
   );
 }
 
 export default Products;
 
-const Section = tw.section`px-3  w-full  xl:px-20  pt-10   pb-6 md:!pb-10 overflow-x-hidden group`;
+const Section = tw.section`w-full     pb-6 md:!pb-10 overflow-x-hidden group  pt-[3rem]`;
