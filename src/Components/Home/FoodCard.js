@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import CustomToast from "../Box/AddToCartAlert";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
-function FoodCard({ foodItem }) {
+function FoodCard({ foodItem, className }) {
   //index of food in cart
   const [index, setIndex] = useState(false);
   const dispatch = useDispatch();
@@ -77,7 +77,7 @@ function FoodCard({ foodItem }) {
 
   return (
     <>
-      <Container>
+      <Container className={className}>
         <Wrapper>
           {/* Box for image and food type */}
           <Box onClick={() => navigate(`/food/${foodItem?._id}`)}>
@@ -85,7 +85,7 @@ function FoodCard({ foodItem }) {
               src={foodItem?.image}
               alt=""
               placeholder={<LoadFoodImg />}
-              threshold={100}
+              threshold={300}
             />
             <FoodTypeIcon>
               <FoodTypeImg
@@ -148,7 +148,8 @@ function FoodCard({ foodItem }) {
 
 export default FoodCard;
 
-const Container = tw.div`scroll-end scroll-mx-5 shrink-0    `;
+const Container = tw.div`scroll-end scroll-mx-5 shrink-0  ${(p) =>
+  p.className}   `;
 const Wrapper = tw.div`card-container my-3   rounded-md  hover:shadow-2xl duration-300  transition-all bg-white shadow-lg`;
 
 //Image and Food Type

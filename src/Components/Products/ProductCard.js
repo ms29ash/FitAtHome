@@ -76,7 +76,7 @@ function ProductCard({ item, classes }) {
     <div
       className={`rounded-lg h-full bg-white p-3 shadow-lg hover:shadow-xl cursor-pointer ${classes} `}
     >
-      <div className="w-full flex justify-center">
+      <div className="group w-full flex justify-center my-3">
         <img
           className="rounded-t-lg w-[8rem]  aspect-square object-contain"
           src={item?.image}
@@ -119,6 +119,6 @@ flex-1
 `;
 const BuyBtn = tw.button`text-ssorange font-bold  border-2 border-ssorange w-full py-2 rounded-md hover:text-white hover:bg-ssorange transition-all select-none text-xs `;
 //Increase and Decrease Btn
-const Btn = tw.div`flex  font-bold  flex-1  w-full select-none justify-end `;
+const Btn = tw.div`  flex  font-bold  flex-1  w-full select-none justify-end `;
 const BtnWrapper = tw.div`flex   items-center font-bold      rounded-md  transition-all select-none `;
 const SmallBtn = tw.button` border-2 hover:bg-grayfood/20   p-2 border-ssorange rounded-lg `;
