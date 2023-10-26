@@ -1,39 +1,57 @@
-import React from 'react'
+import React from "react";
 import tw from "tailwind-styled-components";
-import { Link } from "react-router-dom";
-
-
+import { Link, useLocation } from "react-router-dom";
+import { HiOutlineSearch } from "react-icons/hi";
 
 function HamburgerMenu(props) {
-    const { isOpen, setOpen } = props || {}
+  const { isOpen, setOpen, height } = props || {};
 
-    const toggle = () => {
-        setOpen(!isOpen)
-        document.getElementById('body').classList.toggle('toggle')
-    }
-    return (
-        <Container>
-            <NavLinks>
-                <NavLink key='key' onClick={toggle} to="/food">Food</NavLink>
+  let { pathname } = useLocation();
 
-                <NavLink key='food' onClick={toggle} to="/trial">Free Trial</NavLink>
+  const toggle = () => {
+    setOpen(!isOpen);
+    document.getElementById("body").classList.toggle("toggle");
+  };
+  return (
+    <>
+      <Container height={height} className={`top-[${height}px] `}>
+        <Wrapper isOpen={isOpen}>
+          <NavLinks>
+            <NavLink key="key" to="/menu" selected={pathname === "/menu"}>
+              Menu
+            </NavLink>
 
-                <NavLink key='trial' onClick={toggle} to="/subscribe">Subscribe</NavLink>
+            <NavLink
+              key="food"
+              to="/product"
+              selected={pathname === "/product"}
+            >
+              Products
+            </NavLink>
 
-                <LoginLink key='login' onClick={toggle} to="/signin">Login</LoginLink>
-            </NavLinks>
-        </Container>
-    )
+            <NavLink
+              key="trial"
+              to="/subscribe"
+              selected={pathname === "/subscribe"}
+            >
+              Subscriptions
+            </NavLink>
+          </NavLinks>
+        </Wrapper>
+      </Container>
+    </>
+  );
 }
 
-export default HamburgerMenu
+export default HamburgerMenu;
 
-const Container = tw.div`absolute grid place-items-center w-screen  bg-white top-[70px] -right-[2.5vw] z-20  h-screen`
-const NavLinks = tw.div` h-full -mt-44
-flex-1 flex flex-col justify-center items-center`;
+const Container = tw.div` w-full    left-0 lg:hidden `;
+const Wrapper = tw.div`w-full max-w-full px-[5%] transition-all ${(p) =>
+  p.isOpen ? "scale-y-0" : "scale-y-100"} `;
+const NavLinks = tw.div`  
+flex-1 flex  items-center  w-full  justify-around  `;
 const NavLink = tw(
-    Link
-)`mx-4 text-2xl text-redfood hover:text-orangefood  font-semibold hover:underline py-5  `;
-const LoginLink = tw(Link)`
-mx-4 text-lg text-white  font-bold bg-redfood hover:bg-orangefood px-14  py-5  rounded-full
-`;
+  Link
+)` text-xs border-[1px] border-[2px] border-gray-300 text-gray-600 p-2 rounded-lg  bg-white underline-none    font-semibold hover:underline w-[30%] text-center  ${(
+  p
+) => p.selected && "border-ssorange bg-ssorange/30 text-ssornage "}  `;

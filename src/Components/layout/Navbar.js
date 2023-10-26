@@ -1,22 +1,23 @@
 import React, { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Hamburger from "hamburger-react";
 import tw from "tailwind-styled-components";
 import HamburgerMenu from "./HamburgerMenu";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
 import { useEffect } from "react";
 import { fetchUserData } from "../../features/auth/userDataSlice";
-import { BsPersonFill } from "react-icons/bs";
-import { AiFillFire } from "react-icons/ai";
-import { FaBoxOpen } from "react-icons/fa";
-import { MdNotifications } from "react-icons/md";
+import { BsBox2Heart, BsFire } from "react-icons/bs";
+import { RxCross2 } from "react-icons/rx";
+import { BiUser } from "react-icons/bi";
+import { HiMenuAlt1, HiOutlineSearch } from "react-icons/hi";
 
 const cookies = new Cookies();
 
 function Navbar() {
   const [isOpen, setOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
+  const [height, setHeight] = useState();
+  const ref = useRef();
   const navlink = useRef(null);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const basket = useSelector((state) => state.basket.basket);
@@ -48,14 +49,30 @@ function Navbar() {
     };
     window.addEventListener("scroll", handleSticky);
   });
+
+  let navHeight;
+  useEffect(() => {
+    if (ref.current) {
+      const navHeight = ref.current.offsetHeight;
+      setHeight(navHeight);
+    }
+  }, [navHeight]);
+
   return (
     <Container sticky={sticky === true ? "true" : "false"}>
       {/* Navbar */}
-      <Nav className="navbar  ">
+      <Nav className="navbar  " ref={ref}>
         {/* Section 1 Logo  */}
         <LogoWrapper className="header">
+          <HamburgerIcon onClick={() => setOpen(!isOpen)}>
+            {isOpen ? <HiMenuAlt1 /> : <RxCross2 />}
+          </HamburgerIcon>
           <Link to="/">
-            <Img src="/images/LogoInv.png" alt="" />
+            <picture className="w-full">
+              <source media="(max-width:768px)" srcset="/images/logo.png" />
+              <source media="(min-width:768px)" srcset="/logo.png" />
+              <Img src="img_orange_flowers.jpg" alt="/images/logo.png" />
+            </picture>
           </Link>
         </LogoWrapper>
 
@@ -68,37 +85,37 @@ function Navbar() {
             Products
           </LinkTo>
           <LinkTo selected={pathname === "/plans"} to="/food">
-            Our Plans
+            Subscriptions
           </LinkTo>
         </Wrapper>
 
         {/* Section 3 Icons */}
         <NavLinks ref={navlink}>
-          <NavLink to="/fire">
-            <AiFillFire
-              className={`${icon} ${pathname === "/fire" && "bg-grayfood/20"}`}
-            />
-            <NavLinkTxt>Fire</NavLinkTxt>
-          </NavLink>
-          <NavLink to="/box" className="relative">
-            <FaBoxOpen
-              className={`${icon} ${pathname === "/box" && "bg-grayfood/20"}`}
-            />
-            <NavLinkTxt>Box</NavLinkTxt>
-            <Notification>{basket?.length}</Notification>
-          </NavLink>
-          <NavLink to="/notification" className="relative">
-            <MdNotifications
+          <NavLink to="/search" className="relative  ">
+            <HiOutlineSearch
               className={`${icon} ${
-                pathname === "/notification" && "bg-grayfood/20"
+                pathname === "/search" && "bg-grayfood/20"
               }`}
             />
-            <NavLinkTxt>Notification</NavLinkTxt>
-            <Notification>3</Notification>
+          </NavLink>
+          <NavLink to="/fire">
+            <BsFire
+              className={`${icon} ${pathname === "/fire" && "text-ssorange"}`}
+            />
+            {/* <NavLinkTxt>Fire</NavLinkTxt> */}
+          </NavLink>
+          <NavLink to="/box" className="relative">
+            <BsBox2Heart
+              className={`${icon} ${pathname === "/box" && "text-ssorange"}`}
+            />
+
+            <Notification>{basket?.length}</Notification>
           </NavLink>
           {isLoggedIn === true ? (
             <NavLink to="/user">
-              <BsPersonFill className=" p-2 bg-grayfood/10 text-5xl mr-1 rounded-full hover:bg-grayfood/30 " />
+              <BiUser
+                className={`${icon} ${pathname === "/user" && "text-ssorange"}`}
+              />
             </NavLink>
           ) : (
             <Button to="/signin">
@@ -108,7 +125,7 @@ function Navbar() {
         </NavLinks>
 
         {/* Hamburger Icon  */}
-        <HamburgerIcon>
+        {/* <HamburgerIcon>
           <Hamburger
             toggled={isOpen}
             toggle={setOpen}
@@ -117,30 +134,27 @@ function Navbar() {
               document.getElementById("body").classList.toggle("toggle");
             }}
           />
-        </HamburgerIcon>
-        {/* Hamburger Menu  */}
-        {isOpen && <HamburgerMenu isOpen={isOpen} setOpen={setOpen} />}
+        </HamburgerIcon> */}
       </Nav>
+      {/* Hamburger Menu  */}
+      <HamburgerMenu height={height} isOpen={isOpen} setOpen={setOpen} />
     </Container>
   );
 }
 
 export default Navbar;
 
-const Container = tw.header`w-screen  top-0 right-0 left-0 flex items-center justify-center    z-50  ${(
+const Container = tw.header`w-screen flex-col   top-0 right-0 left-0 flex items-center justify-center    z-50  ${(
   p
 ) =>
   p.sticky === "true"
     ? " bg-white static lg:fixed shadow-xl "
     : "static bg-transparent "}  `;
 
-const Nav = tw.nav`
-flex  w-full max-w-[1600px] px-[5%] justify-between   items-center z-[100]  rounded-lg  top-0 right-0 left-0 py-3 xl:py-0
- 
-`;
-const LogoWrapper = tw.div`inline-block w-[100px]`;
-const Img = tw.img`w-full`;
-const HamburgerIcon = tw.div` top-[25px] xl:hidden static`;
+const Nav = tw.nav`flex  w-full max-w-[1600px] px-[5%] justify-between   items-center z-[100] rounded-lg  top-0 right-0 left-0 py-3 `;
+const LogoWrapper = tw.div`lg:inline-block w-fit flex items-center `;
+const Img = tw.img`max-w-[50px] lg:max-w-[200px]  `;
+const HamburgerIcon = tw.div`text-4xl  xl:hidden static`;
 
 //Section 2
 const Wrapper = tw.div` flex-1   space-x-8 pl-[10%] xl:!flex hidden   `;
@@ -152,13 +166,12 @@ const LinkTo = tw(
 
 //Section 3
 const NavLinks = tw.div` 
- flex-1 xl:!flex hidden  justify-end items-center  `;
+ md:flex-1 flex   justify-end items-center  `;
 const NavLink = tw(
   Link
-)`ml-10 text-2xl items-center  flex  p-2 aspect-square rounded-full   font-bold  text-black transition-all flex-col justify-center  `;
-const icon = `text-[2.5rem] mr-1 p-2 rounded-full hover:bg-grayfood/10 `;
-const NavLinkTxt = tw.p`text-xs `;
+)` ml-1 lg:ml-5 text-2xl items-center  flex  p-1 lg:p-2 aspect-square rounded-full   font-bold  text-black transition-all flex-col justify-center rounded-full  hover:!text-ssorange  `;
+const icon = `text-[2rem] lg:text-[2.25rem]  p-1   `;
 const Button = tw(
   Link
 )`ml-10 text-base items-center flex bg-ssorange text-white px-8 py-3  rounded-lg   font-bold   hover-btn before:bg-ssgreen `;
-const Notification = tw.small` text-xs absolute right-[30%] top-[20%] bg-ssorange text-white w-4 text-center aspect-square rounded-full  `;
+const Notification = tw.small`text-[0.5rem] text-xs absolute right-[0%] top-[0%] bg-ssorange text-white  w-5 text-center aspect-square rounded-full grid place-items-center  `;
