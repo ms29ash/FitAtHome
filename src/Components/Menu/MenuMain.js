@@ -7,10 +7,10 @@ import { useSearchParams } from "react-router-dom";
 import FoodCardSm from "./FoodCardSm";
 
 function MenuMain() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   let [searchParams] = useSearchParams();
   const queryClient = useQueryClient();
-  const type = searchParams.get("category") || null;
+  const type = searchParams.get("category") || "all";
   // const type = useSelector((state) => state.food.type)
   const fetchFood = async () => {
     return axios.get("/food");
@@ -20,27 +20,27 @@ function MenuMain() {
     return arr.filter((food) => food.type === type);
   };
 
-  const { data: food } = useQuery("food", fetchFood, {
+  const { data: food, isSuccess } = useQuery("food", fetchFood, {
     initialData: () => {
       return queryClient.getQueryData("food");
     },
   });
-  const filtered = food?.data?.food || {};
+
+  const filtered = food?.data?.food || null;
 
   useEffect(() => {
-    console.log(type);
-    if (filtered) {
-      if (type === null) {
+    if (filtered !== null) {
+      if (type === "all") {
         setData(filtered);
       } else {
         let items = filter(filtered, type);
         setData(items);
       }
     }
-  }, [type]);
+  }, [type, filtered]);
   return (
     <Container>
-      {data
+      {isSuccess
         ? data?.map((item, index) => {
             return (
               <>
@@ -55,7 +55,7 @@ function MenuMain() {
               return (
                 <>
                   <FoodCard key={index} />
-                  <FoodCardSm key={index} />
+                  <FoodCardSm key={index + 1} />
                 </>
               );
             })}
