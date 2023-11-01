@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import tw from "tailwind-styled-components";
 import { useNavigate } from "react-router-dom";
-import ReviewStar from "./ReviewStar";
+import ReviewStar from "../Home/ReviewStar";
 import { useDispatch } from "react-redux";
 import {
   addCart,
@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import CustomToast from "../Box/AddToCartAlert";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
-function FoodCard({ foodItem, className }) {
+function FoodCardSm({ foodItem, className }) {
   //index of food in cart
   const [index, setIndex] = useState(false);
   const dispatch = useDispatch();
@@ -146,26 +146,24 @@ function FoodCard({ foodItem, className }) {
   );
 }
 
-export default FoodCard;
+export default FoodCardSm;
 
-const Container = tw.div` hidden sm:block scroll-end scroll-mx-5 shrink-0  ${(
-  p
-) => p.className}   `;
-const Wrapper = tw.div`card-container my-3   rounded-md  hover:shadow-2xl duration-300  transition-all bg-white shadow-lg`;
+const Container = tw.div`  block  sm:hidden  ${(p) => p.className}   `;
+const Wrapper = tw.div`flex flex-row border-b-[1px] duration-300  transition-all bg-white py-1 items-center`;
 
 //Image and Food Type
-const Box = tw.div` grid place-items-center relative `;
+const Box = tw.div` grid place-items-center relative w-[30%] `;
 const FoodImg = tw(
   LazyLoadImage
-)`rounded-t-md object-cover w-full   mx-auto aspect-[3/2] bg-white `;
+)`rounded-t-md object-cover w-full max-w-[300px]  mx-auto aspect-[2/2.25] bg-white `;
 const FoodTypeIcon = tw.div`flex absolute items-center bottom-2 left-2 bg-white font-bold  px-2 py-[0.35rem] text-xs rounded-md `;
 const FoodTypeImg = tw.img` w-[15px] h-[15px] mr-2 `;
 
 const LoadFoodImg = tw.img`rounded-t-md object-cover w-[250px] h-[187px] bg-gray-400 `;
 // Description
-const Text = tw.div`p-3 `;
+const Text = tw.div`p-3 flex-1 `;
 //Top Part
-const TextHead = tw.h1`text-[0.9rem] font-bold text-black transition-all `;
+const TextHead = tw.h1`text-[0.9rem] font-bold text-gray-700 transition-all `;
 //Second Part
 const Details = tw.div` justify-between items-center w-full `;
 const Bottom = tw.div`flex justify-between items-center`;

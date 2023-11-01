@@ -8,11 +8,11 @@ function ProductSideBar() {
   const type = searchParams.get("category") || "vegetable";
 
   return (
-    <div className="  min-w-[300px] lg:h-full overflow-y-hidden shadow-xl lg:shadow-none mt-2 lg:mt-0 ">
+    <div className="  min-w-[300px] mt-2 md:mt-0 lg:h-full overflow-y-hidden shadow-xl lg:shadow-none ">
       <div className="top-0 lg:fixed bottom-0 flex items-center ">
         <div className=" top-[15%] min-w-[300px] lg:max-h-[80vh] overflow-y-hidden">
           <h1 className=" pt-6 pb-4 hidden lg:block">Categories</h1>
-          <div className=" bg-white rounded-lg  lg:h-[80vh] overflow-y-auto lg:pb-[30%] flex lg:flex-col hideScroll ">
+          <div className=" bg-white rounded-lg  lg:h-[80vh] overflow-y-auto lg:pb-[30%] flex lg:flex-col hideScroll pb-2 ">
             <Wrapper
               selected={type === "vegetable"}
               onClick={() => {

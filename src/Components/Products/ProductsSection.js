@@ -23,7 +23,7 @@ function ProductsSection() {
   };
 
   return (
-    <div className="w-full p-[2.5%]  flex-1 grid grid-cols-4  gap-x-3 gap-y-3  h-full overflow-y-auto pb-[10rem] ">
+    <div className="w-full p-[2.5%]  flex-1 grid grid-cols-2  md:grid-cols-3 xl:grid-cols-4 before:  gap-x-3 gap-y-3  h-full overflow-y-auto pb-[10rem] ">
       {data?.data &&
         filterData(data?.data, type).map((product) => {
           return <ProductCard item={product} key={product._id} />;

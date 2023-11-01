@@ -141,7 +141,7 @@ const Container = tw.header`w-screen flex-col   top-0 right-0 left-0 flex items-
 
 const Nav = tw.nav`flex  w-full max-w-[1600px] px-[5%] justify-between   items-center z-[100] rounded-lg  top-0 right-0 left-0 py-3 `;
 const LogoWrapper = tw.div`lg:inline-block w-fit flex items-center `;
-const Img = tw.img`max-w-[50px] lg:max-w-[180px]  `;
+const Img = tw.img`max-w-[50px] md:max-w-[120px] lg:max-w-[180px]  `;
 
 //Section 2
 const Wrapper = tw.div` flex-1    space-x-3 xl:space-x-8  pl-[5%] md:!flex hidden   `;

@@ -19,11 +19,18 @@ function ReviewStar({ rating }) {
           .fill("")
           .map((i, n) => {
             return (
-              <FaStar key={n} style={{ color: "" }} className="text-ssorange" />
+              <FaStar
+                key={n}
+                style={{ color: "" }}
+                className="text-ssorange text-xs md:text-base "
+              />
             );
           })}
       {halfStars && (
-        <FaStarHalfAlt style={{ color: "" }} className="text-ssorange" />
+        <FaStarHalfAlt
+          style={{ color: "" }}
+          className="text-ssorange text-xs md:text-base "
+        />
       )}
 
       <Review>{rating}</Review>
@@ -33,5 +40,5 @@ function ReviewStar({ rating }) {
 
 export default ReviewStar;
 
-const ReviewBox = tw.div`flex space-x-3  items-center rounded-md  px-2 `;
+const ReviewBox = tw.div`flex space-x-1 md:space-x-3  items-center rounded-md  px-2 `;
 const Review = tw.div`rounded-sm font-bold text-sm  text-black ml-1`;

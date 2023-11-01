@@ -99,7 +99,7 @@ function ProductCard({ item, classes }) {
               <SmallBtn onClick={decreaseQuantity}>
                 <AiOutlineMinus />
               </SmallBtn>
-              <p className="px-4">{cart[index]?.quantity}</p>
+              <p className="px-2 md:px-4">{cart[index]?.quantity}</p>
               <SmallBtn>
                 <AiOutlinePlus onClick={increaseQuantity} />
               </SmallBtn>
@@ -121,4 +121,4 @@ const BuyBtn = tw.button`text-ssorange font-bold  border-2 border-ssorange w-ful
 //Increase and Decrease Btn
 const Btn = tw.div`  flex  font-bold  flex-1  w-full select-none justify-end `;
 const BtnWrapper = tw.div`flex   items-center font-bold      rounded-md  transition-all select-none `;
-const SmallBtn = tw.button` border-2 hover:bg-grayfood/20   p-2 border-ssorange rounded-lg `;
+const SmallBtn = tw.button` border-2 hover:bg-grayfood/20  p-1 md:p-2 border-ssorange rounded-lg `;
