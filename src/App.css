@@ -33,6 +33,10 @@ a {
   /* font-family: 'Roboto', sans-serif; */
 }
 
+button {
+  user-select: none;
+}
+
 ::-webkit-scrollbar {
   width: 0.5rem;
   height: 15px;
@@ -48,6 +52,16 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: #555454;
 }
+
+@media screen and (max-width: 768px) {
+
+  ::-webkit-scrollbar {
+    width: 0rem;
+    height: 0x;
+    border-radius: 30px;
+  }
+}
+
 
 /* Intro Section */
 .intro {
@@ -155,4 +169,12 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
   margin: 0 !important;
+}
+
+
+/* Hide Scrollbar */
+.hideScroll::-webkit-scrollbar {
+  height: 0px;
+  display: hidden;
+  border-radius: 30px;
 }

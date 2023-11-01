@@ -16,18 +16,6 @@ function MenuSideBar() {
       <Wrapper>
         <Box>
           <TopHead>Category</TopHead>
-          <Heading
-            onClick={() => {
-              refContainer.current.classList.toggle("filter__height");
-              refGroup.current.classList.toggle("filter__option");
-              document
-                .getElementById("arrow__filter")
-                .classList.toggle("filter__arrow");
-            }}
-          >
-            <TopHeadSmall>Filter</TopHeadSmall>
-            <Arrow id="arrow__filter" />
-          </Heading>
 
           <Group ref={refGroup}>
             {/* <Head>Type</Head> */}
@@ -112,25 +100,19 @@ function MenuSideBar() {
 
 export default MenuSideBar;
 
-const Container = tw.div` h-[10vh] mt-3  xl:h-screen  w-[30%] transition-all duration-200 max-w-[300px]		 `;
-const Wrapper = tw.div`fixed flex items-start py-[6rem]  mt-4 w-[30%] transition-all duration-200 max-w-[300px]  top-0 bottom-0 `;
-const Box = tw.div`   w-full rounded-xl overflow-hidden `;
-const Heading = tw.div`flex w-full items-center justify-between xl:hidden cursor-pointer `;
+const Container = tw.div` mt-3  xl:h-screen  lg:w-[30%] transition-all duration-200 lg:max-w-[300px]	w-full bg-white lg:bg-transparent	shadow-xl lg:shadow-none `;
+const Wrapper = tw.div`lg:fixed flex items-start lg:py-[6rem]  lg:my-4 lg:w-[30%] transition-all duration-200 w-full lg:max-w-[300px]  top-0 bottom-0  `;
+const Box = tw.div`   w-max lg:w-full scroll-smooth rounded-xl overflow-hidden `;
 
 //Heading
-const TopHead = tw.h3`text-2xl xl:mb-1 xl:block hidden px-6 pb-5`;
-const TopHeadSmall = tw.h3`text-redfood xl:mb-2 text-xl  xl:hidden  `;
-const Arrow = tw(
-  AiOutlineCaretDown
-)`!fill-redfood  xl:hidden transition-transform`;
+const TopHead = tw.h3`text-2xl xl:mb-1 hidden lg:block  px-6 pb-5`;
 
 //Group
-const Group = tw.div` w-full rounded-lg bg-white   hidden xl:block`;
+const Group = tw.div` w-full flex flex-row lg:flex-col rounded-xl overflow bg-transparent bg-white overflow-x-auto hideScroll  py-4 lg:py-0 `;
 
-const Option = tw.div`flex items-center pt-2 px-3 hover:bg-ssgreen/30 border-b-[1px] py-3 hover:border-l-8 hover:border-l-ssgreen transition-all duration-200 cursor-pointer ${(
+const Option = tw.div`flex items-center  px-3 bg-gray-100 lg:bg-white hover:bg-ssgreen/30 sm:py-2  lg:py-3 mx-1 lg:mx-0 lg:hover:border-l-8 lg:hover:border-l-ssgreen  w-[25%] lg:w-full min-w-[150px]   border-[2px] lg:border-0 border-gray-300 border-b-[1px]  rounded-xl lg:rounded-none transition-all duration-200 cursor-pointer   ${(
   p
-) => p.typeOf && "border-l-ssgreen  border-l-8 bg-ssgreen/30 "} `;
-const Img = tw.img` w-16 aspect-square object-cover rounded-lg `;
+) => p.typeOf && "lg:border-l-ssgreen  lg:border-l-8 lg:bg-ssgreen/30 "} `;
+const Img = tw.img`w-8 lg:w-16 aspect-square object-cover rounded-lg `;
 const Checkbox = tw.input` opacity-0 `;
-const OptionText = tw.label`  ml-4 w-full cursor-pointer    rounded transition-all duration-200 
-`;
+const OptionText = tw.label`  ml-4 w-full cursor-pointer    rounded transition-all duration-200 select-none`;

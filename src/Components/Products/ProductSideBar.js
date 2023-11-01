@@ -8,11 +8,11 @@ function ProductSideBar() {
   const type = searchParams.get("category") || "vegetable";
 
   return (
-    <div className="  min-w-[300px] h-full overflow-y-hidden  ">
-      <div className="top-0 fixed bottom-0 flex items-center ">
-        <div className=" top-[15%] min-w-[300px] max-h-[80vh] overflow-y-hidden">
-          <h1 className=" pt-6 pb-4">Categories</h1>
-          <div className=" bg-white rounded-lg  h-[80vh] overflow-y-auto pb-[30%] ">
+    <div className="  min-w-[300px] lg:h-full overflow-y-hidden shadow-xl lg:shadow-none mt-2 lg:mt-0 ">
+      <div className="top-0 lg:fixed bottom-0 flex items-center ">
+        <div className=" top-[15%] min-w-[300px] lg:max-h-[80vh] overflow-y-hidden">
+          <h1 className=" pt-6 pb-4 hidden lg:block">Categories</h1>
+          <div className=" bg-white rounded-lg  lg:h-[80vh] overflow-y-auto lg:pb-[30%] flex lg:flex-col hideScroll ">
             <Wrapper
               selected={type === "vegetable"}
               onClick={() => {
@@ -94,8 +94,9 @@ function ProductSideBar() {
 
 export default ProductSideBar;
 
-const Wrapper = tw.div` flex items-center border-b-[1px] border-l-[1px] hover:bg-ssgreen/20 cursor-pointer hover:border-l-[0.5rem] hover:border-l-ssgreen transition-all duration-200 ${(
+const Wrapper = tw.div` flex items-center border-b-[1px] border-l-[1px] hover:bg-ssgreen/20 cursor-pointer hover:border-l-[0.5rem] lg:hover:border-l-ssgreen transition-all duration-200 min-w-[200px]  ${(
   p
-) => p.selected && "border-l-[0.5rem] border-l-ssgreen bg-ssgreen/20  "}  `;
+) =>
+  p.selected && "lg:border-l-[0.5rem] lg:border-l-ssgreen bg-ssgreen/20  "}  `;
 const Img = tw.img`rounded-2xl w-[4.5rem] p-2 aspect-square object-cover `;
-const Head = tw.p`whitespace-nowrap font-medium text-[0.9rem]  `;
+const Head = tw.p`lg:whitespace-nowrap  font-medium text-[0.9rem] select-none`;

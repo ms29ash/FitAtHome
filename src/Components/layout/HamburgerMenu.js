@@ -8,19 +8,16 @@ function HamburgerMenu(props) {
 
   let { pathname } = useLocation();
 
-  const toggle = () => {
-    setOpen(!isOpen);
-    document.getElementById("body").classList.toggle("toggle");
-  };
   return (
     <>
-      <Container height={height} className={`top-[${height}px] `}>
+      <Container height={height}>
         <Wrapper isOpen={isOpen}>
           <NavLinks>
             <NavLink key="key" to="/menu" selected={pathname === "/menu"}>
               Menu
             </NavLink>
 
+            {/* <Hr /> */}
             <NavLink
               key="food"
               to="/product"
@@ -28,6 +25,7 @@ function HamburgerMenu(props) {
             >
               Products
             </NavLink>
+            {/* <Hr /> */}
 
             <NavLink
               key="trial"
@@ -45,13 +43,15 @@ function HamburgerMenu(props) {
 
 export default HamburgerMenu;
 
-const Container = tw.div` w-full    left-0 lg:hidden `;
-const Wrapper = tw.div`w-full max-w-full px-[5%] transition-all ${(p) =>
-  p.isOpen ? "scale-y-0" : "scale-y-100"} `;
+const Container = tw.div` w-full   fixed  left-0 right-0
+bottom-[3vh] md:hidden flex items-end z-20 `;
+const Wrapper = tw.div`w-full max-w-full px-[5%] transition-all `;
 const NavLinks = tw.div`  
-flex-1 flex  items-center  w-full  justify-around  `;
+flex-1 flex  items-center  w-full  justify-around  shadow-review bg-black text-white rounded-lg  `;
 const NavLink = tw(
   Link
-)` text-xs border-[1px] border-[2px] border-gray-300 text-gray-600 p-2 rounded-lg  bg-white underline-none    font-semibold hover:underline w-[30%] text-center  ${(
-  p
-) => p.selected && "border-ssorange bg-ssorange/30 text-ssornage "}  `;
+)` text-xs    py-3 rounded-lg  underline-none    font-semibold hover:underline w-[33%] text-center  
+ ${(p) => p.selected && " bg-ssorange  "}
+  `;
+
+const Hr = tw.div`bg-white w-[1px] h-6`;

@@ -17,4 +17,4 @@ function Menu() {
 export default Menu;
 
 const Page = tw.div`  py-200 bg-[#f2f2f2]`;
-const Container = tw.div` flex w-[97vw] xl:flex-row flex-col  mx-auto xl:mb-[18vh] mb-[5vh] max-w-[1600px] `;
+const Container = tw.div` flex w-[97vw] xl:flex-row flex-col  mx-auto xl:mb-[18vh] mb-[5vh] max-w-screen 2xl:max-w-[1600px] max-h-[97vh]  lg:max-h-max  overflow-hidden `;
