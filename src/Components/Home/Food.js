@@ -25,7 +25,13 @@ function Food() {
                   return <FoodCard key={index} />;
                 })
             : food?.data?.food.map((foodItem) => {
-                return <FoodCard foodItem={foodItem} key={foodItem._id} />;
+                return (
+                  <FoodCard
+                    className={"w-[250px]"}
+                    foodItem={foodItem}
+                    key={foodItem._id}
+                  />
+                );
               })}
         </>
       </Slider>
