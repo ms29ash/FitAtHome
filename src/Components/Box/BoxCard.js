@@ -1,29 +1,46 @@
 import React, { useRef } from "react";
 import tw from "tailwind-styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setQuantity, removeCart } from "../../features/basket/basketSlice";
+import { AiOutlineHeart, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-function BoxCard({ item }) {
+function BoxCard({ item, index }) {
   //dispatch of redux
   const dispatch = useDispatch();
   //select quantity ref
   const refSelect = useRef();
 
+  // checking cart or isloggedIn redux
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const cart = useSelector((state) => state.basket.basket);
+
   const { image, name, price, type, quantity, _id } = item?.item || {};
 
-  //quantity change handler
-  const onChangeHandler = () => {
-    dispatch(
-      setQuantity({ id: _id, quantity: parseInt(refSelect.current.value) })
-    );
+  //Increase Quantity in Cart hanlder
+  const increaseQuantity = (e) => {
+    if (isLoggedIn === true && index > -1) {
+      dispatch(
+        setQuantity({
+          id: _id,
+          quantity: cart[index]?.quantity + 1,
+        })
+      );
+    }
   };
 
-  //Remove from cart handler
-  const removeHandler = () => {
-    dispatch(removeCart(_id));
+  //Decrease Quantity in Cart hanlder
+  const decreaseQuantity = (e) => {
+    if (isLoggedIn === true && index > -1) {
+      if (cart[index]?.quantity === 1) {
+      }
+      dispatch(
+        setQuantity({
+          id: _id,
+          quantity: cart[index]?.quantity - 1,
+        })
+      );
+    }
   };
-
-  console.log(item);
 
   return (
     <>
@@ -31,11 +48,11 @@ function BoxCard({ item }) {
         <Container>
           <Img src={image} alt="" />
           <Wrapper>
-            <p className="text-lg mt-[10%] font-bold">{name}</p>
+            <p className="text-base text-gray-800 max-w-[90%]  ">{name}</p>
             {type && (
               <FoodTypeIcon>
                 <img
-                  className="w-[25px] h-[25px] mr-2"
+                  className="w-[15px] h-[15px] mr-2"
                   src={
                     type === "Veg"
                       ? "images/veg_icon.png"
@@ -52,28 +69,20 @@ function BoxCard({ item }) {
             )}
             {quantity && <p>{quantity}</p>}
             <Price className="  ">&#8377; {price}</Price>
-
-            <Select
-              name="quantity"
-              ref={refSelect}
-              value={item.quantity}
-              onChange={onChangeHandler}
-            >
-              <option value="0">0</option>
-              {Array(10)
-                .fill()
-                .map((item, index) => (
-                  <option value={index + 1} key={index}>
-                    {index + 1}
-                  </option>
-                ))}
-              {quantity > 10 && <option value={quantity}>{quantity}</option>}
-            </Select>
-            <div className="flex mt-4 text-grayfood  mb-4">
-              <Btn onClick={removeHandler}>Remove</Btn>
-
-              <Btn>Add to Favorites</Btn>
-            </div>
+            <Btn>
+              <BtnWrapper>
+                <SmallBtn onClick={decreaseQuantity}>
+                  <AiOutlineMinus />
+                </SmallBtn>
+                <p className="px-2 md:px-4">{item?.quantity}</p>
+                <SmallBtn>
+                  <AiOutlinePlus onClick={increaseQuantity} />
+                </SmallBtn>
+              </BtnWrapper>
+            </Btn>
+            <FavBtn>
+              <AiOutlineHeart />
+            </FavBtn>
           </Wrapper>
         </Container>
       )}
@@ -84,16 +93,17 @@ function BoxCard({ item }) {
 
 export default BoxCard;
 
-const Container = tw.div`
-w-full h-26 my-3 flex relative  
-`;
+const Container = tw.div`w-full   flex `;
 const Img = tw.img`
-w-[30%] max-w-[250px] object-cover aspect-square md:aspect-[4/3]
+w-[30%] max-w-[250px] object-contain aspect-[1/1]
 `;
 //Details Section
-const Wrapper = tw.div` ml-4`;
+const Wrapper = tw.div` ml-4 w-full py-1 relative`;
+const FoodTypeIcon = tw.div` my-2  items-center flex text-xs`;
+const Price = tw.p`my-3 h-[15%]   text-black text-base font-bold`;
+const FavBtn = tw.button`absolute top-2 right-2 cursor-pointer text-lg`;
 
-const Select = tw.select` drop-shadow-4xl shadow-lg bg-gray-200 px-2 py-1 text-base rounded-lg mt-2 border-[2px] border-slate-400 mt-[6%] mb-[4%] `;
-const FoodTypeIcon = tw.div` my-2  items-center flex`;
-const Price = tw.p`my-3 h-[15%] absolute top-2 right-2  text-black text-xl font-bold`;
-const Btn = tw.button` mr-4 hover:text-ssorange text-sm hover:underline`;
+//Increase and Decrease Btn
+const Btn = tw.div`  flex  font-bold  flex-1  w-full select-none justify-end absolute bottom-4 `;
+const BtnWrapper = tw.div`flex   items-center font-bold       rounded-md  transition-all select-none bg-ssorange text-white mt-1 justify-end `;
+const SmallBtn = tw.button` border-2 hover:bg-grayfood/20  p-1 md:p-2 border-ssorange rounded-lg `;
