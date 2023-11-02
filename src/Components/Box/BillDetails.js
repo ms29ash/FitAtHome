@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "tailwind-styled-components";
+import { getDeliveryCharges, getDiscount } from "../../logics/total";
 
 function BillDetails({ total, subTotal }) {
   return (
@@ -14,13 +15,11 @@ function BillDetails({ total, subTotal }) {
             </tr>
             <tr>
               <td>Discount</td>
-              <td>-&#8377;{Math.floor((total * 15) / 100)}</td>
+              <td>-&#8377;{getDiscount(total)}</td>
             </tr>
             <tr>
               <td>Delivery</td>
-              <td>
-                &#8377;{Math.floor(total > 500 ? 50 : total === 0 ? 0 : 100)}
-              </td>
+              <td>&#8377;{getDeliveryCharges(total)}</td>
             </tr>
           </tbody>
           <tfoot>

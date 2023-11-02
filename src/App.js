@@ -5,7 +5,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import "./App.css";
 import "./Styles/tailwind.css";
 import Home from "../src/Pages/Home";
-import Navbar from "./Components/layout/Navbar";
+import Navbar from "./Components/layout/Navbar/Navbar";
 import Menu from "./Pages/Menu";
 import TrialPage from "./Components/TrialPage";
 import SubscribePage from "./Pages/SubscribePage";
