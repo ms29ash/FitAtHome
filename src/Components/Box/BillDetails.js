@@ -1,8 +1,21 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import { getDeliveryCharges, getDiscount } from "../../logics/total";
+import {
+  getDeliveryCharges,
+  getDiscount,
+  getSubTotal,
+  getTotal,
+} from "../../logics/total";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
 
-function BillDetails({ total, subTotal }) {
+function BillDetails() {
+  const [total, setTotal] = useState(0);
+  const data = useSelector((state) => state.basket.basket);
+  useEffect(() => {
+    setTotal(getTotal(data));
+  }, [data]);
   return (
     <Container>
       <Wrapper>
@@ -25,7 +38,7 @@ function BillDetails({ total, subTotal }) {
           <tfoot>
             <tr>
               <Th>SubTotal</Th>
-              <Th> &#8377;{Math.floor(subTotal)}</Th>
+              <Th> &#8377;{getSubTotal(total)}</Th>
             </tr>
           </tfoot>
         </table>

@@ -4,25 +4,35 @@ import tw from "tailwind-styled-components";
 import loadPayment from "./Payment";
 import { useDispatch, useSelector } from "react-redux";
 import { resetCart } from "../../features/basket/basketSlice";
+import { getAllTotal } from "../../logics/total";
+import { useState } from "react";
+import { useEffect } from "react";
 
-function BoxPayment({ subTotal }) {
+function BoxPayment() {
+  const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
   const address = useSelector(
     (state) => state?.userData?.userData?.address || null
   );
 
+  const data = useSelector((state) => state.basket.basket);
+
   const response = () => {
     dispatch(resetCart());
   };
 
+  useEffect(() => {
+    setTotal(getAllTotal(data));
+  }, [data]);
+
   return (
     <PaymentContainer>
       <PaymentWrapper
-        onClick={() => loadPayment(subTotal, address, response)}
-        disabled={subTotal === 0}
+        onClick={() => loadPayment(total, address, response)}
+        disabled={total === 0}
       >
         <PayDetails>
-          <p className="font-bold text-lg">&#8377;{Math.floor(subTotal)}</p>
+          <p className="font-bold text-lg">&#8377;{total}</p>
           <p className="text-slate-200">Total</p>
         </PayDetails>
         <p className="text-xl flex items-center">

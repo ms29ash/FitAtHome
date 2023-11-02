@@ -31,5 +31,6 @@ export const getAllTotal = (data) => {
     (total, item) => total + item.item.price * item.quantity,
     0
   );
+  console.log(total);
   return Math.floor(total + getDeliveryCharges(total) - getDiscount(total));
 };

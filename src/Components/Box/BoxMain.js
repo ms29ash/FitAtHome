@@ -3,30 +3,17 @@ import tw from "tailwind-styled-components";
 import BoxPayment from "./BoxPayment";
 import BillDetails from "./BillDetails";
 import BoxCard from "./BoxCard";
-import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 import { RxCross2 } from "react-icons/rx";
 import BoxAddress from "./BoxAddress";
-import { Container } from "postcss";
 import { useRef } from "react";
 import EmptyBox from "./EmptyBox";
-import { getSubTotal, getTotal } from "../../logics/total";
 
 function BoxMain({ isOpen, boxOpenHandler }) {
-  const [total, setTotal] = useState(0);
-  const [subTotal, setSubTotal] = useState(0);
   const data = useSelector((state) => state.basket.basket);
   const payRef = useRef();
   const headRef = useRef();
 
-  //Getting Total amount
-  useEffect(() => {
-    setTotal(getTotal(data));
-    if (total) {
-      setSubTotal(getSubTotal(total));
-    }
-  }, [data]);
   return (
     <ContainerBox>
       {/* Header */}
@@ -59,12 +46,12 @@ function BoxMain({ isOpen, boxOpenHandler }) {
         </Box>
 
         {/* Bill Details  */}
-        <BillDetails total={total} subTotal={subTotal} />
+        <BillDetails />
         {/* Cancellation Policy */}
       </BoxContainer>
       {/* Payment */}
       <PayWrapper ref={payRef}>
-        <BoxPayment subTotal={subTotal} />
+        <BoxPayment />
       </PayWrapper>
     </ContainerBox>
   );
