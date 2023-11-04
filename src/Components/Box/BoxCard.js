@@ -1,20 +1,37 @@
-import React, { useRef } from "react";
+import React from "react";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuantity, removeCart } from "../../features/basket/basketSlice";
-import { AiOutlineHeart, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { setQuantity } from "../../features/basket/basketSlice";
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiOutlineMinus,
+  AiOutlinePlus,
+} from "react-icons/ai";
+import {
+  addToFavorite,
+  getFavIndex,
+  removeFavId,
+} from "../../features/basket/listSlice";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function BoxCard({ item, index }) {
+  const [favIndex, setFavIndex] = useState(0);
   //dispatch of redux
   const dispatch = useDispatch();
-  //select quantity ref
-  const refSelect = useRef();
+  const favorites = useSelector((state) => state.list.favorites);
 
   // checking cart or isloggedIn redux
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const cart = useSelector((state) => state.basket.basket);
 
   const { image, name, price, type, quantity, _id } = item?.item || {};
+
+  useEffect(() => {
+    let index = getFavIndex(favorites, _id);
+    setFavIndex(index);
+  }, [_id, favorites]);
 
   //Increase Quantity in Cart hanlder
   const increaseQuantity = (e) => {
@@ -40,6 +57,15 @@ function BoxCard({ item, index }) {
         })
       );
     }
+  };
+
+  //Add to favorites
+  const addToFavorites = () => {
+    let data = item.item;
+    dispatch(addToFavorite(data));
+  };
+  const removeFavorites = () => {
+    dispatch(removeFavId(favIndex));
   };
 
   return (
@@ -81,7 +107,14 @@ function BoxCard({ item, index }) {
               </BtnWrapper>
             </Btn>
             <FavBtn>
-              <AiOutlineHeart />
+              {favIndex < 0 ? (
+                <AiOutlineHeart onClick={addToFavorites} />
+              ) : (
+                <AiFillHeart
+                  onClick={removeFavorites}
+                  className="text-red-600"
+                />
+              )}
             </FavBtn>
           </Wrapper>
         </Container>

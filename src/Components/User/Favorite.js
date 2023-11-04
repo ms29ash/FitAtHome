@@ -2,108 +2,145 @@ import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import tw from "tailwind-styled-components";
 import { Link } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import { AiFillHeart, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFavId } from "../../features/basket/listSlice";
+import CustomToast from "../Box/AddToCartAlert";
+import { addCart, setQuantity } from "../../features/basket/basketSlice";
 
-function Favorite(props) {
-    let { foodItem } = props;
+function Favorite({ item, index }) {
+  const dispatch = useDispatch();
+  // checking cart or isloggedIn redux
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const cart = useSelector((state) => state.basket.basket);
 
-    return (
-        <>
-            <Container>
-                <Wrapper>
-                    <Link to={`/search/foodDetail/${foodItem?._id}`}>
-                        {
-                            <FoodImg
-                                src={foodItem?.image}
-                                alt=""
-                                placeholder={<LoadFoodImg />}
-                                threshold={100}
-                            />
-                        }
+  const removeFromFav = () => {
+    dispatch(removeFavId(index));
+  };
 
+  //Add to Cart Hanlder
+  const addToCart = (e) => {
+    if (isLoggedIn === true) {
+      dispatch(addCart({ item: item, quantity: 1 }));
 
-                        {/* <ReviewBox >
+      CustomToast(item?.image, item.name, "Added to cart", "success");
+    }
+  };
 
-                            <FaStar style={{ color: 'white' }} />
-                            <Review >{foodItem?.ratings}</Review>
-                        </ReviewBox> */}
-                        <Text>
-                            <Head>
+  //Increase Quantity in Cart hanlder
+  const increaseQuantity = (e) => {
+    if (isLoggedIn === true && index > -1) {
+      dispatch(
+        setQuantity({
+          id: item?._id,
+          quantity: cart[index]?.quantity + 1,
+        })
+      );
+    }
+  };
 
-                                {
-                                    foodItem?.name.length < 30 ?
+  //Decrease Quantity in Cart hanlder
+  const decreaseQuantity = (e) => {
+    if (isLoggedIn === true && index > -1) {
+      if (cart[index]?.quantity === 1) {
+        CustomToast(item?.image, item.name, "Removed from cart");
+      }
+      dispatch(
+        setQuantity({
+          id: item?._id,
+          quantity: cart[index]?.quantity - 1,
+        })
+      );
+    }
+  };
 
-                                        <TextHead className="mb-2">{foodItem?.name.slice(0, 30)}</TextHead>
-                                        :
-                                        <TextHead className="mb-2">{foodItem?.name.slice(0, 27)}..</TextHead>
-                                }
-                                <FoodTypeIcon>
-                                    <img className="w-[15px] mr-2 h-[15px]" src={
-                                        foodItem?.type === "Veg"
-                                            ? "/images/veg_icon.png"
-                                            : foodItem?.type === "Non-Veg"
-                                                ? "/images/nonveg_icon.png"
-                                                : foodItem?.type === "Vegan"
-                                                    ? "/images/vegan_icon.png"
-                                                    : ""
-                                    }
-                                        alt=""
-                                    />
-                                    {
-                                        foodItem?.type === "Veg"
-                                            ? "veg"
-                                            : foodItem?.type === "Non-Veg"
-                                                ? "nonveg"
-                                                : foodItem?.type === "Vegan"
-                                                    ? "vegan"
-                                                    : ""
-                                    }
-                                </FoodTypeIcon>
-                            </Head>
-                            <p className="text-xs text-slate-600" >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio, quasi!</p>
-                            <hr className="my-2" />
-                            <Details>
+  return (
+    <>
+      <Container>
+        <Wrapper>
+          <Link to={`/search/foodDetail/${item?._id}`}>
+            {
+              <FoodImg
+                src={item?.image}
+                alt=""
+                placeholder={<LoadFoodImg />}
+                threshold={100}
+              />
+            }
+            <Text>
+              <TextHead className="mb-2">{item?.name}</TextHead>
+              {item.type && (
+                <FoodTypeIcon>
+                  <img
+                    className="w-[15px] mr-2 h-[15px]"
+                    src={
+                      item?.type === "Veg"
+                        ? "/images/veg_icon.png"
+                        : item?.type === "Non-Veg"
+                        ? "/images/nonveg_icon.png"
+                        : item?.type === "Vegan"
+                        ? "/images/vegan_icon.png"
+                        : ""
+                    }
+                    alt=""
+                  />
+                  {item?.type === "Veg"
+                    ? "veg"
+                    : item?.type === "Non-Veg"
+                    ? "nonveg"
+                    : item?.type === "Vegan"
+                    ? "vegan"
+                    : ""}
+                </FoodTypeIcon>
+              )}
+              <p>{item?.quantity}</p>
+              <p className=" font-bold  leading-8 text-black-800   ">
+                &#8377; {item?.price}
+              </p>
 
-                                <p className="  h-[15%]  leading-8 text-black-800 text-sm  ">
-                                    &#8377; {foodItem?.price}
-                                </p>
-                                <Btn>Add to Cart</Btn>
-
-                            </Details>
-
-
-
-                        </Text>
-                    </Link>
-                    <Fav>
-                        {/* <AiOutlineHeart /> */}
-                        <AiFillHeart />
-
-                    </Fav>
-
-
-                </Wrapper>
-            </Container>
-        </>
-    );
+              {index < 0 ? (
+                <BuyBtn onClick={() => addToCart()}>Add to Cart</BuyBtn>
+              ) : (
+                <Btn>
+                  <BtnWrapper>
+                    <SmallBtn onClick={decreaseQuantity}>
+                      <AiOutlineMinus />
+                    </SmallBtn>
+                    <p className="px-4">{cart[index]?.quantity}</p>
+                    <SmallBtn>
+                      <AiOutlinePlus onClick={increaseQuantity} />
+                    </SmallBtn>
+                  </BtnWrapper>
+                </Btn>
+              )}
+            </Text>
+          </Link>
+          <Fav>
+            {/* <AiOutlineHeart /> */}
+            <AiFillHeart onClick={removeFromFav} />
+          </Fav>
+        </Wrapper>
+      </Container>
+    </>
+  );
 }
 
 export default Favorite;
 
 const Container = tw.div`scroll-end scroll-mx-5 shrink-0 mx-3 my-2   `;
-const Wrapper = tw.div`card-container my-3 transition-all   rounded-md w-[250px]   hover:shadow-2xl duration-300  transition-all bg-white shadow-xl relative `;
+const Wrapper = tw.div`card-container my-3 transition-all   rounded-md w-[250px]   hover:shadow-2xl duration-300 bg-white shadow-xl relative `;
 const FoodImg = tw(
-    LazyLoadImage
-)`rounded-t-md object-cover w-[100%]  mx-auto aspect-[2/1] bg-white `;
+  LazyLoadImage
+)`rounded-t-md object-contain w-[100%]  mx-auto aspect-[3/2] bg-white `;
 const LoadFoodImg = tw.img`rounded-t-md object-cover w-[250px] h-[187px] bg-gray-400 `;
-const FoodTypeIcon = tw.div`w-[80px] justify-center absolute flex bg-white p-2 -top-7  left-0 text-xs items-center`;
-const Head = tw.div`flex items-center`
-const Text = tw.div`p-[8px] relative`;
-const Details = tw.div`flex justify-between items-center w-full`
+const FoodTypeIcon = tw.div`  flex bg-white py-2 text-xs items-center`;
+const Text = tw.div`p-[8px]`;
 const TextHead = tw.h1`text-sm  font-bold text-black`;
-const ReviewBox = tw.div`flex justify-between items-center rounded-md bg-grayfood px-2 absolute top-3 left-3`
-const Review = tw.div`rounded-sm bg-grayfood text-white ml-1`
-const Btn = tw.button`text-sm text-redfood`
-const Fav = tw.div`absolute top-3 right-3 bg-white rounded-full shadow-xl p-2 text-redfood text-lg`
+const Fav = tw.div`absolute top-3 right-3 bg-white rounded-full shadow-xl p-2 text-redfood text-lg cursor-pointer`;
 
+//Add to Cart Btn
+const BuyBtn = tw.button`flex-1 text-ssorange font-bold  border-2 border-ssorange w-full py-2 rounded-md   hover:bg-ssorange/20 transition-all select-none  text-xs `;
+//Increase and Decrease Btn
+const Btn = tw.div`flex  font-bold    w-full select-none justify-end `;
+const BtnWrapper = tw.div`flex  items-center font-bold      rounded-md  transition-all select-none `;
+const SmallBtn = tw.div` border-2 hover:bg-ssorange/20   p-2 border-ssorange rounded-lg cursor-pointer `;

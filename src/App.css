@@ -23,12 +23,16 @@ body {
   overflow-x: hidden;
   height: max-content;
   background-color: #f6fafb;
+  /* overflow-y: hidden; */
 }
 
 a {
   cursor: pointer;
 }
 
+.preventScroll{
+  overflow-y: hidden;
+}
 .head {
   /* font-family: 'Roboto', sans-serif; */
 }
@@ -177,4 +181,12 @@ input::-webkit-inner-spin-button {
   height: 0px;
   display: hidden;
   border-radius: 30px;
+}
+
+
+
+/* Box Page */
+
+.paymentShadow{
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }

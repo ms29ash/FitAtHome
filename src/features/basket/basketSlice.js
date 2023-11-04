@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logoutUser } from "../auth/authSlice";
+import { fetchUserData } from "../auth/userDataSlice";
 
 const initialState = {
   basket: [],
@@ -46,10 +47,14 @@ export const basketSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(logoutUser, (state) => {
-      console.log("basket");
-      state.basket = [];
-    });
+    builder
+      .addCase(logoutUser, (state) => {
+        console.log("basket");
+        state.basket = [];
+      })
+      .addCase(fetchUserData.fulfilled, (state, action) => {
+        state.basket = action.payload.user?.box.items;
+      });
   },
 });
 
