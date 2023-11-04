@@ -15,11 +15,7 @@ export const getDiscount = (total) => {
 };
 
 export const getDeliveryCharges = (total) => {
-  if (total > 500) {
-    return 50;
-  } else {
-    return 100;
-  }
+  return total === 0 ? 0 : total < 500 ? 50 : 0;
 };
 
 export const getSubTotal = (total) => {
