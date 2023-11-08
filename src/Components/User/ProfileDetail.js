@@ -1,6 +1,5 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import { Button } from "../Auth/Form";
 import { AiOutlinePhone, AiOutlineMail } from "react-icons/ai";
 
 function ProfileDetail() {
@@ -20,18 +19,20 @@ function ProfileDetail() {
           </div>
         </div>
       </Personal>
-      <Btn>Edit</Btn>
+      <Btn>
+        <p className="z-10 relative">Edit</p>
+      </Btn>
     </Container>
   );
 }
 
 export default ProfileDetail;
 
-const Container = tw.div`flex items-center justify-between w-[98%] h-[20vh] border-b-2 border-b-black `;
+const Container = tw.div`flex items-center justify-between w-full px-[2.5%] py-[1.5rem] my-[1rem] shadow-md  bg-white rounded-lg `;
 const Personal = tw.div`flex items-center`;
 const Img = tw.img`w-12 h-12 object-cover rounded-full mr-4 `;
-const Name = tw.h1``;
-const Email = tw.p`flex items-center text-sm mr-2 `;
-const Phone = tw.p`flex items-center text-sm`;
+const Name = tw.h1`text-gray-900`;
+const Email = tw.p`flex text-gray-700 items-center text-base mr-2 `;
+const Phone = tw.p`flex text-gray-700 items-center text-base`;
 
-const Btn = tw.button`w-20  bg-slate-100 text-black  hover:shadow-xl shadow-lg  text-center  px-5 py-2  rounded-full  cursor-pointer font-bold`;
+const Btn = tw.button` bg-ssorange text-white text-center   py-3  rounded-lg px-10  cursor-pointer font-bold   before:bg-ssgreen hover-btn`;

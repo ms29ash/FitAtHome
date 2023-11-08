@@ -43,12 +43,11 @@ function Sidebar({ tab }) {
 export default Sidebar;
 
 const Container = tw.div` max-h-[80vh]
-h-[100%] bg-slate-100 flex flex-col justify-between
-    
-`;
+h-[100%] bg-white rounded-md shadow-md flex flex-col justify-between`;
 
 const Wrapper = tw.div`pt-6 pl-4 flex flex-col `;
 const Opt = tw(
   Link
-)` my-1 font-semibold  text-black py-8 pl-4 pr-16 py-4 hover:bg-redfood hover:text-white transition-all duration-300  hover:cursor-pointer 
-${(p) => (p.tab === true ? "bg-redfood text-white" : "")} `;
+)` my-1 font-semibold  text-black py-8 pl-4 pr-16 py-4 hover:bg-ssgreen/30  transition-all duration-300  hover:cursor-pointer 
+${(p) =>
+  p.tab === true ? "bg-ssgreen/30 border-l-[0.5rem] border-ssgreen " : ""} `;
